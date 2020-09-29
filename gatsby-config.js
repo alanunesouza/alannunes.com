@@ -42,7 +42,7 @@ module.exports = {
         icon: `src/assets/favicon.png`
       },
     },
-    `gatsby-plugin-sitemap`,
+    // `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
