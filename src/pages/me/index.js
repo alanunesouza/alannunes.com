@@ -1,9 +1,14 @@
 import React from 'react';
+import Layout from '../../components/Layout';
 
-import { Container } from './styles';
+import * as styles from './styles';
 
-function me() {
-  return <Container>Me</Container>;
+function Me() {
+  return (
+    <Layout>
+      <styles.Container>Me</styles.Container>;
+    </Layout>
+  );
 }
 
-export default me;
+export default Me;

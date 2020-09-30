@@ -1,8 +1,8 @@
-import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import light from '../src/styles/themes/light'
+import light from '../src/styles/themes/light';
 
-export function wrapRootElement ({ element, props }) {
-  return <ThemeProvider theme={light}>{element}</ThemeProvider>
+export function wrapRootElement({ element }) {
+  return <ThemeProvider theme={light}>{element}</ThemeProvider>;
 }

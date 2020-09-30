@@ -1,9 +1,9 @@
-const siteMetadata = require('./config/metadata')
-const path = require('path')
+const path = require('path');
+const siteMetadata = require('./config/metadata');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata,
@@ -14,20 +14,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
-        displayName: process.env.NODE_ENV !== 'production'
-      }
+        displayName: process.env.NODE_ENV !== 'production',
+      },
     },
     `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#663399`
-      }
+        color: `#663399`,
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
       },
     },
     {
@@ -39,7 +39,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#663399`,
         display: `standalone`,
-        icon: `src/assets/favicon.png`
+        icon: `src/assets/favicon.png`,
       },
     },
     // `gatsby-plugin-sitemap`,
@@ -55,9 +55,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cache',
       options: {
-        cachePublic: true
-      }
+        cachePublic: true,
+      },
     },
+    `gatsby-plugin-transition-link`,
     `gatsby-plugin-offline`,
   ],
-}
+};
