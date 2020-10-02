@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionPortal } from 'gatsby-plugin-transition-link';
 import { Location } from '@reach/router';
@@ -15,7 +15,11 @@ import light from '../../styles/themes/light';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
 function Layout({ children }) {
-  const [themeMode, setThemeMode] = useState(localStorage.getItem('theme') || 'theme-light');
+  const [themeMode, setThemeMode] = useState('theme-light');
+
+  useEffect(() => {
+    setThemeMode(localStorage.getItem('theme'));
+  }, []);
 
   return (
     <Location>
