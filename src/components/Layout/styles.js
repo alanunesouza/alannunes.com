@@ -5,6 +5,7 @@ import * as V from '../../styles/variables';
 export const Container = styled.section`
   display: block;
   will-change: background-color;
+  background-color: ${(props) => props.theme.background};
 `;
 
 export const Main = styled.main.attrs({

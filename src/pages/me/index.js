@@ -6,7 +6,7 @@ import * as styles from './styles';
 function Me() {
   return (
     <Layout>
-      <styles.Container>Me</styles.Container>;
+      <styles.Container>Me</styles.Container>
     </Layout>
   );
 }

@@ -1,1 +1,1 @@
-export { wrapRootElement } from './gatsby/wrapRootElement';
+export const onServiceWorkerUpdateReady = () => window.location.reload();

@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import ToggleTheme from '../ToggleTheme';
 
 import * as S from './styles';
 
-function Header() {
+function Header({ location }) {
   return (
     <S.Header>
       <S.Menu>
@@ -12,16 +15,22 @@ function Header() {
         </S.AvatarDiv>
 
         <S.Options>
-          <S.Option>Me</S.Option>
-          <S.Option>Blog</S.Option>
+          <S.Option to="/me" selected={location.pathname === '/me/'}>
+            Me
+          </S.Option>
+          <S.Option to="/blog" selected={location.pathname === '/blog/'}>
+            Blog
+          </S.Option>
         </S.Options>
 
-        <S.ToggleTheme active={false}>
-          <S.ToggleThemeTrack />
-        </S.ToggleTheme>
+        <ToggleTheme />
       </S.Menu>
     </S.Header>
   );
 }
 
 export default Header;
+
+Header.propTypes = {
+  location: PropTypes.shape({ pathname: PropTypes.string.isRequired }).isRequired,
+};

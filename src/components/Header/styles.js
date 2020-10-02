@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import * as V from '../../styles/variables';
@@ -6,7 +7,7 @@ export const Header = styled.header.attrs({
   role: 'banner',
 })`
   height: ${V.Height.headerSm};
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.headerBackground};
   transition: background-color 0.3s ease 0s;
   position: fixed;
   top: 0px;
@@ -14,6 +15,8 @@ export const Header = styled.header.attrs({
   left: 0px;
   margin-bottom: 10px;
   z-index: 3;
+  border-bottom: 2px ${(props) => props.theme.headerText} solid;
+  box-shadow: rgba(16, 27, 79, 0.15) 0 0 10px 5px;
 `;
 
 export const Menu = styled.div`
@@ -35,9 +38,9 @@ export const AvatarDiv = styled.div`
 export const AvatarImg = styled.img``;
 
 export const AvatarName = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  color: ${V.Color.white};
+  color: ${(props) => props.theme.headerText};
 `;
 
 export const Options = styled.div`
@@ -45,62 +48,19 @@ export const Options = styled.div`
   flex: 1;
 `;
 
-export const Option = styled.button`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: ${V.Color.white};
-  border: none;
-  margin: ${V.Space.sm};
-`;
-
-export const ToggleTheme = styled.button.attrs(({ active }) => ({
-  title: active ? 'Mudar para tema escuro' : 'Mudar para tema claro',
-  role: 'button',
-  'aria-pressed': !active,
-}))`
+export const Option = styled(Link)`
+  font-size: 1.6rem;
+  font-weight: ${(props) => (props.selected ? 'bold' : 500)};
+  color: ${(props) => props.theme.headerText};
+  margin: 0 ${V.Space.sm} 0 ${V.Space.sm};
+  padding-bottom: 1.6px;
+  height: 3.2rem;
+  display: flex;
   align-items: center;
-  background-color: ${V.Color.grayDark};
-  border-radius: ${V.Space.default};
-  cursor: pointer;
-  display: inline-flex;
-  height: ${V.Space.default};
-  justify-content: space-between;
-  padding-left: 2px;
-  padding-right: 2px;
-  position: relative;
-  width: ${V.Space.lg};
 
-  &:focus {
-    outline: 0;
-  }
-  &:before,
-  &:after {
-    font-size: 18px;
-    margin-top: 0.5px;
-  }
-  &:before {
-    content: '🌜';
-  }
-  &:after {
-    content: '🌞';
-  }
-`;
-
-export const ToggleThemeTrack = styled.div`
-  --toggleTrack-size: 22px;
-  background-color: ${V.Color.grayWhite};
-  border: ${V.Color.purple} solid 2px;
-  border-radius: 50%;
-  height: var(--toggleTrack-size);
-  position: absolute;
-  left: 0;
-  transition: transform ${V.Transition.default};
-  width: var(--toggleTrack-size);
-  z-index: ${V.ZIndex.header};
-  .theme-light & {
-    transform: translateX(0);
-  }
-  .theme-dark & {
-    transform: translateX(100%);
+  :hover {
+    padding-bottom: 0px;
+    font-weight: bold;
+    border-bottom: 2px solid ${(props) => props.theme.headerText};
   }
 `;
