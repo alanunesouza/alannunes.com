@@ -9,21 +9,23 @@ function Header({ location }) {
   return (
     <S.Header>
       <S.Menu>
-        <S.AvatarDiv>
+        <S.AvatarDiv to="/" selected={location.pathname === ''}>
           <S.AvatarImg />
           <S.AvatarName>Alan Nunes</S.AvatarName>
         </S.AvatarDiv>
 
         <S.Options>
-          <S.Option to="/me" selected={location.pathname === '/me/'}>
-            Me
+          <S.Option to="/about" selected={location.pathname.includes('/about')}>
+            Sobre
           </S.Option>
-          <S.Option to="/blog" selected={location.pathname === '/blog/'}>
+          <S.Option to="/blog" selected={location.pathname.includes('/blog')}>
             Blog
           </S.Option>
         </S.Options>
 
-        <ToggleTheme />
+        <S.Options>
+          <ToggleTheme />
+        </S.Options>
       </S.Menu>
     </S.Header>
   );

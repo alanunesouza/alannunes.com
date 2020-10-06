@@ -2,19 +2,10 @@ module.exports = {
   siteMetadata: {
     title: 'Alan Nunes',
     siteUrl: 'https://alannunes.com',
-    social: [
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/alanunesouza',
-      },
-      {
-        name: 'github',
-        url: 'https://github.com/alanunesouza',
-      },
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/alanhnunes',
-      },
-    ],
+    social: {
+      linkedin: 'https://www.linkedin.com/in/alanunesouza',
+      github: 'https://github.com/alanunesouza',
+      twitter: 'https://twitter.com/alanhnunes',
+    },
   },
 };

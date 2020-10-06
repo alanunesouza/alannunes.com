@@ -30,7 +30,7 @@ export const Menu = styled.div`
   justify-content: space-between;
 `;
 
-export const AvatarDiv = styled.div`
+export const AvatarDiv = styled(Link)`
   display: flex;
   flex: 1;
 `;
@@ -46,6 +46,7 @@ export const AvatarName = styled.span`
 export const Options = styled.div`
   display: flex;
   flex: 1;
+  justify-content: center;
 `;
 
 export const Option = styled(Link)`

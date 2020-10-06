@@ -26,6 +26,7 @@ function Layout({ children }) {
       {({ location }) => (
         <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
           <ThemeProvider theme={themeMode === 'theme-dark' ? dark : light}>
+            <title>Alan Nunes</title>
             <styles.Container>
               <GlobalStyle />
               <TransitionPortal level="top">

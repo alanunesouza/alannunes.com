@@ -1,7 +1,13 @@
 import React from 'react';
+import Layout from '../../components/Layout';
+import { NotFoundText } from './styles';
 
 function NotFoundPage() {
-  return <div>Página não encontrada.</div>;
+  return (
+    <Layout>
+      <NotFoundText>Página em construção.</NotFoundText>
+    </Layout>
+  );
 }
 
 export default NotFoundPage;
