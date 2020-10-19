@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import ToggleTheme from '../ToggleTheme';
 
+import avatar from '../../assets/avatar.png';
+
 import * as S from './styles';
 
 function Header({ location }) {
@@ -10,8 +12,10 @@ function Header({ location }) {
     <S.Header>
       <S.Menu>
         <S.AvatarDiv to="/" selected={location.pathname === ''}>
-          <S.AvatarImg />
-          <S.AvatarName>Alan Nunes</S.AvatarName>
+          <S.AvatarImgDiv>
+            <S.AvatarImg src={avatar} alt="avatar_profile" />
+          </S.AvatarImgDiv>
+          <S.AvatarName>alan nunes</S.AvatarName>
         </S.AvatarDiv>
 
         <S.Options>

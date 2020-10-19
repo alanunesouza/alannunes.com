@@ -10,8 +10,8 @@ function About() {
         <h1>Olá!</h1>
 
         <p>
-          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto cada vez mais entusiasmado a compartilhar
-          conhecimento e alcançar o próximo nível.{' '}
+          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto entusiasmado a compartilhar conhecimento e evoluir
+          cada vez mais.
           <span role="img" aria-label="rocket">
             🚀
           </span>

@@ -1,4 +1,5 @@
-import { Link } from 'gatsby';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+
 import styled from 'styled-components';
 
 import * as V from '../../styles/variables';
@@ -22,7 +23,6 @@ export const Header = styled.header.attrs({
 export const Menu = styled.div`
   display: flex;
   flex: 1;
-  height: ${V.Height.headerSm};
   align-items: center;
   max-width: ${V.MaxSize.lg};
   margin-left: auto;
@@ -30,17 +30,48 @@ export const Menu = styled.div`
   justify-content: space-between;
 `;
 
-export const AvatarDiv = styled(Link)`
+export const AvatarDiv = styled(AniLink).attrs({
+  cover: true,
+  direction: 'bottom',
+  bg: '#000',
+})`
   display: flex;
   flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 ${V.Space.sm};
+
+  @media (max-width: 420px) {
+    justify-content: flex-start;
+  }
 `;
 
-export const AvatarImg = styled.img``;
+export const AvatarImgDiv = styled.div`
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+  border: 2px solid ${(props) => props.theme.bold};
+`;
+
+export const AvatarImg = styled.img`
+  width: 40px;
+  height: 40px;
+`;
 
 export const AvatarName = styled.span`
-  font-size: 1.8rem;
+  font-size: ${V.Space.sm};
   font-weight: 600;
   color: ${(props) => props.theme.headerText};
+  margin-left: 5px;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 420px) {
+    display: none;
+  }
 `;
 
 export const Options = styled.div`
@@ -49,7 +80,11 @@ export const Options = styled.div`
   justify-content: center;
 `;
 
-export const Option = styled(Link)`
+export const Option = styled(AniLink).attrs({
+  cover: true,
+  direction: 'bottom',
+  bg: '#000',
+})`
   font-size: 1.6rem;
   font-weight: ${(props) => (props.selected ? 'bold' : 500)};
   color: ${(props) => props.theme.headerText};

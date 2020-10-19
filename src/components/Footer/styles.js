@@ -26,7 +26,6 @@ export const SocialItem = styled.a`
   svg {
     height: 2.5rem;
     width: 2.5rem;
-
     color: ${(props) => props.theme.bold};
   }
 `;
