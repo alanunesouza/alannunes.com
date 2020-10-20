@@ -13,6 +13,10 @@ export default function Home() {
           Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto inspirado a compartilhar conhecimento e evoluir
           minhas hard e soft skills.{' '}
         </p>
+
+        <p>Por meio deste site, vou trazer bastante conteúdo, além de meus trabalhos profissionais.</p>
+
+        <bold>Aguarde... :)</bold>
       </styles.Container>
     </Layout>
   );
