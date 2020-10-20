@@ -10,11 +10,8 @@ function About() {
         <h1>Olá!</h1>
 
         <p>
-          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto entusiasmado a compartilhar conhecimento e evoluir
-          cada vez mais.
-          <span role="img" aria-label="rocket">
-            🚀
-          </span>
+          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto inspirado a compartilhar conhecimento e evoluir
+          minhas hard e soft skills.
         </p>
 
         <p>
@@ -26,13 +23,13 @@ function About() {
         </p>
 
         <p>
-          Posso me considerar viciado em esportes: faço musculação há mais de 10 anos, acompanho muito futebol e ultimamente
-          estou viciado em basquete.
+          Me considero um dev apaixonado por esportes: faço musculação há mais de 10 anos, sempre estou ativo e acompanho
+          muito futebol e basquete.
         </p>
 
         <p>
-          Nos tempos livres gosto de viajar, curtir um bom som num barzinho, ler livros, assistir filmes e séries, além de
-          jogar muito video game.
+          Nos tempos livres gosto de viajar, curtir um bom som em pubs, ler livros, assistir filmes e séries, além de jogar
+          video game.
         </p>
       </styles.Container>
     </Layout>

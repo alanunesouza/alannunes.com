@@ -6,8 +6,7 @@ export const Footer = styled.footer.attrs({
   role: 'banner',
 })`
   height: ${V.Height.headerSm};
-  background-color: ${(props) => props.theme.headerBackground};
-  transition: background-color 0.3s ease 0s;
+  background-color: ${(props) => props.theme.footerBackground};
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -18,6 +17,7 @@ export const Footer = styled.footer.attrs({
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease 0s;
 `;
 
 export const SocialItem = styled.a`
@@ -26,7 +26,12 @@ export const SocialItem = styled.a`
   svg {
     height: 2.5rem;
     width: 2.5rem;
-    color: ${(props) => props.theme.bold};
+    color: ${(props) => props.theme.footerSvgColor};
+    transition: color 0.3s ease 0s;
+
+    :hover {
+      color: ${(props) => props.theme.bold};
+    }
   }
 `;
 

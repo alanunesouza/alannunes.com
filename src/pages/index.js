@@ -10,11 +10,8 @@ export default function Home() {
         <h1>Olá!</h1>
 
         <p>
-          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto entusiasmado a compartilhar conhecimento e evoluir
-          cada vez mais.{' '}
-          <span role="img" aria-label="rocket">
-            🚀
-          </span>
+          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto inspirado a compartilhar conhecimento e evoluir
+          minhas hard e soft skills.{' '}
         </p>
       </styles.Container>
     </Layout>

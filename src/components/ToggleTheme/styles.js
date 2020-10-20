@@ -14,11 +14,12 @@ export const ToggleTheme = styled.button.attrs(({ active }) => ({
   display: flex;
   height: ${V.Space.default};
   justify-content: space-between;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
   position: relative;
   width: ${V.Space.lg};
   border: none;
+  outline: 0;
 
   &:focus {
     outline: 0;

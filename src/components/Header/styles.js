@@ -16,8 +16,8 @@ export const Header = styled.header.attrs({
   left: 0px;
   margin-bottom: 10px;
   z-index: 3;
-  border-bottom: 2px ${(props) => props.theme.headerText} solid;
-  box-shadow: rgba(16, 27, 79, 0.15) 0 0 10px 5px;
+  border-bottom: 3px ${(props) => props.theme.bold} solid;
+  box-shadow: ${(props) => (props.themeIsDark ? 'rgba(112, 112, 129, 0.3)' : 'rgba(16, 27, 79, 0.5)')} 0 0 10px 5px;
 `;
 
 export const Menu = styled.div`
@@ -28,6 +28,7 @@ export const Menu = styled.div`
   margin-left: auto;
   margin-right: auto;
   justify-content: space-between;
+  height: 100%;
 `;
 
 export const AvatarDiv = styled(AniLink).attrs({
@@ -55,8 +56,11 @@ export const AvatarImgDiv = styled.div`
 `;
 
 export const AvatarImg = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #7f5ba3;
+  padding: 2px;
+  border-radius: 100%;
 `;
 
 export const AvatarName = styled.span`
@@ -86,17 +90,17 @@ export const Option = styled(AniLink).attrs({
   bg: '#000',
 })`
   font-size: 1.6rem;
-  font-weight: ${(props) => (props.selected ? 'bold' : 500)};
-  color: ${(props) => props.theme.headerText};
+  color: ${(props) => (props.selected ? props.theme.bold : props.theme.headerText)};
   margin: 0 ${V.Space.sm} 0 ${V.Space.sm};
-  padding-bottom: 1.6px;
+  transition: border-color 0.25s ease 0s;
+  padding: 0;
   height: 3.2rem;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid transparent;
 
   :hover {
-    padding-bottom: 0px;
-    font-weight: bold;
-    border-bottom: 2px solid ${(props) => props.theme.headerText};
+    border-bottom: 2px solid ${(props) => props.theme.bold};
+    color: ${(props) => props.theme.bold};
   }
 `;

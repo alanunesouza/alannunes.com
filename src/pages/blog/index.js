@@ -11,11 +11,11 @@ function Blog() {
         <h1>Página em construção</h1>
         <SvgConstruction />
         <span>
-          Icons made by{' '}
+          Ícone feito por{' '}
           <a href="https://www.flaticon.com/free-icon/under-construction_2422166" title="ultimatearm">
             ultimatearm
           </a>{' '}
-          from{' '}
+          da{' '}
           <a href="https://www.flaticon.com/" title="Flaticon">
             {' '}
             www.flaticon.com

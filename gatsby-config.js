@@ -1,4 +1,3 @@
-const path = require('path');
 const { siteMetadata } = require('./config/metadata');
 
 require('dotenv').config({
@@ -28,7 +27,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        head: false,
       },
     },
     {

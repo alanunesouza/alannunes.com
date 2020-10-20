@@ -9,12 +9,10 @@ import * as S from './styles';
 
 function Header({ location }) {
   return (
-    <S.Header>
+    <S.Header themeIsDark={localStorage.getItem('theme') === 'theme-dark'}>
       <S.Menu>
         <S.AvatarDiv to="/" selected={location.pathname === ''}>
-          <S.AvatarImgDiv>
-            <S.AvatarImg src={avatar} alt="avatar_profile" />
-          </S.AvatarImgDiv>
+          <S.AvatarImg src={avatar} alt="avatar_profile" />
           <S.AvatarName>alan nunes</S.AvatarName>
         </S.AvatarDiv>
 

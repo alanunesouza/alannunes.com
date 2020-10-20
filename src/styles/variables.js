@@ -17,7 +17,7 @@ export const Space = {
   sm: `1.6rem`,
   default: `2.4rem`,
   md: `3.2rem`,
-  lg: `4.8rem`,
+  lg: `5.2rem`,
   xlg: `6.4rem`,
   xxlg: `9.6rem`,
 };

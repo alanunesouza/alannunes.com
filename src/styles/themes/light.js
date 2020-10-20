@@ -1,7 +1,9 @@
 export default {
-  background: '#e3e4e6',
+  background: '#FFF',
   primary: '#000',
-  bold: '#663399',
-  headerBackground: '#FFF',
-  headerText: '#663399',
+  bold: '#7f5ba3',
+  headerBackground: '#000',
+  headerText: '#FFF',
+  footerBackground: '#FFF',
+  footerSvgColor: '#000',
 };

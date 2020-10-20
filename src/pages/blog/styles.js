@@ -10,6 +10,11 @@ export const Container = styled.div`
   h1 {
     margin-bottom: 25px;
     line-height: 4rem;
+    transition: color 0.3s ease 0s;
+  }
+
+  a {
+    color: ${(props) => props.theme.bold};
   }
 
   svg {
