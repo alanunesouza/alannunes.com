@@ -13,6 +13,7 @@ import * as styles from './styles';
 import dark from '../../styles/themes/dark';
 import light from '../../styles/themes/light';
 import { ThemeContext } from '../../contexts/ThemeContext';
+import FooterTerms from '../FooterTerms';
 
 function Layout({ children }) {
   const [themeMode, setThemeMode] = useState('theme-light');
@@ -34,6 +35,7 @@ function Layout({ children }) {
               </TransitionPortal>
               <styles.Main>
                 <Container>{children}</Container>
+                <FooterTerms />
               </styles.Main>
 
               <TransitionPortal level="bottom">
