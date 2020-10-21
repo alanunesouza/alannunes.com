@@ -24,22 +24,25 @@ function Layout({ children }) {
   }, []);
 
   const pageName = (location) => {
-    switch (location.pathname) {
-      case '/about':
-        return 'Sobre';
+    const page = location.pathname;
 
-      case '/blog':
-        return 'Blog';
-
-      case '/policies':
-        return 'Políticas';
-
-      case '/':
-        return 'Início';
-
-      default:
-        return '';
+    if (page.includes('about')) {
+      return 'Sobre';
     }
+
+    if (page.includes('blog')) {
+      return 'Blog';
+    }
+
+    if (page.includes('policies')) {
+      return 'Políticas';
+    }
+
+    if (page === '/') {
+      return 'Início';
+    }
+
+    return '';
   };
 
   return (
