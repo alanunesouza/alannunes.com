@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { Twitter, Github, LinkedinIn } from 'styled-icons/fa-brands';
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import * as styles from './styles';
 
@@ -21,6 +22,14 @@ function Footer() {
     `
   );
 
+  const handleClick = (socialName) => {
+    ReactGA.event({
+      category: 'Footer',
+      action: 'Click in social network Icon',
+      label: socialName,
+    });
+  };
+
   return (
     <styles.Footer>
       <styles.SocialItem
@@ -28,6 +37,7 @@ function Footer() {
         href={site.siteMetadata.social.github}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => handleClick('github')}
       >
         <Github />
       </styles.SocialItem>
@@ -37,6 +47,7 @@ function Footer() {
         href={site.siteMetadata.social.linkedin}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => handleClick('linkedin')}
       >
         <LinkedinIn />
       </styles.SocialItem>
@@ -46,6 +57,7 @@ function Footer() {
         href={site.siteMetadata.social.twitter}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => handleClick('twitter')}
       >
         <Twitter />
       </styles.SocialItem>

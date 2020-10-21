@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
+import ReactGA from 'react-ga';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 
@@ -11,6 +12,12 @@ function ToggleTheme() {
   const changeTheme = () => {
     setThemeMode((t) => (t === 'theme-light' ? 'theme-dark' : 'theme-light'));
     localStorage.setItem('theme', themeMode === 'theme-light' ? 'theme-dark' : 'theme-light');
+
+    ReactGA.event({
+      category: 'Header',
+      action: 'Toggle theme',
+      label: themeMode === 'theme-light' ? 'theme-dark' : 'theme-light',
+    });
   };
 
   return (

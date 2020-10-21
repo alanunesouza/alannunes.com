@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import * as V from '../../styles/variables';
+
 export const Container = styled.div`
   color: ${(props) => props.theme.primary};
   text-align: center;
@@ -10,7 +12,7 @@ export const Container = styled.div`
   h1 {
     margin-bottom: 25px;
     line-height: 4rem;
-    transition: color 0.3s ease 0s;
+    transition: color ${V.Transition.default} ease 0s;
   }
 
   a {

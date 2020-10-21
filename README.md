@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Alan Nunes - Personal Site
+  Alan Nunes - Personal Website
 </h1>
 
 _You can visit my website by clicking here: [alannunes.com](https://alannunes.com)._

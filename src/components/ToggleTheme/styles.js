@@ -9,15 +9,15 @@ export const ToggleTheme = styled.button.attrs(({ active }) => ({
 }))`
   align-items: center;
   background-color: ${V.Color.grayDark};
-  border-radius: ${V.Space.default};
+  border-radius: ${V.Size.default};
   cursor: pointer;
   display: flex;
-  height: ${V.Space.default};
+  height: ${V.Size.default};
   justify-content: space-between;
   padding-left: 4px;
   padding-right: 4px;
   position: relative;
-  width: ${V.Space.lg};
+  width: ${V.Size.lg};
   border: none;
   outline: 0;
 

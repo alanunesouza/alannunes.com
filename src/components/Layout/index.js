@@ -4,6 +4,7 @@ import { TransitionPortal } from 'gatsby-plugin-transition-link';
 import { Location } from '@reach/router';
 
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import GlobalStyle from '../../styles/global';
 import Container from '../Container';
 import Footer from '../Footer';
@@ -22,12 +23,31 @@ function Layout({ children }) {
     setThemeMode(localStorage.getItem('theme'));
   }, []);
 
+  const pageName = (location) => {
+    switch (location.pathname) {
+      case '/about':
+        return 'Sobre';
+
+      case '/blog':
+        return 'Blog';
+
+      case '/policies':
+        return 'Políticas';
+
+      case '/':
+        return 'Início';
+
+      default:
+        return '';
+    }
+  };
+
   return (
     <Location>
       {({ location }) => (
         <ThemeContext.Provider value={{ themeMode, setThemeMode }}>
           <ThemeProvider theme={themeMode === 'theme-dark' ? dark : light}>
-            <title>Alan Nunes</title>
+            <Helmet title={`${pageName(location)} | Alan Nunes`} />
             <styles.Container>
               <GlobalStyle />
               <TransitionPortal level="top">

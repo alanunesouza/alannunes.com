@@ -1,17 +1,17 @@
 // ==================================================
 // Variables
 //
-// 1. Spaces
+// 1. Sizes
 // 2. Colors
 // 3. zIndex
 // 4. Misc
 // ==================================================
 
 // --------------------------------------------------
-// 1. Spaces
+// 1. Sizes
 // --------------------------------------------------
 
-export const Space = {
+export const Size = {
   xxs: `.4rem`,
   xs: `.8rem`,
   sm: `1.6rem`,
@@ -23,10 +23,10 @@ export const Space = {
 };
 
 export const Height = {
-  headerSm: `${Space.lg}`,
-  headerLg: `${Space.xlg}`,
+  headerSm: `${Size.lg}`,
+  headerLg: `${Size.xlg}`,
   footer: `4rem`,
-  mainTop: `${Space.md}`,
+  mainTop: `${Size.md}`,
 };
 
 // --------------------------------------------------
@@ -65,20 +65,7 @@ export const ZIndex = {
 // --------------------------------------------------
 
 export const Transition = {
-  default: `.25s`,
-};
-
-export const BorderRadius = {
-  box: `2px`,
-};
-
-export const Border = {
-  box: `1px solid var(--borderColor)`,
-  default: `1px solid var(--borderColor)`,
-};
-
-export const BoxShadow = {
-  box: `0 1px 3px var(--boxShadow)`,
+  default: `.3s`,
 };
 
 export const MaxSize = {

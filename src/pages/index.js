@@ -16,7 +16,7 @@ export default function Home() {
 
         <p>Por meio deste site, vou trazer bastante conteúdo, além de meus trabalhos profissionais.</p>
 
-        <bold>Aguarde... :)</bold>
+        <p>Aguarde... :)</p>
       </styles.Container>
     </Layout>
   );
