@@ -1,49 +1,8 @@
-const path = require('path');
 const { siteMetadata } = require('./config/metadata');
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-
-const feeds = [
-  {
-    serialize: ({ query: { site, allMarkdownRemark } }) => {
-      return allMarkdownRemark.edges.map((edge) => {
-        const url = path.join(site.siteMetadata.siteUrl, edge.node.fields.slug);
-        return {
-          ...edge.node.frontmatter,
-          timeToRead: edge.node.timeToRead,
-          description: edge.node.frontmatter.description,
-          date: edge.node.frontmatter.date,
-          url,
-          guid: url,
-          custom_elements: [{ 'content:encoded': edge.node.html }],
-        };
-      });
-    },
-    query: `
-      {
-        allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                date
-              }
-              timeToRead
-              excerpt(truncate: true, pruneLength: 500, format: HTML)
-            }
-          }
-        }
-      }
-    `,
-    output: '/feed.xml',
-    title: 'Alan Nunes - RSS Feed',
-  },
-];
 
 module.exports = {
   siteMetadata,
@@ -111,21 +70,9 @@ module.exports = {
     },
     { resolve: `gatsby-transformer-remark` },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: `gatsby-plugin-disqus`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds,
+        shortname: `alannunes`,
       },
     },
   ],

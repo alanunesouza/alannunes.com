@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import ReactDisqusComments from 'react-disqus-comments';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -12,17 +12,23 @@ import * as styles from './styles';
 export default function BlogPost({ data }) {
   const post = data.markdownRemark;
   const url = `https://alannunes.com/${post.fields.slug}`;
+  const disqusConfig = { identifier: post.id, title: post.frontmatter.title, url };
 
   return (
     <Layout>
       <styles.BlogPost>
-        <time>
-          <span>{format(new Date(post.frontmatter.date), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}</span>
-          <span> · Leitura de {post.timeToRead} min</span>
-        </time>
+        <styles.BackButton to="/blog" rel="prev">
+          ← Voltar
+        </styles.BackButton>
+        <div>
+          <time>
+            <span>{format(new Date(post.frontmatter.date), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}</span>
+            <span> · Leitura de {post.timeToRead} min</span>
+          </time>
+        </div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <ReactDisqusComments shortname="alanunesouza" identifier={url} title={post.frontmatter.title} url={url} />
+        <Disqus config={disqusConfig} />
       </styles.BlogPost>
     </Layout>
   );
@@ -40,6 +46,7 @@ export const query = graphql`
         slug
       }
       timeToRead
+      id
     }
   }
 `;

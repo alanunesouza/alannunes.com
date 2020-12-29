@@ -7,6 +7,6 @@ export default {
   footerBackground: '#000',
   footerSvgColor: '#fff',
   grayDark: `#2d2d2d`,
-  gray: `#757575`,
+  gray: `#808ba0`,
   grayLight: `#aaaaaa`,
 };
