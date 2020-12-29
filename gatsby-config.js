@@ -31,7 +31,6 @@ const feeds = [
               }
               frontmatter {
                 title
-                description
                 date
               }
               timeToRead
