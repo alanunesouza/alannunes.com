@@ -1,9 +1,12 @@
 export default {
-  background: '#FFF',
+  background: '#fff',
   primary: '#000',
   bold: '#7f5ba3',
   headerBackground: '#000',
-  headerText: '#FFF',
-  footerBackground: '#FFF',
+  headerText: '#fff',
+  footerBackground: '#fff',
   footerSvgColor: '#000',
+  grayDark: `#2d2d2d`,
+  gray: `#757575`,
+  grayLight: `#aaaaaa`,
 };

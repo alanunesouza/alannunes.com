@@ -1,29 +1,59 @@
 import React from 'react';
-import SvgConstruction from '../../assets/SvgConstruction';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+
 import Layout from '../../components/Layout';
-
 import * as styles from './styles';
+import BlogItem from '../../components/BlogItem';
 
-function Blog() {
+function Blog({ data }) {
+  const { posts } = data.blog;
+
   return (
     <Layout>
       <styles.Container>
-        <h1>Página em construção</h1>
-        <SvgConstruction />
-        <span>
-          Ícone feito por{' '}
-          <a href="https://www.flaticon.com/free-icon/under-construction_2422166" title="ultimatearm">
-            ultimatearm
-          </a>{' '}
-          da{' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            {' '}
-            www.flaticon.com
-          </a>
-        </span>
+        {posts.map((post) => (
+          <BlogItem
+            key={post.id}
+            title={post.frontmatter.title}
+            author={post.frontmatter.author}
+            date={post.frontmatter.date}
+            timeToRead={post.timeToRead}
+            route={post.fields.slug}
+            resume={post.excerpt}
+          />
+        ))}
       </styles.Container>
     </Layout>
   );
 }
+
+export const pageQuery = graphql`
+  query MyQuery {
+    blog: allMarkdownRemark {
+      posts: nodes {
+        frontmatter {
+          date(fromNow: true, locale: "pt-br")
+          title
+          author
+        }
+        fields {
+          slug
+        }
+        timeToRead
+        excerpt
+        id
+      }
+    }
+  }
+`;
+
+Blog.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any),
+};
+
+Blog.defaultProps = {
+  data: {},
+};
 
 export default Blog;
