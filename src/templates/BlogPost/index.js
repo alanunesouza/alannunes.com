@@ -21,7 +21,6 @@ export default function BlogPost({ data }) {
           <span> · Leitura de {post.timeToRead} min</span>
         </time>
         <h1>{post.frontmatter.title}</h1>
-        <small>{post.frontmatter.date}</small>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <ReactDisqusComments shortname="alanunesouza" identifier={url} title={post.frontmatter.title} url={url} />
       </styles.BlogPost>
