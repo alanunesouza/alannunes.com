@@ -40,7 +40,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#663399`,
         display: `standalone`,
-        icon: `src/assets/favicon.ico`,
+        icon: `src/assets/favicon.png`,
       },
     },
     // `gatsby-plugin-sitemap`,
