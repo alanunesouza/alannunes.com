@@ -10,26 +10,31 @@ function About() {
         <h1>Olá!</h1>
 
         <p>
-          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto inspirado a compartilhar conhecimento e evoluir
-          minhas hard e soft skills.
+          Sou dev desde 2015 e venho me aventurando nessa área tecnológica tão vasta e popular, que vem cada vez mais
+          ganhando força e impactando no dia a dia de todos.
         </p>
 
         <p>
-          Atualmente, estou trabalhando como Desenvolvedor Front-end Senior na{' '}
-          <a href="https://ri.b2w.digital/" target="_blank" rel="noopener noreferrer" itemProp="affiliation">
-            B2W Digital
+          Atualmente, sou desenvolvedor Senior na{' '}
+          <a
+            href="https://www.linkedin.com/company/luizalabs/"
+            target="_blank"
+            rel="noopener noreferrer"
+            itemProp="affiliation"
+          >
+            Luizalabs
           </a>
-          , procurando sempre estar atualizado nas tendências tecnológicas.
+          , uma das maiores empresas de inovação e tecnologia do Brasil.
         </p>
 
         <p>
-          Me considero um dev apaixonado por esportes: faço musculação há mais de 10 anos, sempre estou ativo e acompanho
-          muito futebol e basquete.
+          Me considero um dev apaixonado por esportes e games, e acredito que ambos me ajudaram e ainda ajudam a evoluir como
+          um profissional.
         </p>
 
         <p>
-          Nos tempos livres gosto de viajar, curtir um bom som em pubs, ler livros, assistir filmes e séries, além de jogar
-          video game.
+          Meus hobbies são viajar muito, conhecer novos lugares, curtir um bom som em pubs, ler livros, assistir filmes e
+          séries, e muito mais.
         </p>
       </styles.Container>
     </Layout>

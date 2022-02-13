@@ -11,30 +11,23 @@ Há pouco tempo atrás, todos estávamos levando a vida normalmente, cada um com
 
 Os dias foram passando, e as péssimas notícias sobre o novo vírus continuavam a serem exibidas nas manchetes, até que de repente surge a notícia: "PAÍSES TEM CASOS CONFIRMADOS DO NOVO VÍRUS COVID-19", e a minha reação não poderia ser outra...
 
-<img src="https://media-exp1.licdn.com/dms/image/C4D12AQELXic5LixyHQ/article-inline_image-shrink_1000_1488/0/1585186952686?e=1614816000&v=beta&t=ap4oxJqDcZjpK1XxD0Oyga0brQC48sHiIyDKBsEV-Bs" style="display:flex;margin:auto" alt="bob-esponja">
+<img src="https://minilua.com/wp-content/uploads/2012/05/0417.jpg" style="display:flex;margin:auto" alt="bob-esponja">
 
-<span style="display:flex;justify-content:center">Fonte: <a href="https://media-exp1.licdn.com/dms/image/C4D12AQELXic5LixyHQ/article-inline_image-shrink_1000_1488/0/1585186952686?e=1614816000&v=beta&t=ap4oxJqDcZjpK1XxD0Oyga0brQC48sHiIyDKBsEV-Bs" target="_blank" rel="noopener noreferrer">&nbsp;Google Images</a>
+<span style="display:flex;justify-content:center">Fonte: <a href="https://minilua.com" target="_blank" rel="noopener noreferrer">&nbsp;Minilua.com</a>
 </span>
 
 
 E assim, o caos se instaurou no mundo inteiro, e consequentemente afetou a rotina de todos. Muitos estão perdendo emprego, os autônomos talvez os mais prejudicados... E os moradores de rua, que dependem do fluxo de pessoas para conseguir um trocado para se alimentar e sobreviver a mais um dia?
 
-_Passar o dia em casa faz muitos ficarem assim:_
-
-<img src="https://media-exp1.licdn.com/dms/image/C4D12AQHJV-JmvcEZgA/article-inline_image-shrink_1000_1488/0/1585193909499?e=1614816000&v=beta&t=2OvOvVWrVI6z8OdvMNNWHtk09FmzH0OKQOl1UIWTV4o" style="display:flex;margin:auto;max-height:400px;max-width:100%" alt="homem-perdido">
-
-<span style="display:flex;justify-content:center">Fonte: <a href="https://media-exp1.licdn.com/dms/image/C4D12AQHJV-JmvcEZgA/article-inline_image-shrink_1000_1488/0/1585193909499?e=1614816000&v=beta&t=2OvOvVWrVI6z8OdvMNNWHtk09FmzH0OKQOl1UIWTV4o" target="_blank" rel="noopener noreferrer">&nbsp;Google Images</a>
-</span>
-
-**Mas calma... Se você precisa se adaptar com home office ou está em busca de um novo emprego, talvez eu possa te ajudar!**
+**Calma... Se você precisa se adaptar com home office ou está em busca de um novo emprego, talvez eu possa te ajudar!**
 
 Com o passar dos anos, venho tentando aproveitar meu tempo livre da melhor forma possível, evitando a sensação ao chegar no fim do dia, de que fui nada produtível. Após ler muito conteúdo a respeito (livros, artigos, documentários, etc...), uso uma combinação que chamo de _FSD_.
 
 ### What?!?!
 
-<img src="https://media-exp1.licdn.com/dms/image/C4D12AQEUIlWAf3yVAA/article-inline_image-shrink_1000_1488/0/1585189094651?e=1614816000&v=beta&t=_Fkux2AlSZE3tSpO_ZaHk4Fznwc1-WiPsFZ1M1H5qdU" style="display:flex;margin:auto;max-height:300px;max-width:100%" alt="what">
+<img src="https://observatoriodocinema.uol.com.br/wp-content/uploads/2020/10/jackie-chan.jpg" style="display:flex;margin:auto;max-height:300px;max-width:100%" alt="what">
 
-<span style="display:flex;justify-content:center">Fonte: <a href="https://media-exp1.licdn.com/dms/image/C4D12AQEUIlWAf3yVAA/article-inline_image-shrink_1000_1488/0/1585189094651?e=1614816000&v=beta&t=_Fkux2AlSZE3tSpO_ZaHk4Fznwc1-WiPsFZ1M1H5qdU" target="_blank" rel="noopener noreferrer">&nbsp;Google Images</a>
+<span style="display:flex;justify-content:center">Fonte: <a href="https://observatoriodocinema.uol.com.br/" target="_blank" rel="noopener noreferrer">&nbsp;Observatório do cinema</a>
 </span>
 
 
@@ -89,9 +82,9 @@ Pegando um gancho com a dica anterior, essa é a melhor dica rs. Costumo fazer d
 
 _Com a utilização dessas dicas em sua rotina, o novo cenário da sua vida será esse:_
 
-<img src="https://media-exp1.licdn.com/dms/image/C4D12AQECE95uj7XiNA/article-inline_image-shrink_1000_1488/0/1585194190580?e=1614816000&v=beta&t=iG42PUCm23a5dLXjGvrGwgsemFCkmWtW8CvjU4ut0Qo" alt="paz" style="display:flex;margin:auto;max-height:400px;max-width:100%">
+<img src="http://blog.cancaonova.com/cuiaba/files/2017/03/liberdade.jpg" alt="paz" style="display:flex;margin:auto;max-height:400px;max-width:100%">
 
-<span style="display:flex;justify-content:center">Fonte: <a href="https://media-exp1.licdn.com/dms/image/C4D12AQECE95uj7XiNA/article-inline_image-shrink_1000_1488/0/1585194190580?e=1614816000&v=beta&t=iG42PUCm23a5dLXjGvrGwgsemFCkmWtW8CvjU4ut0Qo" target="_blank" rel="noopener noreferrer">&nbsp;Google Images</a>
+<span style="display:flex;justify-content:center">Fonte: <a href="https://blog.cancaonova.com" target="_blank" rel="noopener noreferrer">&nbsp;Canção nova</a>
 </span>
 
 Todos que precisam de um controle maior do seu dia-a-dia, procuram um emprego ou busca uma evolução pessoal, creio que essas dicas ajudará muito. Espero que de alguma forma, eu possa ter colaborado para seus objetivos! :)

@@ -39,7 +39,7 @@ export const ToggleTheme = styled.button.attrs(({ active }) => ({
 export const ToggleThemeTrack = styled.div`
   --toggleTrack-size: 22px;
   background-color: ${V.Color.grayWhite};
-  border: ${V.Color.purple} solid 2px;
+  border: ${V.Color.blue} solid 2px;
   border-radius: 50%;
   height: var(--toggleTrack-size);
   position: absolute;

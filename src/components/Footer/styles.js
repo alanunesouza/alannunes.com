@@ -30,7 +30,7 @@ export const SocialItem = styled.a`
     transition: color ${V.Transition.default} ease 0s;
 
     :hover {
-      color: ${(props) => props.theme.bold};
+      color: ${V.Color.blue};
     }
   }
 `;

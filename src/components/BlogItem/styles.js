@@ -1,9 +1,9 @@
+import { Link } from 'gatsby';
 import styled from 'styled-components';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 import * as V from '../../styles/variables';
 
-export const BlogItem = styled(AniLink).attrs({})`
+export const BlogItem = styled(Link).attrs({})`
   padding: ${V.Size.default};
   border: 2px solid ${(props) => props.theme.gray};
   display: inline-block;

@@ -5,6 +5,7 @@
 // 2. Colors
 // 3. zIndex
 // 4. Misc
+// 5. Fonts
 // ==================================================
 
 // --------------------------------------------------
@@ -39,7 +40,6 @@ export const Color = {
   whiteSolid: `#ffffff`,
   blackSolid: `#000000`,
   purple: `#663399`,
-  purpleLight: `#8a4baf`,
   grayDarker: `#1d1d1d`,
   grayDark: `#2d2d2d`,
   gray: `#757575`,
@@ -47,6 +47,8 @@ export const Color = {
   grayLighter: `#efefef`,
   grayWhite: `#f1f1f1`,
   yellow: `#e6af05`,
+  orange: '#ff8b07',
+  blue: '#6373ff',
 };
 
 // --------------------------------------------------
@@ -71,4 +73,13 @@ export const Transition = {
 export const MaxSize = {
   md: `750px`,
   lg: `1080px`,
+};
+
+// --------------------------------------------------
+// 5. Fonts
+// --------------------------------------------------
+export const Font = {
+  bold: 600,
+  medium: 500,
+  light: 400,
 };

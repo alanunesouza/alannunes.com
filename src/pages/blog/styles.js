@@ -16,7 +16,7 @@ export const Container = styled.div`
   }
 
   a {
-    color: ${(props) => props.theme.bold};
+    color: ${V.Color.blue};
   }
 
   svg {

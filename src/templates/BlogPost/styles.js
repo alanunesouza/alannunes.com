@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 import * as V from '../../styles/variables';
 
 export const BlogPost = styled.div`
@@ -9,7 +9,7 @@ export const BlogPost = styled.div`
 
   h1 {
     margin-bottom: ${V.Size.default};
-    font-weight: normal;
+    font-weight: ${V.Font.light};
     font-size: ${V.Size.lg};
     overflow-wrap: break-word;
   }
@@ -31,7 +31,7 @@ export const BlogPost = styled.div`
   }
 `;
 
-export const BackButton = styled(AniLink)`
+export const BackButton = styled(Link)`
   display: block;
   margin-bottom: ${V.Size.default};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',

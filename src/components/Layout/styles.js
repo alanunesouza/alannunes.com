@@ -7,12 +7,12 @@ export const Container = styled.section`
   will-change: background-color;
   background-color: ${(props) => props.theme.background};
   transition: background-color ${V.Transition.default} ease 0s;
+  height: 100%;
 `;
 
 export const Main = styled.main.attrs({
   role: 'main',
 })`
-  min-height: 100vh;
   max-width: ${V.MaxSize.lg};
   margin-left: auto;
   margin-right: auto;
@@ -22,4 +22,6 @@ export const Main = styled.main.attrs({
   padding-left: ${V.Size.md};
   padding-right: ${V.Size.md};
   padding-bottom: ${V.Size.sm};
+  min-height: 100vh;
+  position: relative;
 `;

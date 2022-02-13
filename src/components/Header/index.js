@@ -4,8 +4,6 @@ import ReactGA from 'react-ga';
 
 import ToggleTheme from '../ToggleTheme';
 
-import avatar from '../../assets/avatar.png';
-
 import * as S from './styles';
 
 function Header({ location }) {
@@ -21,8 +19,10 @@ function Header({ location }) {
     <S.Header themeIsDark={localStorage.getItem('theme') === 'theme-dark'}>
       <S.Menu>
         <S.AvatarDiv onClick={() => handleClick('/')} to="/" selected={location.pathname === ''}>
-          <S.AvatarImg src={avatar} alt="avatar_profile" />
-          <S.AvatarName>alan nunes</S.AvatarName>
+          <S.AvatarName>
+            ala<S.FirstN>n</S.FirstN>
+            <S.SecondN>n</S.SecondN>unes
+          </S.AvatarName>
         </S.AvatarDiv>
 
         <S.Options>
@@ -34,9 +34,9 @@ function Header({ location }) {
           </S.Option>
         </S.Options>
 
-        <S.Options>
+        <S.ThemeDiv>
           <ToggleTheme />
-        </S.Options>
+        </S.ThemeDiv>
       </S.Menu>
     </S.Header>
   );

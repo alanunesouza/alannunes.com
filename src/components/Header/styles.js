@@ -1,4 +1,4 @@
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 
 import styled from 'styled-components';
 
@@ -16,7 +16,6 @@ export const Header = styled.header.attrs({
   left: 0px;
   margin-bottom: 10px;
   z-index: 3;
-  border-bottom: 3px ${(props) => props.theme.bold} solid;
   box-shadow: ${(props) => (props.themeIsDark ? 'rgba(112, 112, 129, 0.3)' : 'rgba(16, 27, 79, 0.5)')} 0 0 10px 5px;
   z-index: ${V.ZIndex.header};
 `;
@@ -32,14 +31,12 @@ export const Menu = styled.div`
   height: 100%;
 `;
 
-export const AvatarDiv = styled(AniLink).attrs({
+export const AvatarDiv = styled(Link).attrs({
   cover: true,
-  direction: 'bottom',
-  bg: '#000',
 })`
   display: flex;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   padding: 0 ${V.Size.sm};
@@ -53,30 +50,26 @@ export const AvatarImgDiv = styled.div`
   border-radius: 100px;
   overflow: hidden;
   display: flex;
-  border: 2px solid ${(props) => props.theme.bold};
-`;
-
-export const AvatarImg = styled.img`
-  width: 45px;
-  height: 45px;
-  border: 2px solid #7f5ba3;
-  padding: 2px;
-  border-radius: 100%;
+  border: 2px solid ${V.Color.blue};
 `;
 
 export const AvatarName = styled.span`
-  font-size: ${V.Size.sm};
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: ${V.Font.bold};
   color: ${(props) => props.theme.headerText};
-  margin-left: 5px;
+  font-family: 'Signika', sans-serif;
 
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
+`;
 
-  @media (max-width: 420px) {
-    display: none;
-  }
+export const FirstN = styled(AvatarName)`
+  color: ${V.Color.blue};
+`;
+
+export const SecondN = styled(AvatarName)`
+  color: ${V.Color.orange};
 `;
 
 export const Options = styled.div`
@@ -85,13 +78,17 @@ export const Options = styled.div`
   justify-content: center;
 `;
 
-export const Option = styled(AniLink).attrs({
+export const ThemeDiv = styled(Options)`
+  justify-content: flex-end;
+`;
+
+export const Option = styled(Link).attrs({
   cover: true,
   direction: 'bottom',
   bg: '#000',
 })`
   font-size: 1.6rem;
-  color: ${(props) => (props.selected ? props.theme.bold : props.theme.headerText)};
+  color: ${(props) => props.theme.headerText};
   margin: 0 ${V.Size.sm} 0 ${V.Size.sm};
   transition: border-color ${V.Transition.default} ease 0s;
   padding: 0;
@@ -99,9 +96,5 @@ export const Option = styled(AniLink).attrs({
   display: flex;
   align-items: center;
   border-bottom: 2px solid transparent;
-
-  :hover {
-    border-bottom: 2px solid ${(props) => props.theme.bold};
-    color: ${(props) => props.theme.bold};
-  }
+  font-weight: ${V.Font.bold};
 `;

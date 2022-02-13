@@ -10,13 +10,9 @@ export default function Home() {
         <h1>Olá!</h1>
 
         <p>
-          Meu nome é Alan Nunes. Sou desenvolvedor desde 2015 e me sinto inspirado a compartilhar conhecimento e evoluir
-          minhas hard e soft skills.{' '}
+          Seja bem vindo ao meu site, e espero firmamente que você tenha uma boa experiência por aqui, e que eu possa
+          contribuir com o seu conhecimento.
         </p>
-
-        <p>Por meio deste site, vou trazer bastante conteúdo, além de meus trabalhos profissionais.</p>
-
-        <p>Aguarde... :)</p>
       </styles.Container>
     </Layout>
   );

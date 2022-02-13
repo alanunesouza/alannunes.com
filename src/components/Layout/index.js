@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { TransitionPortal } from 'gatsby-plugin-transition-link';
 import { Location } from '@reach/router';
 
 import { ThemeProvider } from 'styled-components';
@@ -53,17 +52,13 @@ function Layout({ children }) {
             <Helmet title={`${pageName(location)} | Alan Nunes`} />
             <styles.Container>
               <GlobalStyle />
-              <TransitionPortal level="top">
-                <Header location={location} />
-              </TransitionPortal>
+              <Header location={location} />
               <styles.Main>
                 <Container>{children}</Container>
                 <FooterTerms />
               </styles.Main>
 
-              <TransitionPortal level="bottom">
-                <Footer />
-              </TransitionPortal>
+              <Footer />
             </styles.Container>
           </ThemeProvider>
         </ThemeContext.Provider>

@@ -34,7 +34,6 @@
     "gatsby-plugin-sitemap": "^2.4.14",
     "gatsby-plugin-styled-components": "^3.3.12",
     "gatsby-plugin-svgr": "^2.0.2",
-    "gatsby-plugin-transition-link": "^1.20.2",
     "gatsby-source-filesystem": "^2.8.0",
     "gatsby-transformer-remark": "^2.13.1",
     "gatsby-transformer-sharp": "^2.5.16",

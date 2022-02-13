@@ -1,8 +1,7 @@
 export default {
-  background: '#1e1e1e',
+  background: 'hsl(210deg, 30%, 8%)',
   headerBackground: '#000',
   primary: '#fff',
-  bold: '#7f5ba3',
   headerText: '#fff',
   footerBackground: '#000',
   footerSvgColor: '#fff',
