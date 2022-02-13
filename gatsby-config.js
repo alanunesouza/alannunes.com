@@ -59,7 +59,6 @@ module.exports = {
         cachePublic: true,
       },
     },
-    `gatsby-plugin-transition-link`,
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
