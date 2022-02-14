@@ -7,7 +7,6 @@ export const Container = styled.section`
   will-change: background-color;
   background-color: ${(props) => props.theme.background};
   transition: background-color ${V.Transition.default} ease 0s;
-  height: 100%;
 `;
 
 export const Main = styled.main.attrs({
