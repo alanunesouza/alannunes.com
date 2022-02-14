@@ -21,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#663399`,
+        color: `#6373ff`,
       },
     },
     {
@@ -38,7 +38,7 @@ module.exports = {
         short_name: `Alan Nunes`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#663399`,
+        theme_color: `#6373ff`,
         display: `standalone`,
         icon: `src/assets/favicon.png`,
       },

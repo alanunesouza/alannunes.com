@@ -16,7 +16,7 @@ function Header({ location }) {
   };
 
   return (
-    <S.Header themeIsDark={localStorage.getItem('theme') === 'theme-dark'}>
+    <S.Header themeIsDark={typeof window !== 'undefined' && localStorage.getItem('theme') === 'theme-dark'}>
       <S.Menu>
         <S.AvatarDiv onClick={() => handleClick('/')} to="/" selected={location.pathname === ''}>
           <S.AvatarName>
