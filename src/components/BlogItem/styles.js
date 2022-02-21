@@ -5,12 +5,13 @@ import * as V from '../../styles/variables';
 
 export const BlogItem = styled(Link).attrs({})`
   padding: ${V.Size.default};
-  border: 2px solid ${(props) => props.theme.contrast};
+  border: 2px solid ${(props) => props.theme.gray};
   display: inline-block;
   vertical-align: middle;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  margin: 2rem;
 
   :hover {
     border: 2px solid ${(props) => props.theme.primary};

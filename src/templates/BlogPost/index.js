@@ -18,7 +18,7 @@ export default function BlogPost({ data }) {
     <Layout>
       <styles.BlogPost>
         <styles.BackButton to="/blog" rel="prev">
-          {'<-'} voltar
+          ← voltar
         </styles.BackButton>
         <div>
           <time>

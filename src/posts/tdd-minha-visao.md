@@ -14,14 +14,20 @@ TDD [Test Driven Development) é um paradigma de desenvolvimento de software que
 O TDD tem um passo a passo a ser seguido, sendo ele um ciclo de repetição:
 
 <img src="https://marsner.com/wp-content/uploads/test-driven-development-TDD.png" style="display:flex;margin:auto;" alt="tdd-cycle">
-<span style="display:flex;justify-content:center">Fonte: <a href="https://marsner.com" target="_blank" rel="noopener noreferrer">&nbsp;marsner.com</a>
+<span style="display:flex;justify-content:center;margin-bottom:2rem;">Fonte: <a href="https://marsner.com" target="_blank" rel="noopener noreferrer">&nbsp;marsner.com</a>
 </span>
 
-**1.** _Escreva um teste que inicialmente não vai passar_ - Vamos supor que você é um desenvolvedor frontend e precisa implementar uma nova página de login. Você recebe uma documentação com os Use Cases e um protótipo dessa página. Normalmente, sem o TDD, nós desenvolvedores daríamos uma lida na documentação e começava a codar, visando alcançar o protótipo passado, e assim que concluído, faríamos os testes de tudo que foi desenvolvido, verificando se os Use Cases estavam funcionando de acordo com a documentação. Com o TDD, esse processo é invertido, ou seja, pegue seu primeiro Use Cases e faça o teste referente a ele, esperando que o teste quebre.
+**1.** __Escreva um teste que inicialmente não vai passar__ - Vamos supor que você é um desenvolvedor frontend e precisa implementar uma nova página de login. Você recebe uma documentação com os Use Cases e um protótipo dessa página.
 
-**2.** _Faça o seu teste passar_ - Essa é a hora de "botar a mão na massa". Usando o seu teste como guia, você irá desenvolver o código, visando a simplicidade e o resultado.
+Normalmente, sem o TDD, a maioria dos desenvolvedores leem a documentação (ás vezes nem isso rs) e começam o desenvolvimento, visando alcançar o que foi solicitado, e assim que concluído, fazem os testes do que foi desenvolvido, verificando se os Use Cases estão funcionando de acordo com a documentação, e isso é muito falho (cenários podem passar em branco nesse de-para de código e documentação).
 
-**3.** _Refatore o seu código_ - Esse é um passo que vejo muitos desenvolvedores ignorando, ou não dando a devida atenção no TDD, e ao cometer esse erro, o TDD perde o seu sentido. Neste passo, devemos refatorar nosso código produzido no passo anterior, aplicando conceitos, design patterns e boas práticas de desenvolvimento, visando uma aplicação mais robusta, escalável e de fácil manutenção. É aqui que se encontra a aplicação do [Clean Code](https://garywoodfine.com/what-is-clean-code/).
+Com o TDD, esse processo é invertido, ou seja, tudo começa pelo teste. Aqui você pega um Use Case e faz o teste, quando executar, ele vai quebrar - o desenvolvimento não foi realizado ainda.
+
+**2.** __Faça o seu teste passar__ - Essa é a hora de botar a mão na massa. Usando o seu teste como guia, você irá desenvolver o código, visando a simplicidade.
+
+**3.** __Refatore o seu código__ - Esse é um passo que vejo muitos desenvolvedores ignorando, ou não dando a devida atenção no TDD, e ao cometer esse erro, o TDD perde o seu sentido.
+
+Neste passo, devemos refatorar nosso código produzido no passo anterior, aplicando conceitos, design patterns e boas práticas de desenvolvimento, visando uma aplicação mais robusta, escalável e de fácil manutenção. É aqui que se encontra a aplicação do [Clean Code](https://garywoodfine.com/what-is-clean-code/).
 
 Após o passo 3, você volta ao passo 1, agora partindo do próximo Use Case e assim sucessivamente.
 

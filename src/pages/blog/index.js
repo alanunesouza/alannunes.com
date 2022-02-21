@@ -12,7 +12,7 @@ function Blog({ data }) {
   return (
     <Layout>
       <styles.Container>
-        {posts.map((post) => (
+        {posts.reverse().map((post) => (
           <BlogItem
             key={post.id}
             title={post.frontmatter.title}
