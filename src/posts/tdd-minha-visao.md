@@ -80,7 +80,7 @@ Deixarei para vocês, uma frase do [livro](https://www.amazon.com.br/Test-Driven
 
 ### Referências
 
-* Livro Test-Driven Development: By Exemple - Kent Beck
+* [Livro Test-Driven Development: By Example - Kent Beck](https://www.amazon.com.br/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=asc_df_0321146530/?tag=googleshopp00-20&linkCode=df0&hvadid=379787788238&hvpos=&hvnetw=g&hvrand=8450874180526180247&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001773&hvtargid=pla-448095042394&psc=1)
 * [Blog Marsner](https://marsner.com/blog/why-test-driven-development-tdd/)
 * [BrowserStack](https://www.browserstack.com/guide/what-is-test-driven-development)
 * [DevMedia](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
