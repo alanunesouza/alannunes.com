@@ -1,8 +1,8 @@
 ---
 title: TDD [Test Driven Development) - minha visão sobre o assunto
 author: Alan
-date: 2022-02-17
-tags: ['produtividade', 'carreira', ]
+date: 2022-02-20
+tags: ['produtividade', 'carreira','design patterns', 'testes', 'tdd']
 ---
 
 <!-- Introduction to my blog post -->
