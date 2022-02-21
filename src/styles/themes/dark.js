@@ -8,4 +8,5 @@ export default {
   grayDark: `#2d2d2d`,
   gray: `#808ba0`,
   grayLight: `#aaaaaa`,
+  contrast: '#6373ff',
 };

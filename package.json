@@ -35,7 +35,7 @@
     "gatsby-plugin-styled-components": "^3.3.12",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-source-filesystem": "^2.8.0",
-    "gatsby-transformer-remark": "^2.13.1",
+    "gatsby-transformer-remark": "^2.16.1",
     "gatsby-transformer-sharp": "^2.5.16",
     "gsap": "^3.5.1",
     "netlify-cms-app": "^2.12.25",

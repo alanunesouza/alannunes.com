@@ -7,7 +7,6 @@ export const Footer = styled.footer.attrs({
 })`
   height: ${V.Height.headerSm};
   background-color: ${(props) => props.theme.footerBackground};
-  position: fixed;
   bottom: 0px;
   right: 0px;
   left: 0px;

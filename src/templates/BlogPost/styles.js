@@ -5,7 +5,6 @@ import * as V from '../../styles/variables';
 export const BlogPost = styled.div`
   padding: ${V.Size.default};
   color: ${(props) => props.theme.primary};
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
   h1 {
     margin-bottom: ${V.Size.default};
@@ -23,18 +22,42 @@ export const BlogPost = styled.div`
 
   img {
     margin-bottom: ${V.Size.default} !important;
+    width: 100%;
   }
 
   a,
   a:visited {
+    color: ${(props) => props.theme.contrast};
+  }
+
+  blockquote {
+    margin: 1.5em 10px;
+    padding: 1em 10px 0.1em 10px;
+  }
+  blockquote p {
+    font-style: italic;
     color: ${(props) => props.theme.gray};
+  }
+
+  ul {
+    list-style: circle;
+  }
+
+  li {
+    margin-left: 4rem;
+    line-height: 3rem;
+    font-weight: ${V.Font.light};
+  }
+
+  #disqus_thread {
+    a {
+      color: ${(props) => props.theme.gray};
+    }
   }
 `;
 
 export const BackButton = styled(Link)`
   display: block;
   margin-bottom: ${V.Size.default};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
   transition: color ${V.Transition.default} ease 0s;
 `;

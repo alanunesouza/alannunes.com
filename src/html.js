@@ -11,8 +11,12 @@ export default function HTML(props) {
         <title>Alan Nunes</title>
         {props.headComponents}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Lato:wght@100;300&family=Roboto:wght@100&family=Signika:wght@300&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body {...props.bodyAttributes}>
         <noscript />

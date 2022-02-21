@@ -5,7 +5,7 @@ import * as V from '../../styles/variables';
 
 export const BlogItem = styled(Link).attrs({})`
   padding: ${V.Size.default};
-  border: 2px solid ${(props) => props.theme.gray};
+  border: 2px solid ${(props) => props.theme.contrast};
   display: inline-block;
   vertical-align: middle;
   transition: all 0.2s ease-in-out;

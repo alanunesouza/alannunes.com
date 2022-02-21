@@ -55,9 +55,9 @@ function Layout({ children }) {
               <Header location={location} />
               <styles.Main>
                 <Container>{children}</Container>
-                <FooterTerms />
               </styles.Main>
 
+              <FooterTerms />
               <Footer />
             </styles.Container>
           </ThemeProvider>

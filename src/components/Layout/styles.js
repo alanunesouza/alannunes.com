@@ -16,7 +16,7 @@ export const Main = styled.main.attrs({
   margin-left: auto;
   margin-right: auto;
   margin-top: ${V.Height.headerSm};
-  margin-bottom: ${V.Height.headerSm};
+  margin-bottom: ${V.Size.md};
   padding-top: ${V.Size.md};
   padding-left: ${V.Size.md};
   padding-right: ${V.Size.md};

@@ -24,11 +24,14 @@ export default createGlobalStyle`
     padding: 0;
     vertical-align: baseline;
     font-family: "Wotfard",Futura,-apple-system,sans-serif;
-
   }
 
   html, body, #___gatsby, #gatsby-focus-wrapper, .tl-edges  {
     height: 100%;
+  }
+
+  span, h1, h2, h3, h4, p, li, strong {
+    font-family: 'Signika', sans-serif;
   }
 
   input, textarea {
@@ -48,6 +51,7 @@ export default createGlobalStyle`
 
   ul {
     list-style: none;
+    margin: 2.25rem 0;
   }
 
   button {
