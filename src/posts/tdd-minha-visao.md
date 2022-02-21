@@ -19,17 +19,17 @@ O TDD tem um passo a passo a ser seguido, sendo ele um ciclo de repetição:
 
 **1.** __Escreva um teste que inicialmente não vai passar__ - Vamos supor que você é um desenvolvedor frontend e precisa implementar uma nova página de login. Você recebe uma documentação com os Use Cases e um protótipo dessa página.
 
-Normalmente, sem o TDD, a maioria dos desenvolvedores leem a documentação (ás vezes nem isso rs) e começam o desenvolvimento, visando alcançar o que foi solicitado, e assim que concluído, fazem os testes do que foi desenvolvido, verificando se os Use Cases estão funcionando de acordo com a documentação, e isso é muito falho (cenários podem passar em branco nesse de-para de código e documentação).
+Normalmente, sem o TDD, a maioria dos desenvolvedores leem a documentação (ás vezes nem isso rs) e começam o desenvolvimento, visando alcançar o que foi solicitado, e assim que concluído, fazem os testes visando atender o que foi desenvolvido, e não visando a documentação, e isso é falho (cenários do que foi solicitado podem ser esquecidos).
 
-Com o TDD, esse processo é invertido, ou seja, tudo começa pelo teste. Aqui você pega um Use Case e faz o teste, quando executar, ele vai quebrar - o desenvolvimento não foi realizado ainda.
+Com o TDD, esse processo é invertido, ou seja, tudo começa pelo teste. Neste passo você o Use Case e faz o teste, e roda. O teste irá quebrar, porque o desenvolvimento ainda não foi realizado.
 
-**2.** __Faça o seu teste passar__ - Essa é a hora de botar a mão na massa. Usando o seu teste como guia, você irá desenvolver o código, visando a simplicidade.
+**2.** __Faça o seu teste passar__ - Essa é a hora de botar a mão na massa. Usando o teste como um guia, você irá desenvolver o código, visando a simplicidade. Assim que o teste passar, este passo foi finalizado.
 
 **3.** __Refatore o seu código__ - Esse é um passo que vejo muitos desenvolvedores ignorando, ou não dando a devida atenção no TDD, e ao cometer esse erro, o TDD perde o seu sentido.
 
 Neste passo, devemos refatorar nosso código produzido no passo anterior, aplicando conceitos, design patterns e boas práticas de desenvolvimento, visando uma aplicação mais robusta, escalável e de fácil manutenção. É aqui que se encontra a aplicação do [Clean Code](https://garywoodfine.com/what-is-clean-code/).
 
-Após o passo 3, você volta ao passo 1, agora partindo do próximo Use Case e assim sucessivamente.
+Após o passo 3, verifique se o teste está passando. Se sim, você volta ao passo 1, agora partindo do próximo Use Case e assim sucessivamente. Caso contrário, verifique sua refatoração, porque você acabou de gerar um bug rs.
 
 
 ### Minha experiência com TDD
@@ -37,7 +37,7 @@ Após o passo 3, você volta ao passo 1, agora partindo do próximo Use Case e a
 #### Conhecendo os testes unitários e a sua importância
 
 
-Estou no mercado de desenvolvimento desde meados de 2016, e como um desenvolvedor frontend, nas empresas em que passei, não havia o hábito em fazer testes unitários no frontend. Isso até hoje [2022) é uma cultura muito forte no Brasil - infelizmente -, mas vejo o cenário sendo mudado aos poucos. Com isso, acabei "indo na onda" e demorei um tempo para conhecer mais sobre testes unitários e seus benefícios.
+Estou no mercado de desenvolvimento desde meados de 2016, e como um desenvolvedor frontend, nas empresas em que passei, não havia o hábito em fazer testes unitários no frontend. Infelizmente até hoje (2022) é uma cultura muito forte no Brasil, porém vejo o cenário sendo mudado aos poucos. Com isso, acabei "indo na onda" e demorei um tempo para conhecer mais sobre testes unitários e seus benefícios.
 
 No processo de aprendizado e aplicação de testes unitários no meu dia a dia (certamente, sem o uso do TDD), comecei a entender o quão melhorava a eficácia do meu código, e o teste em si se tornava meu aliado, meu braço direito, me ajudando a entregar um código com mais qualidade e com menor probabilidade de entregar um problema em ambiente produtivo.
 
@@ -67,7 +67,9 @@ Encontrei muito conteúdo valioso (vou deixar no final da publicação algumas r
 #### Afinal, o TDD faz sentido?
 
 
-Claramente, faz muito sentido. É importante ressaltar que não é um paradigma tão simples quanto parece de ser aplicado da melhor forma. Para aplicar o TDD, você deve estar ciente do ciclo dele e ter o conhecimento das melhoras práticas de desenvolvimento. Se você não conhece o Clean Code, do criador Uncle Bob, aconselho dar prioridade nesse conhecimento, e posteriormente juntar o TDD ao Clean Code.
+Claramente, faz muito sentido. O TDD é uma ferramenta que impulsiona o desenvolvedor a programar melhor, a aplicar os conceitos consolidados. A ter uma visão ampla, visando o projeto a longo prazo.
+
+É importante ressaltar que não é um paradigma tão simples quanto parece de ser aplicado da melhor forma. Para aplicar o TDD, você deve estar ciente do ciclo dele e ter o conhecimento das melhoras práticas de desenvolvimento. Se você não conhece o Clean Code, do criador Uncle Bob, aconselho dar prioridade nesse conhecimento, e posteriormente juntar o TDD ao Clean Code.
 
 Deixarei para vocês, uma frase do [livro](https://www.amazon.com.br/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=asc_df_0321146530/?tag=googleshopp00-20&linkCode=df0&hvadid=379787788238&hvpos=&hvnetw=g&hvrand=3024373226955168733&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001773&hvtargid=pla-448095042394&psc=1) Test-Driven Development: By Example, feito por ninguém menos que o criador do TDD, Kent Beck, que resume toda a percepção que eu tenho hoje sobre o assunto:
 
