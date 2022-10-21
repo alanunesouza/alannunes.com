@@ -11,13 +11,14 @@ import * as styles from './styles';
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark;
+
   const url = `https://alannunes.com/${post.fields.slug}`;
   const disqusConfig = { identifier: post.id, title: post.frontmatter.title, url };
 
   return (
     <Layout>
       <styles.BlogPost>
-        <styles.BackButton to="/posts" rel="prev">
+        <styles.BackButton to="/blog" rel="prev">
           ← voltar
         </styles.BackButton>
         <div>

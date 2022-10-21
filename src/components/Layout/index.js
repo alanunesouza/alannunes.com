@@ -29,8 +29,8 @@ function Layout({ children }) {
       return 'Sobre';
     }
 
-    if (page.includes('posts')) {
-      return 'Posts';
+    if (page.includes('blog')) {
+      return 'Blog';
     }
 
     if (page.includes('policies')) {

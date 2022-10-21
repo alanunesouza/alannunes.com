@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 import * as V from '../../styles/variables';
 
-export const BlogItem = styled(Link).attrs({})`
+export const BlogItem = styled(Link).attrs({
+  cover: true,
+})`
   padding: ${V.Size.default};
   border: 2px solid ${(props) => props.theme.gray};
   display: inline-block;

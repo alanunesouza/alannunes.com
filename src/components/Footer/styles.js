@@ -5,6 +5,7 @@ import * as V from '../../styles/variables';
 export const Footer = styled.footer.attrs({
   role: 'banner',
 })`
+  position: fixed;
   height: ${V.Height.headerSm};
   background-color: ${(props) => props.theme.footerBackground};
   bottom: 0px;

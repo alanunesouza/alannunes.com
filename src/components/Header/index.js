@@ -17,8 +17,8 @@ function Header({ location }) {
         </S.AvatarDiv>
 
         <S.Options>
-          <S.Option to="/posts" selected={location.pathname.includes('/posts')}>
-            Posts
+          <S.Option to="/blog" selected={location.pathname.includes('/blog')}>
+            Blog
           </S.Option>
           <S.Option to="/about" selected={location.pathname.includes('/about')}>
             Sobre

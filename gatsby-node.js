@@ -5,12 +5,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `posts` });
+    const slug = createFilePath({ node, getNode, basePath: `blog` });
 
     createNodeField({
       node,
       name: `slug`,
-      value: `posts/${slug.slice(1)}`,
+      value: `blog/${slug.slice(1)}`,
     });
   }
 };
@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createRedirect({
     fromPath: `/`,
-    toPath: `/postsa`,
+    toPath: `/blog`,
   });
 
   return graphql(`
@@ -32,10 +32,12 @@ exports.createPages = async ({ graphql, actions }) => {
               slug
             }
             frontmatter {
-              date(locale: "pt-br")
+              date(locale: "pt-br", formatString: "DD MMM[,] YYYY")
               title
+              tags
             }
             timeToRead
+            id
           }
           next {
             fields {
@@ -43,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
-              date(locale: "pt-br")
+              date(locale: "pt-br", formatString: "DD MMM[,] YYYY")
             }
           }
           previous {
@@ -52,7 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
-              date(locale: "pt-br")
+              date(locale: "pt-br", formatString: "DD MMM[,] YYYY")
             }
           }
         }
@@ -75,20 +77,21 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    const postsPerPage = 10;
-    const numPages = Math.ceil(posts.length / postsPerPage);
+    // const postsPerPage = 10;
+    // const numPages = Math.ceil(posts.length / postsPerPage);
 
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/blog/` : `/blog/page/${i + 1}`,
-        component: path.resolve('./src/templates/BlogPost/index.js'),
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages,
-          currentPage: i + 1,
-        },
-      });
-    });
+    // Array.from({ length: numPages }).forEach((_, i) => {
+    //   createPage({
+    //     path: i === 0 ? `/blog/` : `/blog/page/${i + 1}`,
+    //     component: path.resolve('./src/templates/BlogPost/index.js'),
+    //     context: {
+    //       slug: '/teste',
+    //       limit: postsPerPage,
+    //       skip: i * postsPerPage,
+    //       numPages,
+    //       currentPage: i + 1,
+    //     },
+    //   });
+    // });
   });
 };

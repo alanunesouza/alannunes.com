@@ -83,6 +83,7 @@ export const ThemeDiv = styled(Options)`
 `;
 
 export const Option = styled(Link).attrs({
+  cover: true,
   direction: 'bottom',
   bg: '#000',
 })`
