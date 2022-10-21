@@ -1,5 +1,5 @@
 ---
-title: TDD [Test Driven Development) - minha visão sobre o assunto
+title: TDD (Test Driven Development) - minha visão sobre o assunto
 author: Alan
 date: 2022-02-20
 tags: ['produtividade', 'carreira','design patterns', 'testes', 'tdd']
@@ -7,7 +7,7 @@ tags: ['produtividade', 'carreira','design patterns', 'testes', 'tdd']
 
 <!-- Introduction to my blog post -->
 
-TDD [Test Driven Development) é um paradigma de desenvolvimento de software que visa otimizar o processo de desenvolvimento de software. Resumindo: desenvolver orientado por testes.
+TDD (Test Driven Development) é um paradigma de desenvolvimento de software que visa otimizar o processo de desenvolvimento de software. Resumindo: desenvolver orientado por testes.
 
 ### E como isso funciona?
 
