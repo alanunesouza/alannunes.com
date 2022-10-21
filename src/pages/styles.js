@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import * as V from '../styles/variables';
 
 export const Container = styled.div`
+  display: flex;
+  align-items: center;
   color: ${(props) => props.theme.primary};
+  flex-direction: column;
 
   h1,
   p {
@@ -18,4 +21,8 @@ export const Container = styled.div`
   a {
     color: ${V.Color.blue};
   }
+`;
+
+export const Profile = styled.div`
+  display: flex;
 `;

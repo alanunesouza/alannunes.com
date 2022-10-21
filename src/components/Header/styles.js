@@ -83,7 +83,6 @@ export const ThemeDiv = styled(Options)`
 `;
 
 export const Option = styled(Link).attrs({
-  cover: true,
   direction: 'bottom',
   bg: '#000',
 })`
@@ -97,4 +96,9 @@ export const Option = styled(Link).attrs({
   align-items: center;
   border-bottom: 2px solid transparent;
   font-weight: ${V.Font.bold};
+  text-decoration: ${(props) => (props.selected ? 'underline' : 'none')};
+  -webkit-text-decoration-color: ${V.Color.orange};
+  text-decoration-color: ${V.Color.orange};
+  -webkit-text-decoration-style: wavy;
+  text-decoration-style: wavy;
 `;

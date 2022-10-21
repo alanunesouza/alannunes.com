@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/Layout';
 import * as styles from './styles';
 
@@ -7,12 +8,10 @@ export default function Home() {
   return (
     <Layout>
       <styles.Container>
-        <h1>Olá!</h1>
-
-        <p>
-          Seja bem vindo ao meu site, e espero firmamente que você tenha uma boa experiência por aqui, e que eu possa
-          contribuir com o seu conhecimento.
-        </p>
+        <h1>Olá, bem vindo ao meu site!</h1>
+        <styles.Profile>
+          <StaticImage style={{ width: '300px' }} src="../assets/profile.png" alt="Profile" />
+        </styles.Profile>
       </styles.Container>
     </Layout>
   );

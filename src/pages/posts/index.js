@@ -7,12 +7,12 @@ import * as styles from './styles';
 import BlogItem from '../../components/BlogItem';
 
 function Blog({ data }) {
-  const { posts } = data.blog;
+  const { posts: postsData } = data.blog;
 
   return (
     <Layout>
       <styles.Container>
-        {posts.reverse().map((post) => (
+        {postsData.map((post) => (
           <BlogItem
             key={post.id}
             title={post.frontmatter.title}
@@ -30,7 +30,7 @@ function Blog({ data }) {
 
 export const pageQuery = graphql`
   query MyQuery {
-    blog: allMarkdownRemark {
+    blog: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       posts: nodes {
         frontmatter {
           date(fromNow: true, locale: "pt-br")
@@ -49,6 +49,7 @@ export const pageQuery = graphql`
 `;
 
 Blog.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.objectOf(PropTypes.any),
 };
 

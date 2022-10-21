@@ -5,18 +5,23 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `blog` });
+    const slug = createFilePath({ node, getNode, basePath: `posts` });
 
     createNodeField({
       node,
       name: `slug`,
-      value: `blog/${slug.slice(1)}`,
+      value: `posts/${slug.slice(1)}`,
     });
   }
 };
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/postsa`,
+  });
 
   return graphql(`
     query {

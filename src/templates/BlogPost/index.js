@@ -17,7 +17,7 @@ export default function BlogPost({ data }) {
   return (
     <Layout>
       <styles.BlogPost>
-        <styles.BackButton to="/blog" rel="prev">
+        <styles.BackButton to="/posts" rel="prev">
           ← voltar
         </styles.BackButton>
         <div>

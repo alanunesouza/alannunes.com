@@ -21,7 +21,7 @@ function FooterTerms() {
       •{' '}
       <a
         onClick={() => handleClick('license')}
-        href="https://github.com/alanunesouza/alanunes.com/blob/master/LICENSE"
+        href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
         target="_blank"
         rel="noopener noreferrer"
       >
