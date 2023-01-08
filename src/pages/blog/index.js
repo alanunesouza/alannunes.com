@@ -5,14 +5,16 @@ import { graphql } from 'gatsby';
 import Layout from '../../components/Layout';
 import * as styles from './styles';
 import BlogItem from '../../components/BlogItem';
+import Search from '../../components/Search';
 
 function Blog({ data }) {
   const { posts: postsData } = data.blog;
 
   return (
     <Layout>
+      <Search />
       <styles.Container>
-        {postsData.map((post) => (
+        {/* {postsData.map((post) => (
           <BlogItem
             key={post.id}
             title={post.frontmatter.title}
@@ -22,7 +24,7 @@ function Blog({ data }) {
             route={post.fields.slug}
             resume={post.excerpt}
           />
-        ))}
+        ))} */}
       </styles.Container>
     </Layout>
   );

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 import * as styles from './styles';
 
-function BlogItem({ title, author, timeToRead, date, resume, route }) {
+function BlogItem({ hit }) {
+  const { title, author, timeToRead, date, excerpt, route } = hit;
+
   const handleClick = () => {
     ReactGA.event({
       category: 'Blog',
@@ -20,19 +22,20 @@ function BlogItem({ title, author, timeToRead, date, resume, route }) {
         <small>
           {author} · {date} · Leitura de {timeToRead} min
         </small>
-        <p>{resume}</p>
+        <p>{excerpt}</p>
       </article>
     </styles.BlogItem>
   );
 }
 
 BlogItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  timeToRead: PropTypes.number.isRequired,
-  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
-  resume: PropTypes.string.isRequired,
-  route: PropTypes.string.isRequired,
+  hit: PropTypes.objectOf({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    timeToRead: PropTypes.number.isRequired,
+    date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+    excerpt: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BlogItem;

@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { StaticImage } from 'gatsby-plugin-image';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import * as styles from './styles';
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <Layout>
       <styles.Container>
@@ -16,3 +17,23 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const pageQuery = graphql`
+  query {
+    blog: allMarkdownRemark(limit: 2, sort: { order: DESC, fields: [frontmatter___date] }) {
+      posts: nodes {
+        frontmatter {
+          date(fromNow: true, locale: "pt-br")
+          title
+          author
+        }
+        fields {
+          slug
+        }
+        timeToRead
+        excerpt
+        id
+      }
+    }
+  }
+`;
