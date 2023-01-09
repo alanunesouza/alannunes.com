@@ -14,7 +14,7 @@ export const BlogItem = styled(Link).attrs({
   transition: all 0.2s ease-in-out;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin: 2rem;
+  margin: ${V.Size.xs} 0;
   text-align: center;
 
   :hover {

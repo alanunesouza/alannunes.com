@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import * as styles from './styles';
 
-export default function Home({ data }) {
+export default function Home() {
   return (
     <Layout>
       <styles.Container>

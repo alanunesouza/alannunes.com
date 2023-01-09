@@ -5,22 +5,22 @@ import PropTypes from 'prop-types';
 import * as styles from './styles';
 
 function BlogItem({ hit }) {
-  const { title, author, timeToRead, date, excerpt, route } = hit;
+  const { title, timeToRead, date, excerpt, fields } = hit;
 
   const handleClick = () => {
     ReactGA.event({
       category: 'Blog',
       action: 'Open Post',
-      label: route,
+      label: fields.slug,
     });
   };
 
   return (
-    <styles.BlogItem to={`/${route}`} cover direction="down" duration={1} onClick={() => handleClick()}>
+    <styles.BlogItem to={`/${fields.slug}`} cover direction="down" duration={1} onClick={() => handleClick()}>
       <article>
         <h2>{title}</h2>
         <small>
-          {author} · {date} · Leitura de {timeToRead} min
+          {date} · Leitura de {timeToRead} min
         </small>
         <p>{excerpt}</p>
       </article>
