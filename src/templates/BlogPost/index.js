@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Disqus } from 'gatsby-plugin-disqus';
+import { FaArrowLeft } from 'react-icons/fa';
 
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -19,7 +20,7 @@ export default function BlogPost({ data }) {
     <Layout>
       <styles.BlogPost>
         <styles.BackButton to="/blog" rel="prev">
-          ← voltar
+          <FaArrowLeft style={{ marginRight: '0.675rem' }} /> voltar
         </styles.BackButton>
         <div>
           <time>
@@ -53,5 +54,5 @@ export const query = graphql`
 `;
 
 BlogPost.propTypes = {
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  data: PropTypes.objectOf(PropTypes.unknown).isRequired,
 };

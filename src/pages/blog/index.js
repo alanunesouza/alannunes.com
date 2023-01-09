@@ -3,27 +3,12 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../../components/Layout';
-import * as styles from './styles';
-import BlogItem from '../../components/BlogItem';
+import Search from '../../components/Search';
 
-function Blog({ data }) {
-  const { posts: postsData } = data.blog;
-
+function Blog(props) {
   return (
     <Layout>
-      <styles.Container>
-        {postsData.map((post) => (
-          <BlogItem
-            key={post.id}
-            title={post.frontmatter.title}
-            author={post.frontmatter.author}
-            date={post.frontmatter.date}
-            timeToRead={post.timeToRead}
-            route={post.fields.slug}
-            resume={post.excerpt}
-          />
-        ))}
-      </styles.Container>
+      <Search {...props} />
     </Layout>
   );
 }

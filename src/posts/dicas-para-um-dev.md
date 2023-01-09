@@ -43,7 +43,7 @@ _5. Entenda os sistemas_
 
 Somos conhecidos por um certo "vício", o vício de querer sair codando, fazer acontecer e esquecer de pensar e se planejar antes disso. Esse vício, acarreta em códigos de má qualidade, e consequentemente, você terá mais trabalho agora ou mais pra frente, porque certamente seu código será refatorado.
 
-Busque antes de tudo, entender onde está pisando, como as coisas funcionam, e se possível, peça para seu líder, um tempo para você entender melhor o sistema. Agende reuniões com os mais experientes, para explicar partes do sistema, sempre que você ficar confuso. _NÃO TENHA MEDO DE PERGUNTAR_-.
+Busque antes de tudo, entender onde está pisando, como as coisas funcionam, e se possível, peça para seu líder, um tempo para você entender melhor o sistema. Agende reuniões com os mais experientes, para explicar partes do sistema, sempre que você ficar confuso. Mostre interesse em aprender, e puxe seu time para te auxiliar neste início. Use e abuse do recurso de **perguntar**.
 
 _6. Padrões de projeto_
 

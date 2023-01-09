@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import * as V from '../../styles/variables';
 
 export const BlogPost = styled.div`
-  padding: ${V.Size.default};
   color: ${(props) => props.theme.primary};
 
   h1 {
@@ -57,7 +56,9 @@ export const BlogPost = styled.div`
 `;
 
 export const BackButton = styled(Link)`
-  display: block;
-  margin-bottom: ${V.Size.default};
+  display: flex;
+  margin: ${V.Size.sm} 0;
   transition: color ${V.Transition.default} ease 0s;
+  align-items: center;
+  font-weight: bold;
 `;
