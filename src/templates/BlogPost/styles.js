@@ -10,6 +10,10 @@ export const BlogPost = styled.div`
     font-weight: ${V.Font.light};
     font-size: ${V.Size.lg};
     overflow-wrap: break-word;
+
+    @media (max-width: 768px) {
+      font-size: ${V.Size.md};
+    }
   }
 
   h2,
