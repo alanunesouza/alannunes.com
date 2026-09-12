@@ -113,7 +113,7 @@ T6 → T7 → T8
 **Tests**: Verificação de integridade e existência do arquivo
 **Gate**: test -f src/pages/blog/[...slug].astro
 
-### T8: Validate static build of all blog routes
+### T8: Validate static build of all blog routes [DONE]
 
 **What**: Executar build completo e verificar geração das páginas estáticas do blog e de todos os artigos.
 **Where**: `dist/blog/`
