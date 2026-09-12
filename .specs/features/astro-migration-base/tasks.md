@@ -97,7 +97,7 @@ T7 → T8
 **Tests**: Validação sintática do arquivo de configuração
 **Gate**: node --check astro.config.mjs
 
-### T6: Create global.css with Tailwind v4 theme tokens
+### T6: Create global.css with Tailwind v4 theme tokens [DONE]
 
 **What**: Criar arquivo de estilos globais importando o Tailwind CSS v4 e definindo tokens de tema.
 **Where**: `src/styles/global.css`
