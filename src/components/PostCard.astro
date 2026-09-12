@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, date, tags } = post.data;
+
+// Formatação amigável em pt-BR
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+}).format(date);
+
+// Cálculo do tempo aproximado de leitura
+const words = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(words / 200));
+
+// Slug do artigo (post.id remove a extensão .md no glob loader)
+const postSlug = `/blog/${post.id}`;
+---
+
+<article class="group relative flex flex-col items-start p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] hover:border-[var(--color-brand-primary)]/50 transition-all duration-200">
+  <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)] mb-3">
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+    <span>•</span>
+    <span>{readingTime} min de leitura</span>
+  </div>
+
+  <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--color-brand-primary)] transition-colors">
+    <a href={postSlug} class="focus:outline-none">
+      <span class="absolute inset-0" aria-hidden="true"></span>
+      {title}
+    </a>
+  </h2>
+
+  {tags && tags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-[var(--border-subtle)] w-full">
+      {tags.map((tag) => (
+        <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium">
+          #{tag}
+        </span>
+      ))}
+    </div>
+  )}
+</article>

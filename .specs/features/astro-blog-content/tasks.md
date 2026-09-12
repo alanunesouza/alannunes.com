@@ -89,7 +89,7 @@ T6 → T7 → T8
 **Tests**: Verificação de integridade e existência do componente
 **Gate**: test -f src/components/Header.astro
 
-### T5: Implement PostCard.astro component
+### T5: Implement PostCard.astro component [DONE]
 
 **What**: Criar componente PostCard.astro para exibir preview limpo do artigo na listagem.
 **Where**: `src/components/PostCard.astro`
