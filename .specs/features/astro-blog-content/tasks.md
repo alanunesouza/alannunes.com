@@ -81,7 +81,7 @@ T6 → T7 → T8
 **Tests**: Validação do schema via verificação de tipos do Astro
 **Gate**: npx astro check
 
-### T4: Implement reusable Header.astro component
+### T4: Implement reusable Header.astro component [DONE]
 
 **What**: Criar componente Header.astro modularizado com navegação e botão de alternância de tema.
 **Where**: `src/components/Header.astro`

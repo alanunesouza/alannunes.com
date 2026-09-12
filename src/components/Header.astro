@@ -1,0 +1,72 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const isBlog = currentPath.startsWith('/blog');
+const isAbout = currentPath.startsWith('/about');
+---
+
+<header class="flex items-center justify-between pb-8 sm:pb-12 border-b border-[var(--border-subtle)]">
+  <a href="/" class="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
+    ala<span class="text-[var(--color-brand-primary)]">n</span><span class="text-[var(--color-brand-accent)]">n</span>unes
+  </a>
+
+  <div class="flex items-center gap-6">
+    <nav class="flex items-center gap-5 text-sm font-medium">
+      <a
+        href="/blog"
+        class={`transition-colors ${isBlog ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+      >
+        Blog
+      </a>
+      <a
+        href="/about"
+        class={`transition-colors ${isAbout ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+      >
+        Sobre
+      </a>
+    </nav>
+
+    <!-- Botão Minimalista de Tema -->
+    <button
+      id="theme-toggle"
+      type="button"
+      aria-label="Alternar tema"
+      class="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+    >
+      <!-- Sol (exibido no modo escuro) -->
+      <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <!-- Lua (exibido no modo claro) -->
+      <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<script is:inline>
+  function setupThemeToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (btn && !btn.dataset.bound) {
+      btn.dataset.bound = 'true';
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  }
+
+  setupThemeToggle();
+  document.addEventListener('astro:page-load', setupThemeToggle);
+</script>
