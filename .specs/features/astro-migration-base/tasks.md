@@ -113,7 +113,7 @@ T7 → T8
 **Tests**: Verificação da estrutura do layout e script de tema
 **Gate**: grep -q "localStorage" src/layouts/BaseLayout.astro
 
-### T8: Create index.astro and verify static build
+### T8: Create index.astro and verify static build [DONE]
 
 **What**: Criar página inicial de teste de sanidade utilizando o BaseLayout e validar compilação.
 **Where**: `src/pages/index.astro`

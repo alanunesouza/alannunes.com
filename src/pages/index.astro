@@ -1,0 +1,125 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import profileImg from '../assets/profile.png';
+---
+
+<BaseLayout title="Alan Nunes | Senior Software Engineer">
+  <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
+    <!-- Header minimalista -->
+    <header class="flex items-center justify-between pb-12 border-b border-[var(--border-subtle)]">
+      <a href="/" class="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
+        ala<span class="text-[var(--color-brand-primary)]">n</span><span class="text-[var(--color-brand-accent)]">n</span>unes
+      </a>
+
+      <div class="flex items-center gap-6">
+        <nav class="flex items-center gap-5 text-sm font-medium text-[var(--text-secondary)]">
+          <a href="/blog" class="hover:text-[var(--text-primary)] transition-colors">Blog</a>
+          <a href="/about" class="hover:text-[var(--text-primary)] transition-colors">Sobre</a>
+        </nav>
+
+        <!-- Botão Minimalista de Tema -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar tema"
+          class="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+        >
+          <!-- Sol (exibido no modo escuro) -->
+          <svg id="theme-icon-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Lua (exibido no modo claro) -->
+          <svg id="theme-icon-moon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Apresentação Hero -->
+    <main class="py-16">
+      <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8">
+        <div class="space-y-4">
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
+            Olá, sou Alan Nunes
+          </h1>
+          <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
+            Senior Software Engineer no <span class="font-semibold text-[var(--text-primary)]">Mercado Livre</span>. Especialista em <span class="font-semibold text-[var(--color-brand-primary)]">Front-End</span>, com atuação em engenharia de software moderna, em contínua especialização em <span class="font-semibold text-[var(--color-brand-accent)]">Inteligência Artificial</span> e experiência em ecossistemas back-end.
+          </p>
+        </div>
+
+        <div class="relative shrink-0">
+          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-[var(--border-subtle)] shadow-sm">
+            <Image
+              src={profileImg}
+              alt="Alan Nunes"
+              width={288}
+              height={288}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Links Sociais -->
+      <div class="mt-10 flex flex-wrap gap-4 text-sm font-medium">
+        <a
+          href="https://github.com/alanunesouza"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
+        >
+          GitHub →
+        </a>
+        <a
+          href="https://www.linkedin.com/in/alanunesouza"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
+        >
+          LinkedIn →
+        </a>
+        <a
+          href="https://twitter.com/alanhnunes"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-accent)] transition-colors"
+        >
+          Twitter / X →
+        </a>
+      </div>
+    </main>
+
+    <!-- Rodapé Minimalista -->
+    <footer class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+      <div>
+        © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacidade</a>
+        <span>•</span>
+        <a href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text-primary)] transition-colors">Termos</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Script para alternância de tema no botão -->
+  <script is:inline>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const isCurrentlyDark = document.documentElement.classList.contains('dark');
+        if (isCurrentlyDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  </script>
+</BaseLayout>
