@@ -65,7 +65,7 @@ T7 → T8
 **Tests**: Inspeção do valor declarado no arquivo .nvmrc
 **Gate**: grep -q "20" .nvmrc
 
-### T2: Configure netlify.toml for Astro
+### T2: Configure netlify.toml for Astro [DONE]
 
 **What**: Atualizar diretório de publicação para dist e versão de build para Node 20.
 **Where**: `netlify.toml`
