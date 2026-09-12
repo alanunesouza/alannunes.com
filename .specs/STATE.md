@@ -15,10 +15,10 @@
 ## Handoff
 
 - **Feature**: astro-migration-base
-- **Phase / Task**: Specify & Design
-- **Completed**: none
-- **In-progress** (file:line): `.specs/features/astro-migration-base/spec.md`
-- **Next step**: Finalizar a especificação EARS e design da base técnica do Astro + Tailwind v4.
+- **Phase / Task**: Phase 3 / T8 - Create index.astro and verify static build
+- **Completed**: T1, T2, T3, T4, T5, T6, T7, T8
+- **In-progress** (file:line): `.specs/features/astro-migration-base/validation.md:1`
+- **Next step**: Avançar para a Fase 2 (Migração de Posts Markdown e Content Collections do Astro).
 - **Blockers**: none
-- **Uncommitted files**: `tmp/roadmap.md`, `.specs/STATE.md`
+- **Uncommitted files**: none
 - **Branch**: feature/astro-tailwind
