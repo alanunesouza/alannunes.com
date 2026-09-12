@@ -73,7 +73,7 @@ T7 → T8
 **Tests**: Inspeção das propriedades publish e NODE_VERSION
 **Gate**: grep -q "publish = \"dist\"" netlify.toml && grep -q "NODE_VERSION = \"20\"" netlify.toml
 
-### T3: Setup package.json with Astro and Tailwind v4 dependencies
+### T3: Setup package.json with Astro and Tailwind v4 dependencies [DONE]
 
 **What**: Configurar dependências limpas do Astro 5, Tailwind CSS v4 e scripts essenciais.
 **Where**: `package.json`
