@@ -57,7 +57,7 @@ T7 → T8
 
 ## Task Breakdown
 
-### T1: Update .nvmrc for Node 20 LTS
+### T1: Update .nvmrc for Node 20 LTS [DONE]
 
 **What**: Atualizar arquivo de versão do Node para 20 garantindo compatibilidade moderna.
 **Where**: `.nvmrc`
