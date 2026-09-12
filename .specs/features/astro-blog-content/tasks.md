@@ -73,7 +73,7 @@ T6 → T7 → T8
 **Tests**: Verificação da diretiva @plugin no arquivo global.css
 **Gate**: grep -q "@plugin \"@tailwindcss/typography\";" src/styles/global.css
 
-### T3: Configure Content Collections in content.config.ts
+### T3: Configure Content Collections in content.config.ts [DONE]
 
 **What**: Criar arquivo src/content.config.ts com schema Zod e loader glob para a pasta src/posts/.
 **Where**: `src/content.config.ts`
