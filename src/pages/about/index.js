@@ -8,58 +8,46 @@ function About() {
     <Layout>
       <styles.Container>
         <p>
-          Sou um dev paulista, com um perfil mais quieto e focado, mas que sabe reconhecer os momentos de se divertir e fazer
-          aquela resenha. Me considero um dev apaixonado por esportes e games, e acredito sim, que o esporte, a diversão, a
-          curiosidade e o aprendizado na vida, influenciam e muito na evolução profissional do indivíduo.
+          Paulista, focado e observador, mas sempre aberto a uma boa troca de ideias e uma resenha descontraída. Fora do
+          terminal, sou movido por esportes e games — universos que me ensinaram na prática o valor da disciplina, da tomada
+          de decisão sob pressão, da curiosidade e do aprendizado constante, pilares que refletem diretamente em quem sou
+          como engenheiro.
         </p>
 
         <p>
-          Comecei minha carreira dev em 2015, mas antes disso, tive uma trajetória tanto quanto curiosa... Iniciei na área de
-          Logística aos 16 anos, como aprendiz. Ali pude aprender muito sobre o dia a dia do mundo corporativo e isso me
-          ajudou a amadurecer.
+          Minha relação com o trabalho começou cedo, aos 16 anos, na área de Logística. Foi ali, como jovem aprendiz, que
+          vivi a dinâmica do ambiente corporativo e aprendi a ter senso de responsabilidade e maturidade antes mesmo de
+          escrever minha primeira linha de código comercial.
         </p>
 
         <p>
-          Em 2014, já estava cursando <i>Sistemas de Informação</i>, e consegui minha primeira oportunidade na área de
-          Tecnologia, como estagiário na área de Suporte. Foi uma experiência única, que dou muito valor, porque acredito que
-          tudo na vida te ensina algo. Fiquei 2 anos como estagiário e migrei para uma outra empresa, ainda na área de
-          suporte, porém nessa outra empresa, havia oportunidade da migração para a área de desenvolvimento (que sempre foi o
-          meu objetivo). Busquei e consegui minha entrar na área de desenvolvimento, porém nem tudo saiu como planejado, tive
-          um ínicio um pouco difícil, com líderes incapazes de enxergar qualquer potêncial em mim.
+          Em 2014, durante a graduação em <i>Sistemas de Informação</i>, dei meus primeiros passos na área técnica atuando
+          com suporte de TI. Foram anos fundamentais para entender dores reais de usuários e sistemas, mas o meu objetivo
+          sempre foi a engenharia de software. A virada não foi fácil — enfrentei barreiras, descrença e momentos de
+          incerteza em que precisei apostar tudo o que tinha na minha própria capacidade, investindo cada recurso em
+          capacitação intensiva para construir minha oportunidade.
         </p>
 
         <p>
-          Perdi meu emprego, e quase desisti de fato da programação, mas resolvi provar para mim mesmo que eu era capaz...
-          Peguei o restinho da grana que eu tinha, e comprei cursos de programação para mergulhar no código e tentar uma
-          última cartada. Em menos de 2 meses, recebi uma oportunidade de trabalho como desenvolvedor PHP, onde minha vida
-          profissional mudou e acredito que foi um marco na minha vida. Trabalhava em consultoria, pude ajudar a entregar
-          soluções para vários clientes como Gerdau, SENAC, CVC, entre outras, aprendendo e aplicando linguagens e
-          tecnologias diferentes... Conheci pessoas e projetos íncriveis. Também atuei por alguns anos na B2W
-          (Americanas/Submarino/Shoptime), atuando em projetos desafiadores relacionadas a área de pós compra.
+          Essa persistência abriu portas. Na consultoria (Opah IT), desenvolvi soluções para clientes de grande porte como
+          Gerdau, SENAC e CVC. Em seguida, encarei os desafios de altíssima escala do e-commerce brasileiro na B2W Digital
+          (Americanas, Submarino e Shoptime), atuando na esteira crítica de pós-compra, e consolidei minha atuação sênior no
+          Luizalabs, contribuindo em um dos ecossistemas de tecnologia mais inovadores do país.
         </p>
 
         <p>
-          Depois desse tanto de acidentes de percurso, finalmente pude sentir que minha carreira estava no caminho que eu
-          sempre sonhei.
-        </p>
-
-        <p>
-          Atualmente, sou desenvolvedor FrontEnd Senior na&nbsp;
-          <a
-            href="https://www.linkedin.com/company/luizalabs/"
-            target="_blank"
-            rel="noopener noreferrer"
-            itemProp="affiliation"
-          >
-            Luizalabs
+          Atualmente, sou <b>Senior Software Engineer</b> no&nbsp;
+          <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" itemProp="affiliation">
+            Mercado Livre
           </a>
-          , uma das maiores empresas de inovação e tecnologia do Brasil.
+          , onde desenho e construo sistemas resilientes e de alta vazão, com foco principal em <b>Back-End</b>,{' '}
+          <b>Golang</b>, <b>arquitetura de microsserviços</b> e soluções orientadas a <b>Inteligência Artificial</b>.
         </p>
 
         <p>
-          Tenho uma paixão muito grande pelo que faço, pois é uma área com crescimento exponencial, onde sempre estou
-          aprendendo algo novo. Com isso, a área me dá a oportunidade de ajudar as pessoas através de tecnologia de alguma
-          maneira.
+          Mantenho a mente em evolução contínua: especializei minha trajetória com pós-graduações em Engenharia de Software e
+          em Inteligência Artificial Aplicada. Acredito que a engenharia de ponta une rigor técnico, simplicidade e impacto
+          humano — construindo tecnologias que facilitam o dia a dia de milhões de pessoas.
         </p>
       </styles.Container>
     </Layout>
