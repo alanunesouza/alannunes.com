@@ -15,10 +15,10 @@
 ## Handoff
 
 - **Feature**: astro-blog-content
-- **Phase / Task**: Phase 1 / T1 - Install @tailwindcss/typography
-- **Completed**: none
-- **In-progress** (file:line): `.specs/features/astro-blog-content/tasks.md:1`
-- **Next step**: Instalar @tailwindcss/typography e configurar Content Collections no Astro 5.
+- **Phase / Task**: Phase 3 / T8 - Validate static build of all blog routes
+- **Completed**: T1, T2, T3, T4, T5, T6, T7, T8
+- **In-progress** (file:line): `.specs/features/astro-blog-content/validation.md:1`
+- **Next step**: Avançar para a Fase 3 (Páginas Estáticas: Sobre, Políticas de Privacidade e Página 404).
 - **Blockers**: none
 - **Uncommitted files**: none
 - **Branch**: feature/astro-tailwind
