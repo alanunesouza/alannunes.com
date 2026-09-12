@@ -105,7 +105,7 @@ T7 → T8
 **Tests**: Verificação da importação de tailwindcss e tokens de tema
 **Gate**: grep -q "@import \"tailwindcss\";" src/styles/global.css
 
-### T7: Implement BaseLayout.astro with anti-FOUC theme script
+### T7: Implement BaseLayout.astro with anti-FOUC theme script [DONE]
 
 **What**: Criar layout base HTML5 contendo metatags e script inline anti-FOUC para tema.
 **Where**: `src/layouts/BaseLayout.astro`
