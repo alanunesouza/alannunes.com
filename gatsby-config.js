@@ -52,12 +52,6 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-netlify`,
-    {
-      resolve: 'gatsby-plugin-netlify-cache',
-      options: {
-        cachePublic: true,
-      },
-    },
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
