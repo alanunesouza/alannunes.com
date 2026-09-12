@@ -16,7 +16,6 @@ Os dias foram passando, e as péssimas notícias sobre o novo vírus continuavam
 <span style="display:flex;justify-content:center">Fonte: <a href="https://minilua.com" target="_blank" rel="noopener noreferrer">&nbsp;Minilua.com</a>
 </span>
 
-
 E assim, o caos se instaurou no mundo inteiro, e consequentemente afetou a rotina de todos. Muitos estão perdendo emprego, os autônomos talvez os mais prejudicados... E os moradores de rua, que dependem do fluxo de pessoas para conseguir um trocado para se alimentar e sobreviver a mais um dia?
 
 **Calma... Se você precisa se adaptar com home office ou está em busca de um novo emprego, talvez eu possa te ajudar!**
@@ -29,7 +28,6 @@ Com o passar dos anos, venho tentando aproveitar meu tempo livre da melhor forma
 
 <span style="display:flex;justify-content:center">Fonte: <a href="https://observatoriodocinema.uol.com.br/" target="_blank" rel="noopener noreferrer">&nbsp;Observatório do cinema</a>
 </span>
-
 
 É muito simples...
 FSD nada mais é que: _Foco, Saúde e Diversão_.
@@ -75,7 +73,6 @@ Pratique alguma atividade física. Há várias atividades físicas e tenho certe
 
 Apesar das dicas acima influenciar positivamente na saúde mental, tem algumas atividades gostaria de compartilhar para melhorar ainda mais: meditação, ler livros, conversa com amigos e familiares entre outras, que te dará sensação de felicidade.
 
-
 ### Se divirta !
 
 Pegando um gancho com a dica anterior, essa é a melhor dica rs. Costumo fazer da diversão uma certa recompensa pessoal e digo para mim mesmo: "Meu dia foi muito produtivo, agora eu mereço um pouco de descanso.".
@@ -88,5 +85,3 @@ _Com a utilização dessas dicas em sua rotina, o novo cenário da sua vida ser�
 </span>
 
 Todos que precisam de um controle maior do seu dia-a-dia, procuram um emprego ou busca uma evolução pessoal, creio que essas dicas ajudará muito. Espero que de alguma forma, eu possa ter colaborado para seus objetivos! :)
-
-

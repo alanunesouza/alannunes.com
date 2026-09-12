@@ -2,7 +2,7 @@
 title: Dicas para um dev, ao entrar em um novo desafio
 author: Alan
 date: 2023-01-07
-tags: ['dicas', 'carreira','design patterns', 'negocio', 'patterns', 'evolucao']
+tags: ['dicas', 'carreira', 'design patterns', 'negocio', 'patterns', 'evolucao']
 ---
 
 <!-- Introduction to my blog post -->
@@ -14,7 +14,6 @@ A área de tecnologia nunca foi fácil, e nós desenvolvedores, quando saímos d
 _1. Anote, anote e anote..._
 
 Bom, lhe garanto que sabendo da enxurrada de informações que serão "jogadas" para você dev, a primeira coisa que eu recomendaria, é você estar sempre com seu papel e caneta em mãos, porque você não vai dar conta de lembrar tudo que ver e ouvir. Anote tudo que achar relevante para você, como por exemplo: o papel de cada um na nova equipe, modo de trabalho, curiosidades relacionadas ao código, sistemas que precisará de acesso e para que serve cada um...
-
 
 ### E depois?
 
@@ -29,7 +28,6 @@ Antes disso, vem algo que acho fundamental para você ser mais assertivo, entend
 Assim como eu já fiz, percebo muitos desenvolvedores fazendo isso a cada novo ciclo que começa e também nos ciclos em andamento... Pensar somente no código e esquecer de toda a parte negocial que existe em torno do ecosistema. Este erro, te faz criar um código menos assertivo, e pode custar caro para você e para a empresa. Pensa comigo: "Como vou conseguir entregar a melhor solução através de código, se não entendo o negócio? Como vou conseguir propor uma solução, entendendo apenas superficialmente o que a empresa precisa?.
 
 Provavelmente você entregará uma solução com falhas. Vai por mim, isso fará toda a diferença.
-
 
 ### Equipe e Tecnologia
 
@@ -52,7 +50,6 @@ Todo software tem seus padrões, busque entender os padrões com o qual a equipe
 Quando caímos de cara em um projeto que está sendo desenvolvido por outras pessoas, é normal termos um pouco de dificuldade de entender. Para piorar, quando vamos finalmente codar, a tendência é fazer da forma que mais nos agrada, mas esse ponto é necessário cuidado.
 
 Como você está entrando agora, não é muito legal, você mudar o padrão de um projeto existente logo de cara (mesmo que o padrão que você esteja aplicando, seja melhor), e acabar "bagunçando" um código no qual deveria existir um só padrão, e agora tem dois (o nativo, e o seu rs). Procure se adaptar a forma na qual seus colegas trabalham e com o tempo, você dar os seus "pitacos", levantar ideias e refatorações que você achar necessário, e assim, evitar até algum descontentamento de algum colega.
-
 
 ### Considerações finais
 

@@ -2,7 +2,7 @@
 title: TDD (Test Driven Development) - minha visão sobre o assunto
 author: Alan
 date: 2022-02-20
-tags: ['produtividade', 'carreira','design patterns', 'testes', 'tdd']
+tags: ['produtividade', 'carreira', 'design patterns', 'testes', 'tdd']
 ---
 
 <!-- Introduction to my blog post -->
@@ -17,33 +17,29 @@ O TDD tem um passo a passo a ser seguido, sendo ele um ciclo de repetição:
 <span style="display:flex;justify-content:center;margin-bottom:2rem;">Fonte: <a href="https://marsner.com" target="_blank" rel="noopener noreferrer">&nbsp;marsner.com</a>
 </span>
 
-**1.** __Escreva um teste que inicialmente não vai passar__ - Vamos supor que você é um desenvolvedor frontend e precisa implementar uma nova página de login. Você recebe uma documentação com os Use Cases e um protótipo dessa página.
+**1.** **Escreva um teste que inicialmente não vai passar** - Vamos supor que você é um desenvolvedor frontend e precisa implementar uma nova página de login. Você recebe uma documentação com os Use Cases e um protótipo dessa página.
 
 Normalmente, sem o TDD, a maioria dos desenvolvedores leem a documentação (ás vezes nem isso rs) e começam o desenvolvimento, visando alcançar o que foi solicitado, e assim que concluído, fazem os testes visando atender o que foi desenvolvido, e não visando a documentação, e isso é falho (cenários do que foi solicitado podem ser esquecidos).
 
 Com o TDD, esse processo é invertido, ou seja, tudo começa pelo teste. Neste passo você o Use Case e faz o teste, e roda. O teste irá quebrar, porque o desenvolvimento ainda não foi realizado.
 
-**2.** __Faça o seu teste passar__ - Essa é a hora de botar a mão na massa. Usando o teste como um guia, você irá desenvolver o código, visando a simplicidade. Assim que o teste passar, este passo foi finalizado.
+**2.** **Faça o seu teste passar** - Essa é a hora de botar a mão na massa. Usando o teste como um guia, você irá desenvolver o código, visando a simplicidade. Assim que o teste passar, este passo foi finalizado.
 
-**3.** __Refatore o seu código__ - Esse é um passo que vejo muitos desenvolvedores ignorando, ou não dando a devida atenção no TDD, e ao cometer esse erro, o TDD perde o seu sentido.
+**3.** **Refatore o seu código** - Esse é um passo que vejo muitos desenvolvedores ignorando, ou não dando a devida atenção no TDD, e ao cometer esse erro, o TDD perde o seu sentido.
 
 Neste passo, devemos refatorar nosso código produzido no passo anterior, aplicando conceitos, design patterns e boas práticas de desenvolvimento, visando uma aplicação mais robusta, escalável e de fácil manutenção. É aqui que se encontra a aplicação do [Clean Code](https://garywoodfine.com/what-is-clean-code/).
 
 Após o passo 3, verifique se o teste está passando. Se sim, você volta ao passo 1, agora partindo do próximo Use Case e assim sucessivamente. Caso contrário, verifique sua refatoração, porque você acabou de gerar um bug rs.
 
-
 ### Minha experiência com TDD
 
 #### Conhecendo os testes unitários e a sua importância
-
 
 Estou no mercado de desenvolvimento desde meados de 2016, e como um desenvolvedor frontend, nas empresas em que passei, não havia o hábito em fazer testes unitários no frontend. Infelizmente até hoje (2022) é uma cultura muito forte no Brasil, porém vejo o cenário sendo mudado aos poucos. Com isso, acabei "indo na onda" e demorei um tempo para conhecer mais sobre testes unitários e seus benefícios.
 
 No processo de aprendizado e aplicação de testes unitários no meu dia a dia (certamente, sem o uso do TDD), comecei a entender o quão melhorava a eficácia do meu código, e o teste em si se tornava meu aliado, meu braço direito, me ajudando a entregar um código com mais qualidade e com menor probabilidade de entregar um problema em ambiente produtivo.
 
-
 #### Como os testes unitários podem ser ainda melhor no meu dia a dia?
-
 
 Comecei a me perguntar se isso era o suficiente, ou poderia ser ainda melhor... Lembro como se fosse hoje, que nos dias de estudos, de meetup ou eventos de tecnologia, escutava muito se falar de um tal de TDD, que até então eu desconhecia.
 
@@ -55,17 +51,14 @@ Encontrei muito conteúdo valioso (vou deixar no final da publicação algumas r
 
 #### Benefícios ao aplicar o TDD
 
-
-* Melhor design de programa e maior qualidade de código
-* Documentação detalhada do projeto
-* TDD reduz o tempo necessário para o desenvolvimento do projeto
-* Manutenção do código é mais fácil
-* Solução confiável
-* Economicamente melhor a longo prazo
-
+- Melhor design de programa e maior qualidade de código
+- Documentação detalhada do projeto
+- TDD reduz o tempo necessário para o desenvolvimento do projeto
+- Manutenção do código é mais fácil
+- Solução confiável
+- Economicamente melhor a longo prazo
 
 #### Afinal, o TDD faz sentido?
-
 
 Claramente, faz muito sentido. O TDD é uma ferramenta que impulsiona o desenvolvedor a programar melhor, a aplicar os conceitos consolidados. A ter uma visão ampla, visando o projeto a longo prazo.
 
@@ -73,16 +66,15 @@ Claramente, faz muito sentido. O TDD é uma ferramenta que impulsiona o desenvol
 
 Deixarei para vocês, uma frase do [livro](https://www.amazon.com.br/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=asc_df_0321146530/?tag=googleshopp00-20&linkCode=df0&hvadid=379787788238&hvpos=&hvnetw=g&hvrand=3024373226955168733&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001773&hvtargid=pla-448095042394&psc=1) Test-Driven Development: By Example, feito por ninguém menos que o criador do TDD, Kent Beck, que resume toda a percepção que eu tenho hoje sobre o assunto:
 
-
 > "If you're happy slamming some code together that more or less works and you're happy never looking at the
->  result again, TDD is not for you. TDD rests on a charmingly naïve geekoid assumption that if you write
-> better  code, you'll be more successful. TDD helps you to pay attention to the right issues at the right time
-> so you  can make your designs cleaner, you can refine your designs as you learn."
+> result again, TDD is not for you. TDD rests on a charmingly naïve geekoid assumption that if you write
+> better code, you'll be more successful. TDD helps you to pay attention to the right issues at the right time
+> so you can make your designs cleaner, you can refine your designs as you learn."
 > ― Kent Beck, Test-Driven Development: By Example
 
 ### Referências
 
-* [Livro Test-Driven Development: By Example - Kent Beck](https://www.amazon.com.br/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=asc_df_0321146530/?tag=googleshopp00-20&linkCode=df0&hvadid=379787788238&hvpos=&hvnetw=g&hvrand=8450874180526180247&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001773&hvtargid=pla-448095042394&psc=1)
-* [Blog Marsner](https://marsner.com/blog/why-test-driven-development-tdd/)
-* [BrowserStack](https://www.browserstack.com/guide/what-is-test-driven-development)
-* [DevMedia](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)
+- [Livro Test-Driven Development: By Example - Kent Beck](https://www.amazon.com.br/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=asc_df_0321146530/?tag=googleshopp00-20&linkCode=df0&hvadid=379787788238&hvpos=&hvnetw=g&hvrand=8450874180526180247&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001773&hvtargid=pla-448095042394&psc=1)
+- [Blog Marsner](https://marsner.com/blog/why-test-driven-development-tdd/)
+- [BrowserStack](https://www.browserstack.com/guide/what-is-test-driven-development)
+- [DevMedia](https://www.devmedia.com.br/test-driven-development-tdd-simples-e-pratico/18533)

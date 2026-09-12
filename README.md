@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="https://www.alannunes.com">
     <img alt="alannunes" src="./src/assets/favicon.png" width="60" />
