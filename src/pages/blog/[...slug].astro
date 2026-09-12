@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, date, tags, author } = post.data;
+
+const { Content } = await render(post);
+
+// Formatação amigável de data
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+}).format(date);
+
+// Cálculo do tempo aproximado de leitura
+const words = post.body ? post.body.trim().split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(words / 200));
+---
+
+<BaseLayout title={`${title} | Alan Nunes`} description={`${title} - Artigo por ${author}`}>
+  <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
+    <Header currentPath="/blog" />
+
+    <main class="py-12 sm:py-16">
+      <!-- Botão Voltar -->
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-8"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Voltar para o blog
+      </a>
+
+      <!-- Cabeçalho do Artigo -->
+      <header class="space-y-4 pb-8 border-b border-[var(--border-subtle)] mb-10">
+        <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)]">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          <span>•</span>
+          <span>{readingTime} min de leitura</span>
+          <span>•</span>
+          <span>Por {author}</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--text-primary)] leading-tight">
+          {title}
+        </h1>
+
+        {tags && tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 pt-2">
+            {tags.map((tag) => (
+              <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <!-- Conteúdo Formatado via Prose -->
+      <article class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[var(--color-brand-primary)] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-[var(--border-subtle)] prose-pre:rounded-xl prose-pre:border prose-pre:border-[var(--border-subtle)]">
+        <Content />
+      </article>
+
+      <!-- Rodapé do Artigo -->
+      <div class="mt-16 pt-8 border-t border-[var(--border-subtle)] flex items-center justify-between">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-brand-primary)] hover:underline"
+        >
+          ← Ver outros artigos
+        </a>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+      <div>
+        © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacidade</a>
+        <span>•</span>
+        <a href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text-primary)] transition-colors">Termos</a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

@@ -105,7 +105,7 @@ T6 → T7 → T8
 **Tests**: Verificação de integridade e existência do arquivo
 **Gate**: test -f src/pages/blog/index.astro
 
-### T7: Create /blog/[...slug].astro article reading page
+### T7: Create /blog/[...slug].astro article reading page [DONE]
 
 **What**: Criar página dinâmica src/pages/blog/[...slug].astro com renderização do post via Prose e Shiki.
 **Where**: `src/pages/blog/[...slug].astro`
