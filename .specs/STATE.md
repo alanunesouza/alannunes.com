@@ -14,11 +14,11 @@
 
 ## Handoff
 
-- **Feature**: astro-migration-base
-- **Phase / Task**: Phase 3 / T8 - Create index.astro and verify static build
-- **Completed**: T1, T2, T3, T4, T5, T6, T7, T8
-- **In-progress** (file:line): `.specs/features/astro-migration-base/validation.md:1`
-- **Next step**: Avançar para a Fase 2 (Migração de Posts Markdown e Content Collections do Astro).
+- **Feature**: astro-blog-content
+- **Phase / Task**: Phase 1 / T1 - Install @tailwindcss/typography
+- **Completed**: none
+- **In-progress** (file:line): `.specs/features/astro-blog-content/tasks.md:1`
+- **Next step**: Instalar @tailwindcss/typography e configurar Content Collections no Astro 5.
 - **Blockers**: none
 - **Uncommitted files**: none
 - **Branch**: feature/astro-tailwind
