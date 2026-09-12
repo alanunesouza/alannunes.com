@@ -65,7 +65,7 @@ T6 → T7 → T8
 **Tests**: Verificação da presença de @tailwindcss/typography nas dependências
 **Gate**: grep -q "@tailwindcss/typography" package.json
 
-### T2: Import typography plugin in global.css
+### T2: Import typography plugin in global.css [DONE]
 
 **What**: Adicionar diretiva @plugin no global.css para habilitar classes prose.
 **Where**: `src/styles/global.css`
