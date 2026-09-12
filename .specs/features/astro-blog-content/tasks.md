@@ -97,7 +97,7 @@ T6 → T7 → T8
 **Tests**: Verificação de integridade e existência do componente
 **Gate**: test -f src/components/PostCard.astro
 
-### T6: Create /blog listing page
+### T6: Create /blog listing page [DONE]
 
 **What**: Criar página src/pages/blog/index.astro listando todos os artigos ordenados cronologicamente.
 **Where**: `src/pages/blog/index.astro`

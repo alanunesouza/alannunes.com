@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import PostCard from '../../components/PostCard.astro';
+
+// Obter todos os artigos da coleção 'blog' ordenados do mais recente para o mais antigo
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Blog | Alan Nunes" description="Artigos e reflexões sobre engenharia de software, front-end, inteligência artificial e carreira técnica.">
+  <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
+    <Header currentPath="/blog" />
+
+    <main class="py-12 sm:py-16">
+      <div class="space-y-3 mb-12">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
+          Blog
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+          Artigos, práticas de arquitetura e reflexões sobre engenharia de software, front-end e inteligência artificial.
+        </p>
+      </div>
+
+      <!-- Listagem de Artigos -->
+      <div class="flex flex-col gap-6">
+        {posts.length > 0 ? (
+          posts.map((post) => <PostCard post={post} />)
+        ) : (
+          <p class="text-sm text-[var(--text-muted)] py-12 text-center">Nenhum artigo encontrado.</p>
+        )}
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+      <div>
+        © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacidade</a>
+        <span>•</span>
+        <a href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text-primary)] transition-colors">Termos</a>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
