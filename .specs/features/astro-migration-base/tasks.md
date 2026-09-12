@@ -81,7 +81,7 @@ T7 → T8
 **Tests**: Instalação e verificação de integridade dos pacotes
 **Gate**: npm install && npx astro --version
 
-### T4: Configure tsconfig.json for Astro
+### T4: Configure tsconfig.json for Astro [DONE]
 
 **What**: Criar configuração TypeScript herdando as recomendações do Astro.
 **Where**: `tsconfig.json`
