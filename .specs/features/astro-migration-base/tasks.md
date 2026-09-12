@@ -89,7 +89,7 @@ T7 → T8
 **Tests**: Verificação de sintaxe e resolução de tipos
 **Gate**: npx astro check || true
 
-### T5: Configure astro.config.mjs with Tailwind v4
+### T5: Configure astro.config.mjs with Tailwind v4 [DONE]
 
 **What**: Criar arquivo de configuração do Astro integrando o plugin Vite do Tailwind CSS v4.
 **Where**: `astro.config.mjs`
