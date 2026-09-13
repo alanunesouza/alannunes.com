@@ -82,6 +82,24 @@ const ogLocale = lang === 'en' ? 'en_US' : 'pt_BR';
         observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
       }
     </script>
+
+    <!-- Limpeza de Service Worker legado do Gatsby -->
+    <script is:inline>
+      if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+      if (typeof window !== 'undefined' && 'caches' in window) {
+        caches.keys().then((keys) => {
+          for (const key of keys) {
+            caches.delete(key);
+          }
+        });
+      }
+    </script>
   </head>
   <body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-200">
     <slot />
