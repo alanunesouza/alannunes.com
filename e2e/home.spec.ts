@@ -23,7 +23,7 @@ test.describe('Home Page', () => {
     await expect(page.locator('nav a[href="/blog"]')).toBeVisible();
     await expect(page.locator('nav a[href="/about"]')).toBeVisible();
     await expect(page.locator('a[href="https://github.com/alanunesouza"]')).toBeVisible();
-    await expect(page.locator('a[href="https://linkedin.com/in/alannunesouza"]')).toBeVisible();
+    await expect(page.locator('a[href="https://www.linkedin.com/in/alanunesouza/"]')).toBeVisible();
 
     // Recent articles section
     await expect(page.getByRole('heading', { level: 2, name: 'Artigos Recentes' })).toBeVisible();
