@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
 ---
 
 <BaseLayout
@@ -87,32 +88,7 @@ import Footer from '../../components/Footer.astro';
           Feel free to reach out to discuss software engineering, front-end architecture, AI, or opportunities:
         </p>
 
-        <div class="flex flex-wrap gap-3 pt-2">
-          <a
-            href="https://github.com/alanunesouza"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com/in/alannunesouza"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://www.instagram.com/alanunesouza"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-accent)] transition-colors"
-          >
-            Instagram
-          </a>
-        </div>
+        <SocialLinks class="pt-2" />
       </div>
     </main>
 
