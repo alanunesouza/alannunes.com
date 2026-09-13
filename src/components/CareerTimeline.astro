@@ -11,7 +11,7 @@ const { experiences, lang } = Astro.props;
 ---
 
 <div
-  class="relative pl-6 sm:pl-10 space-y-8 sm:space-y-12 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-[var(--color-brand-primary)] before:via-[var(--border-subtle)] before:to-transparent"
+  class="career-timeline relative pl-8 sm:pl-12 space-y-6 sm:space-y-10 before:absolute before:left-4 sm:before:left-6 before:-translate-x-1/2 before:top-4 before:bottom-4 before:w-0.5 before:bg-gradient-to-b before:from-[var(--color-brand-primary)] before:via-[var(--border-subtle)] before:to-transparent"
 >
   {
     experiences.map((exp, index) => {
@@ -23,23 +23,23 @@ const { experiences, lang } = Astro.props;
 
       return (
         <div class="timeline-item relative group" style={`--item-index: ${index};`}>
-          {/* Marcador na Timeline */}
-          <div class="absolute -left-6 sm:-left-10 top-1.5 flex items-center justify-center">
+          {/* Marcador na Timeline - rigorosamente centralizado no eixo da linha (16px mobile, 24px desktop) */}
+          <div class="absolute -left-8 sm:-left-12 w-8 sm:w-12 top-2 sm:top-2.5 flex items-center justify-center z-10">
             {isCurrent ? (
-              <div class="relative flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center">
-                <span class="pulse-indicator absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-primary)] opacity-60" />
+              <div class="relative flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center">
+                <span class="pulse-indicator absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-primary)] opacity-70" />
                 <span class="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-[var(--color-brand-primary)] ring-4 ring-[var(--bg-primary)] shadow-sm" />
               </div>
             ) : (
-              <div class="h-6 w-6 sm:h-8 sm:w-8 rounded-full border-2 border-[var(--border-subtle)] bg-[var(--bg-secondary)] flex items-center justify-center ring-4 ring-[var(--bg-primary)] group-hover:border-[var(--color-brand-primary)] group-hover:scale-110 transition-all duration-300">
-                <span class="w-2 h-2 rounded-full bg-[var(--text-muted)] group-hover:bg-[var(--color-brand-primary)] transition-colors" />
+              <div class="h-5 w-5 sm:h-6 sm:w-6 rounded-full border-2 border-[var(--border-subtle)] bg-[var(--bg-secondary)] flex items-center justify-center ring-4 ring-[var(--bg-primary)] group-hover:border-[var(--color-brand-primary)] group-hover:scale-110 transition-all duration-200">
+                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[var(--text-muted)] group-hover:bg-[var(--color-brand-primary)] transition-colors" />
               </div>
             )}
           </div>
 
           {/* Card de Experiência */}
           <div
-            class={`rounded-2xl p-5 sm:p-7 border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 backdrop-blur-xs ${
+            class={`timeline-card rounded-2xl p-4 sm:p-7 border transition-all duration-300 backdrop-blur-xs ${
               isCurrent
                 ? 'border-[var(--color-brand-primary)]/50 bg-[var(--bg-surface)]/90 shadow-xs ring-1 ring-[var(--color-brand-primary)]/20'
                 : 'border-[var(--border-subtle)] bg-[var(--bg-surface)]/60 hover:bg-[var(--bg-surface)] hover:border-[var(--color-brand-primary)]/30'
@@ -48,18 +48,20 @@ const { experiences, lang } = Astro.props;
             {/* Cabeçalho do Card: Empresa e Período */}
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1.5 sm:gap-4 mb-2">
               <div class="flex items-center flex-wrap gap-2">
-                <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">{exp.company}</h3>
+                <h3 class="text-lg sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] leading-tight">
+                  {exp.company}
+                </h3>
                 {isCurrent && (
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] border border-[var(--color-brand-primary)]/30 animate-pulse">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] border border-[var(--color-brand-primary)]/30 animate-pulse">
                     {lang === 'pt' ? 'Posição Atual' : 'Current Role'}
                   </span>
                 )}
               </div>
 
-              <div class="text-xs sm:text-sm font-medium text-[var(--text-muted)] flex items-center gap-1.5 shrink-0">
+              <div class="text-xs sm:text-sm font-medium text-[var(--text-muted)] flex flex-wrap items-center gap-1.5 shrink-0">
                 <span>{period}</span>
                 {duration && (
-                  <span class="text-[11px] px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-subtle)]">
+                  <span class="text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-subtle)]">
                     {duration}
                   </span>
                 )}
@@ -67,11 +69,11 @@ const { experiences, lang } = Astro.props;
             </div>
 
             {/* Cargo e Local */}
-            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-[var(--color-brand-primary)] mb-4">
+            <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-sm font-semibold text-[var(--color-brand-primary)] mb-3 sm:mb-4">
               <span>{roleTitle}</span>
               <span class="text-[var(--border-subtle)] hidden sm:inline">•</span>
               <span class="text-xs font-normal text-[var(--text-muted)] flex items-center gap-1">
-                <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5 opacity-75 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -90,21 +92,21 @@ const { experiences, lang } = Astro.props;
             </div>
 
             {/* Descrição Geral */}
-            <p class="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-4">{description}</p>
+            <p class="text-xs sm:text-base text-[var(--text-secondary)] leading-relaxed mb-3.5 sm:mb-4">{description}</p>
 
             {/* Sub-posições / Evolução Interna de Carreira */}
             {exp.subRoles && exp.subRoles.length > 0 && (
-              <div class="my-5 pl-4 border-l-2 border-[var(--border-subtle)] space-y-4">
-                <div class="text-xs uppercase tracking-wider font-semibold text-[var(--text-muted)]">
+              <div class="my-4 pl-3 sm:pl-4 border-l-2 border-[var(--border-subtle)] space-y-3">
+                <div class="text-[10px] sm:text-xs uppercase tracking-wider font-semibold text-[var(--text-muted)]">
                   {lang === 'pt' ? 'Evolução na empresa' : 'Internal Progression'}
                 </div>
                 {exp.subRoles.map((subRole) => (
-                  <div class="space-y-1 text-sm">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                  <div class="space-y-0.5 text-xs sm:text-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-2">
                       <h4 class="font-semibold text-[var(--text-primary)]">{subRole.title[lang]}</h4>
-                      <span class="text-xs text-[var(--text-muted)]">{subRole.period[lang]}</span>
+                      <span class="text-[11px] sm:text-xs text-[var(--text-muted)]">{subRole.period[lang]}</span>
                     </div>
-                    <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                    <p class="text-[11px] sm:text-xs text-[var(--text-secondary)] leading-relaxed">
                       {subRole.description[lang]}
                     </p>
                   </div>
@@ -114,9 +116,9 @@ const { experiences, lang } = Astro.props;
 
             {/* Tags de Tecnologias e Habilidades */}
             {exp.skills && exp.skills.length > 0 && (
-              <div class="pt-4 mt-4 border-t border-[var(--border-subtle)]/70 flex flex-wrap gap-1.5 sm:gap-2">
+              <div class="pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-[var(--border-subtle)]/70 flex flex-wrap gap-1 sm:gap-1.5">
                 {exp.skills.map((skill) => (
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--color-brand-primary)]/40 hover:text-[var(--text-primary)] transition-colors">
+                  <span class="inline-flex items-center px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[11px] sm:text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--color-brand-primary)]/40 hover:text-[var(--text-primary)] transition-colors">
                     {skill}
                   </span>
                 ))}
@@ -130,53 +132,134 @@ const { experiences, lang } = Astro.props;
 </div>
 
 <style>
-  /* Animação Staggered CSS para Timeline */
-  @keyframes timelineCardFadeUp {
-    0% {
-      opacity: 0;
-      transform: translateY(22px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
+  /* 1. Animação de radar no cargo atual */
   @keyframes radarPulse {
     0% {
-      transform: scale(0.9);
+      transform: scale(0.85);
       opacity: 0.8;
     }
     50% {
-      transform: scale(1.6);
-      opacity: 0;
+      transform: scale(1.65);
+      opacity: 0.2;
     }
     100% {
-      transform: scale(0.9);
-      opacity: 0;
+      transform: scale(0.85);
+      opacity: 0.8;
     }
-  }
-
-  .timeline-item {
-    opacity: 0;
-    animation: timelineCardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: calc(var(--item-index, 0) * 110ms);
   }
 
   .pulse-indicator {
     animation: radarPulse 2.4s ease-out infinite;
   }
 
-  /* Suporte a preferência de movimento reduzido */
-  @media (prefers-reduced-motion: reduce) {
-    .timeline-item {
+  /* 2. Animação de entrada fluida baseada em Scroll Reveal (IntersectionObserver e Scroll Timeline) */
+  @keyframes timelineSlideFade {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
       opacity: 1;
-      transform: none;
-      animation: none;
+      transform: translateY(0);
+    }
+  }
+
+  /* Estado inicial com fallback seguro */
+  .timeline-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Quando JS estiver ativo, ativa a animação conforme o scroll no mobile e desktop */
+  html.js-scroll-anim .timeline-item {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.js-scroll-anim .timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Suporte nativo a CSS Scroll-driven animations onde disponível */
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @media (prefers-reduced-motion: no-preference) {
+      .timeline-item {
+        animation: timelineSlideFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 25%;
+      }
+    }
+  }
+
+  /* Efeitos de hover ativos apenas em dispositivos com mouse (evita "sticky hover" no toque mobile) */
+  @media (hover: hover) {
+    .timeline-card:hover {
+      box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.08),
+        0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Acessibilidade para usuários com movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item,
+    html.js-scroll-anim .timeline-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
     }
     .pulse-indicator {
-      animation: none;
+      animation: none !important;
       opacity: 0.4;
     }
   }
 </style>
+
+<script is:inline>
+  function initTimelineScrollObserver() {
+    // Não roda observer caso o navegador suporte nativamente CSS Scroll-driven animations
+    if (CSS.supports && CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+      return;
+    }
+
+    // Marca a raiz para habilitar a transição suave de scroll
+    document.documentElement.classList.add('js-scroll-anim');
+
+    const items = document.querySelectorAll('.career-timeline .timeline-item');
+    if (!items.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.1,
+      }
+    );
+
+    items.forEach((item) => {
+      observer.observe(item);
+    });
+  }
+
+  // Executa imediatamente e no evento de navegação Astro
+  initTimelineScrollObserver();
+  document.addEventListener('astro:page-load', initTimelineScrollObserver);
+</script>
