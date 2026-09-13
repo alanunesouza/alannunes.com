@@ -1,0 +1,49 @@
+{
+  "name": "Alan Nunes | Senior Software Engineer",
+  "short_name": "Alan Nunes",
+  "description": "Site pessoal e blog de Alan Nunes, Senior Software Engineer",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0f19",
+  "theme_color": "#4f46e5",
+  "lang": "pt-BR",
+  "categories": ["technology", "education", "blog"],
+  "icons": [
+    {
+      "src": "/icons/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/pwa-512x512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Acessar os artigos do blog",
+      "url": "/blog",
+      "icons": [{ "src": "/icons/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Sobre / About",
+      "short_name": "Sobre",
+      "description": "Conhecer a trajetória de Alan Nunes",
+      "url": "/about",
+      "icons": [{ "src": "/icons/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

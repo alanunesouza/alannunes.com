@@ -41,6 +41,15 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- PWA Web App Manifest & Mobile Meta -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Alan Nunes" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
     <!-- SEO Meta Tags Primárias -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -109,20 +118,18 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
       }
     </script>
 
-    <!-- Limpeza de Service Worker legado do Gatsby -->
+    <!-- Registro do Service Worker PWA -->
     <script is:inline>
-      if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          for (const registration of registrations) {
-            registration.unregister();
-          }
-        });
-      }
-      if (typeof window !== 'undefined' && 'caches' in window) {
-        caches.keys().then((keys) => {
-          for (const key of keys) {
-            caches.delete(key);
-          }
+      if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {
+              registration.update();
+            })
+            .catch((err) => {
+              console.warn('PWA SW registration failed:', err);
+            });
         });
       }
     </script>
