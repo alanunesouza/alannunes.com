@@ -27,10 +27,10 @@ const ptHref = alternatePath?.pt ?? getLocalizedPath(currentPath, 'pt');
 const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
 ---
 
-<header class="flex items-center justify-between pb-8 sm:pb-12 border-b border-[var(--border-subtle)]">
+<header class="flex items-center justify-between gap-3 sm:gap-6 pb-8 sm:pb-12 border-b border-[var(--border-subtle)]">
   <a
     href={homeHref}
-    class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-85 transition-opacity group"
+    class="flex items-center gap-2 sm:gap-2.5 text-lg sm:text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-85 transition-opacity group shrink-0"
   >
     <img
       src="/favicon.svg"
@@ -45,8 +45,8 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
     >
   </a>
 
-  <div class="flex items-center gap-4 sm:gap-6">
-    <nav class="flex items-center gap-4 sm:gap-5 text-sm font-medium">
+  <div class="flex items-center gap-2 sm:gap-5 shrink-0">
+    <nav class="flex items-center gap-2.5 sm:gap-5 text-xs sm:text-sm font-medium">
       <a
         href={blogHref}
         class={`transition-colors ${isBlog ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
@@ -63,11 +63,11 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
 
     <!-- Seletor de Idioma Minimalista (PT | EN) -->
     <div
-      class="flex items-center gap-1 px-1 py-0.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs font-semibold"
+      class="flex items-center gap-0.5 sm:gap-1 px-1 py-0.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[11px] sm:text-xs font-semibold"
     >
       <a
         href={ptHref}
-        class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'pt' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+        class={`px-1.5 sm:px-2 py-0.5 rounded transition-colors ${currentLang === 'pt' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
         aria-label="PT - Português"
       >
         PT
@@ -75,7 +75,7 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
       <span class="text-[var(--border-subtle)] text-[10px]">|</span>
       <a
         href={enHref}
-        class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'en' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+        class={`px-1.5 sm:px-2 py-0.5 rounded transition-colors ${currentLang === 'en' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
         aria-label="EN - English"
       >
         EN
@@ -87,7 +87,7 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
       id="theme-toggle"
       type="button"
       aria-label={t('theme.toggle')}
-      class="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+      class="p-1.5 sm:p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
     >
       <!-- Sol (exibido no modo escuro) -->
       <svg id="theme-icon-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
