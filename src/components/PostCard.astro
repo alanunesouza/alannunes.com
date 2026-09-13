@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Calendar, Clock, ArrowUpRight } from '@lucide/astro';
 import { useTranslations } from '../i18n/utils';
 import type { Lang } from '../i18n/utils';
 
@@ -35,19 +36,28 @@ const postSlug = lang === 'en' ? `/en/blog/${cleanSlug}` : `/blog/${cleanSlug}`;
   data-title={title.toLowerCase()}
   data-tags={tags ? tags.join(',').toLowerCase() : ''}
 >
-  <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)] mb-3">
-    <time datetime={date.toISOString()}>{formattedDate}</time>
+  <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--text-muted)] mb-3">
+    <span class="inline-flex items-center gap-1.5">
+      <Calendar class="w-3.5 h-3.5 text-[var(--color-brand-primary)]" />
+      <time datetime={date.toISOString()}>{formattedDate}</time>
+    </span>
     <span>•</span>
-    <span>{readingTime} {t('post.readTime')}</span>
+    <span class="inline-flex items-center gap-1.5">
+      <Clock class="w-3.5 h-3.5 text-[var(--color-brand-accent)]" />
+      <span>{readingTime} {t('post.readTime')}</span>
+    </span>
   </div>
 
   <h2
-    class="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--color-brand-primary)] transition-colors"
+    class="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--color-brand-primary)] transition-colors flex items-center justify-between w-full gap-2"
   >
     <a href={postSlug} class="focus:outline-none">
       <span class="absolute inset-0" aria-hidden="true"></span>
       {title}
     </a>
+    <ArrowUpRight
+      class="w-4 h-4 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--color-brand-accent)] shrink-0"
+    />
   </h2>
 
   {

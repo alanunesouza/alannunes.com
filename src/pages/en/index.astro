@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import { ArrowRight } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -87,8 +88,12 @@ const recentPosts = posts.slice(0, 3);
           <section class="mt-20 space-y-6">
             <div class="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)]">
               <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">{t('home.recentArticles')}</h2>
-              <a href="/en/blog" class="text-sm font-semibold text-[var(--color-brand-primary)] hover:underline">
+              <a
+                href="/en/blog"
+                class="group inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-brand-primary)] hover:underline"
+              >
                 {t('home.viewAll')}
+                <ArrowRight class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
             </div>
 

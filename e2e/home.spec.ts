@@ -16,7 +16,7 @@ test.describe('Home Page', () => {
     await expect(page.locator('main#main-content')).toBeVisible();
 
     // Profile image
-    const profileImg = page.locator('img[alt="Alan Nunes"]');
+    const profileImg = page.locator('main img[alt="Alan Nunes"]');
     await expect(profileImg).toBeVisible();
 
     // Navigation and Social links
@@ -59,5 +59,21 @@ test.describe('Home Page', () => {
 
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.locator('main h1')).toContainText("Hi, I'm Alan Nunes");
+  });
+
+  test('should provide valid modern SVG and PNG favicons', async ({ page, request }) => {
+    await page.goto('/');
+
+    const svgFavicon = page.locator('link[rel="icon"][type="image/svg+xml"]');
+    await expect(svgFavicon).toHaveAttribute('href', '/favicon.svg');
+
+    const pngFavicon = page.locator('link[rel="icon"][type="image/png"]');
+    await expect(pngFavicon).toHaveAttribute('href', '/favicon.png');
+
+    const svgRes = await request.get('/favicon.svg');
+    expect(svgRes.status()).toBe(200);
+
+    const pngRes = await request.get('/favicon.png');
+    expect(pngRes.status()).toBe(200);
   });
 });

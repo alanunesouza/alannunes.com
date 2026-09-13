@@ -14,9 +14,19 @@ const policiesHref = currentLang === 'en' ? '/en/policies' : '/policies';
 <footer
   class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
 >
-  <div>
-    © {new Date().getFullYear()}
-    {t('footer.rights')}
+  <div class="flex items-center gap-2">
+    <img
+      src="/favicon.svg"
+      alt=""
+      aria-hidden="true"
+      class="w-4 h-4 rounded-xs opacity-75 shrink-0"
+      width="16"
+      height="16"
+    />
+    <span>
+      © {new Date().getFullYear()}
+      {t('footer.rights')}
+    </span>
   </div>
   <div class="flex items-center gap-4">
     <a href={policiesHref} class="hover:text-[var(--text-primary)] transition-colors">{t('footer.privacy')}</a>

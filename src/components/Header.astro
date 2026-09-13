@@ -28,8 +28,21 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
 ---
 
 <header class="flex items-center justify-between pb-8 sm:pb-12 border-b border-[var(--border-subtle)]">
-  <a href={homeHref} class="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
-    ala<span class="text-[var(--color-brand-primary)]">n</span><span class="text-[var(--color-brand-accent)]">n</span>unes
+  <a
+    href={homeHref}
+    class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-85 transition-opacity group"
+  >
+    <img
+      src="/favicon.svg"
+      alt="Logo Alan Nunes"
+      class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg shadow-xs group-hover:scale-105 transition-transform shrink-0"
+      width="32"
+      height="32"
+    />
+    <span
+      >ala<span class="text-[var(--color-brand-primary)]">n</span><span class="text-[var(--color-brand-accent)]">n</span
+      >unes</span
+    >
   </a>
 
   <div class="flex items-center gap-4 sm:gap-6">

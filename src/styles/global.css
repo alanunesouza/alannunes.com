@@ -15,7 +15,7 @@
 
 :root {
   --brand-primary: #4f46e5;
-  --brand-accent: #c2410c;
+  --brand-accent: #0284c7;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-surface: #f1f5f9;
@@ -27,7 +27,7 @@
 
 .dark {
   --brand-primary: #818cf8;
-  --brand-accent: #fb923c;
+  --brand-accent: #38bdf8;
   --bg-primary: #090d16;
   --bg-secondary: #0f172a;
   --bg-surface: #1e293b;
