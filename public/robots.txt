@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alannunes.com/sitemap-index.xml

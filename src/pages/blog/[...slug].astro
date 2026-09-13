@@ -33,7 +33,7 @@ const words = post.body ? post.body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(words / 200));
 ---
 
-<BaseLayout title={`${title} | Alan Nunes`} description={`${title} - Artigo por ${author}`}>
+<BaseLayout title={`${title} | Alan Nunes`} description={`${title} - Artigo por ${author}`} type="article">
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
     <Header currentPath="/blog" />
 

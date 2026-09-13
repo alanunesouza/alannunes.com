@@ -59,4 +59,3 @@ alannunes.com/
 1. **Design & Estilo**: Seguir a identidade visual moderna e minimalista com Tailwind CSS v4, suporte total a Dark/Light mode com persistência em `localStorage` e prevenção de flash (FOUC).
 2. **Novos Posts**: Sempre criar arquivos de post em `src/posts/` no formato Markdown com frontmatter válido (`title`, `author`, `date`, `tags`).
 3. **Validação**: Sempre verificar integridade com `npm run check` e `npm run build` após criar ou alterar componentes ou páginas.
-
