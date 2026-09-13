@@ -3,6 +3,8 @@ title: Dicas para um dev, ao entrar em um novo desafio
 author: Alan
 date: 2023-01-07
 tags: ['dicas', 'carreira', 'design patterns', 'negocio', 'patterns', 'evolucao']
+lang: pt
+translationRef: dicas-para-um-dev
 ---
 
 <!-- Introduction to my blog post -->

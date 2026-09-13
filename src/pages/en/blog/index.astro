@@ -1,24 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import PostCard from '../../components/PostCard.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { useTranslations } from '../../../i18n/utils';
 
-const t = useTranslations('pt');
+const t = useTranslations('en');
 
-// Obter artigos em português ordenados do mais recente para o mais antigo
-const posts = await getCollection('blog', (p) => p.data.lang === 'pt');
+// Obter artigos em inglês ordenados do mais recente para o mais antigo
+const posts = await getCollection('blog', (p) => p.data.lang === 'en');
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <BaseLayout
   title="Blog | Alan Nunes"
-  description="Artigos e reflexões sobre engenharia de software, front-end, inteligência artificial e carreira técnica."
-  lang="pt"
+  description="Articles, engineering patterns, and thoughts on frontend development, artificial intelligence, and career."
+  lang="en"
 >
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
-    <Header currentPath="/blog" lang="pt" />
+    <Header currentPath="/en/blog" lang="en" />
 
     <main class="py-12 sm:py-16">
       <div class="space-y-3 mb-12">
@@ -28,11 +28,11 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
         </p>
       </div>
 
-      <!-- Listagem de Artigos -->
+      <!-- Article List -->
       <div class="flex flex-col gap-6">
         {
           posts.length > 0 ? (
-            posts.map((post) => <PostCard post={post} lang="pt" />)
+            posts.map((post) => <PostCard post={post} lang="en" />)
           ) : (
             <p class="text-sm text-[var(--text-muted)] py-12 text-center">{t('blog.empty')}</p>
           )
@@ -40,7 +40,7 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
       </div>
     </main>
 
-    <!-- Rodapé -->
+    <!-- Footer -->
     <footer
       class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
     >

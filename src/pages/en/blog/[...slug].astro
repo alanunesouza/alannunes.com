@@ -1,45 +1,45 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import { useTranslations } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
-  const ptPosts = allPosts.filter((post) => post.data.lang === 'pt');
+  const enPosts = allPosts.filter((post) => post.data.lang === 'en');
 
-  return ptPosts.map((post) => {
-    const slug = post.id.replace(/^pt\//, '');
-    const enPost = allPosts.find(
+  return enPosts.map((post) => {
+    const slug = post.id.replace(/^en\//, '');
+    const ptPost = allPosts.find(
       (p) =>
-        p.data.lang === 'en' &&
+        p.data.lang === 'pt' &&
         (p.data.translationRef === post.data.translationRef ||
           p.data.translationRef === slug ||
-          post.data.translationRef === p.id.replace(/^en\//, ''))
+          post.data.translationRef === p.id.replace(/^pt\//, ''))
     );
-    const enSlug = enPost ? enPost.id.replace(/^en\//, '') : null;
+    const ptSlug = ptPost ? ptPost.id.replace(/^pt\//, '') : null;
 
     return {
       params: { slug },
-      props: { post, enSlug },
+      props: { post, ptSlug },
     };
   });
 }
 
 interface Props {
   post: CollectionEntry<'blog'>;
-  enSlug: string | null;
+  ptSlug: string | null;
 }
 
-const { post, enSlug } = Astro.props;
+const { post, ptSlug } = Astro.props;
 const { title, date, tags, author, description } = post.data;
-const t = useTranslations('pt');
+const t = useTranslations('en');
 
 const { Content } = await render(post);
 
-// Formatação amigável de data em pt-BR
-const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+// Formatação amigável de data em en-US
+const formattedDate = new Intl.DateTimeFormat('en-US', {
   day: '2-digit',
   month: 'long',
   year: 'numeric',
@@ -49,26 +49,26 @@ const formattedDate = new Intl.DateTimeFormat('pt-BR', {
 const words = post.body ? post.body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(words / 200));
 
-const cleanSlug = post.id.replace(/^pt\//, '');
+const cleanSlug = post.id.replace(/^en\//, '');
 const alternatePath = {
-  pt: `/blog/${cleanSlug}`,
-  en: enSlug ? `/en/blog/${enSlug}` : '/en/blog',
+  en: `/en/blog/${cleanSlug}`,
+  pt: ptSlug ? `/blog/${ptSlug}` : '/blog',
 };
 ---
 
 <BaseLayout
   title={`${title} | Alan Nunes`}
-  description={description ?? `${title} - Artigo por ${author}`}
+  description={description ?? `${title} - Article by ${author}`}
   type="article"
-  lang="pt"
+  lang="en"
 >
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
-    <Header currentPath={`/blog/${cleanSlug}`} lang="pt" alternatePath={alternatePath} />
+    <Header currentPath={`/en/blog/${cleanSlug}`} lang="en" alternatePath={alternatePath} />
 
     <main class="py-12 sm:py-16">
-      <!-- Botão Voltar -->
+      <!-- Back Button -->
       <a
-        href="/blog"
+        href="/en/blog"
         class="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-8"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@ const alternatePath = {
         {t('blog.back')}
       </a>
 
-      <!-- Cabeçalho do Artigo -->
+      <!-- Article Header -->
       <header class="space-y-4 pb-8 border-b border-[var(--border-subtle)] mb-10">
         <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)]">
           <time datetime={date.toISOString()}>{formattedDate}</time>
@@ -104,17 +104,17 @@ const alternatePath = {
         }
       </header>
 
-      <!-- Conteúdo Formatado via Prose -->
+      <!-- Rendered Content via Prose -->
       <article
         class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[var(--color-brand-primary)] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-[var(--border-subtle)] prose-pre:rounded-xl prose-pre:border prose-pre:border-[var(--border-subtle)]"
       >
         <Content />
       </article>
 
-      <!-- Rodapé do Artigo -->
+      <!-- Article Footer Link -->
       <div class="mt-16 pt-8 border-t border-[var(--border-subtle)] flex items-center justify-between">
         <a
-          href="/blog"
+          href="/en/blog"
           class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-brand-primary)] hover:underline"
         >
           {t('blog.seeOther')}
@@ -122,7 +122,7 @@ const alternatePath = {
       </div>
     </main>
 
-    <!-- Rodapé -->
+    <!-- Footer -->
     <footer
       class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
     >

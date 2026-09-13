@@ -1,24 +1,28 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import PostCard from '../components/PostCard.astro';
-import profileImg from '../assets/profile.png';
-import { useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import PostCard from '../../components/PostCard.astro';
+import profileImg from '../../assets/profile.png';
+import { useTranslations } from '../../i18n/utils';
 
-const t = useTranslations('pt');
+const t = useTranslations('en');
 
-const posts = await getCollection('blog', (p) => p.data.lang === 'pt');
+const posts = await getCollection('blog', (p) => p.data.lang === 'en');
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const recentPosts = posts.slice(0, 3);
 ---
 
-<BaseLayout title="Alan Nunes | Senior Software Engineer" lang="pt">
+<BaseLayout
+  title="Alan Nunes | Senior Software Engineer"
+  description="Personal website and blog of Alan Nunes, Senior Software Engineer specializing in Front-End with an active focus on Artificial Intelligence."
+  lang="en"
+>
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
-    <Header currentPath="/" lang="pt" />
+    <Header currentPath="/en" lang="en" />
 
-    <!-- Apresentação Hero -->
+    <!-- Hero Section -->
     <main class="py-16">
       <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8">
         <div class="space-y-4">
@@ -48,7 +52,7 @@ const recentPosts = posts.slice(0, 3);
         </div>
       </div>
 
-      <!-- Links Sociais -->
+      <!-- Social Links -->
       <div class="mt-10 flex flex-wrap gap-4 text-sm font-medium">
         <a
           href="https://github.com/alanunesouza"
@@ -76,20 +80,20 @@ const recentPosts = posts.slice(0, 3);
         </a>
       </div>
 
-      <!-- Seção Artigos Recentes -->
+      <!-- Recent Articles Section -->
       {
         recentPosts.length > 0 && (
           <section class="mt-20 space-y-6">
             <div class="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)]">
               <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">{t('home.recentArticles')}</h2>
-              <a href="/blog" class="text-sm font-semibold text-[var(--color-brand-primary)] hover:underline">
+              <a href="/en/blog" class="text-sm font-semibold text-[var(--color-brand-primary)] hover:underline">
                 {t('home.viewAll')}
               </a>
             </div>
 
             <div class="flex flex-col gap-5">
               {recentPosts.map((post) => (
-                <PostCard post={post} lang="pt" />
+                <PostCard post={post} lang="en" />
               ))}
             </div>
           </section>
@@ -97,7 +101,7 @@ const recentPosts = posts.slice(0, 3);
       }
     </main>
 
-    <!-- Rodapé Minimalista -->
+    <!-- Minimalist Footer -->
     <footer
       class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
     >

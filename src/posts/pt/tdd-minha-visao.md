@@ -3,6 +3,8 @@ title: TDD (Test Driven Development) - minha visão sobre o assunto
 author: Alan
 date: 2022-02-20
 tags: ['produtividade', 'carreira', 'design patterns', 'testes', 'tdd']
+lang: pt
+translationRef: tdd-minha-visao
 ---
 
 <!-- Introduction to my blog post -->

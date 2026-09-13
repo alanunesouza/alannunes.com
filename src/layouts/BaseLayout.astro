@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
+import type { Lang } from '../i18n/utils';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  lang?: Lang;
 }
 
 const {
@@ -13,15 +15,19 @@ const {
   description = 'Site pessoal e blog de Alan Nunes, Senior Software Engineer especialista em Front-End e em especialização em Inteligência Artificial.',
   image = '/favicon.png',
   type = 'website',
+  lang = 'pt',
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL('https://alannunes.com');
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const socialImageURL = new URL(image, siteUrl);
+
+const htmlLang = lang === 'en' ? 'en' : 'pt-BR';
+const ogLocale = lang === 'en' ? 'en_US' : 'pt_BR';
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,7 +50,7 @@ const socialImageURL = new URL(image, siteUrl);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />

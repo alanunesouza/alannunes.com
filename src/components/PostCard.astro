@@ -1,15 +1,21 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  lang?: Lang;
 }
 
 const { post } = Astro.props;
-const { title, date, tags } = post.data;
+const { title, date, tags, lang: postLang = 'pt' } = post.data;
+const lang = Astro.props.lang ?? postLang;
+const t = useTranslations(lang);
 
-// Formatação amigável em pt-BR
-const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+// Formatação amigável de data conforme o idioma
+const locale = lang === 'en' ? 'en-US' : 'pt-BR';
+const formattedDate = new Intl.DateTimeFormat(locale, {
   day: '2-digit',
   month: 'long',
   year: 'numeric',
@@ -19,8 +25,9 @@ const formattedDate = new Intl.DateTimeFormat('pt-BR', {
 const words = post.body ? post.body.trim().split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(words / 200));
 
-// Slug do artigo (post.id remove a extensão .md no glob loader)
-const postSlug = `/blog/${post.id}`;
+// Remove o prefixo do idioma (ex: 'pt/' ou 'en/') do ID para gerar o slug limpo
+const cleanSlug = post.id.replace(/^(pt|en)\//, '');
+const postSlug = lang === 'en' ? `/en/blog/${cleanSlug}` : `/blog/${cleanSlug}`;
 ---
 
 <article
@@ -29,7 +36,7 @@ const postSlug = `/blog/${post.id}`;
   <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--text-muted)] mb-3">
     <time datetime={date.toISOString()}>{formattedDate}</time>
     <span>•</span>
-    <span>{readingTime} min de leitura</span>
+    <span>{readingTime} {t('post.readTime')}</span>
   </div>
 
   <h2

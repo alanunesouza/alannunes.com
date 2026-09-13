@@ -1,44 +1,83 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
 interface Props {
   currentPath?: string;
+  lang?: Lang;
+  alternatePath?: {
+    pt?: string;
+    en?: string;
+  };
 }
 
-const { currentPath = Astro.url.pathname } = Astro.props;
+const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
+const currentLang = Astro.props.lang ?? getLangFromUrl(Astro.url);
+const alternatePath = Astro.props.alternatePath;
+const t = useTranslations(currentLang);
 
-const isBlog = currentPath.startsWith('/blog');
-const isAbout = currentPath.startsWith('/about');
+const homeHref = currentLang === 'en' ? '/en' : '/';
+const blogHref = currentLang === 'en' ? '/en/blog' : '/blog';
+const aboutHref = currentLang === 'en' ? '/en/about' : '/about';
+
+const isBlog = currentPath.startsWith('/blog') || currentPath.startsWith('/en/blog');
+const isAbout = currentPath.startsWith('/about') || currentPath.startsWith('/en/about');
+
+const ptHref = alternatePath?.pt ?? getLocalizedPath(currentPath, 'pt');
+const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
 ---
 
 <header class="flex items-center justify-between pb-8 sm:pb-12 border-b border-[var(--border-subtle)]">
-  <a href="/" class="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
+  <a href={homeHref} class="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
     ala<span class="text-[var(--color-brand-primary)]">n</span><span class="text-[var(--color-brand-accent)]">n</span>unes
   </a>
 
-  <div class="flex items-center gap-6">
-    <nav class="flex items-center gap-5 text-sm font-medium">
+  <div class="flex items-center gap-4 sm:gap-6">
+    <nav class="flex items-center gap-4 sm:gap-5 text-sm font-medium">
       <a
-        href="/blog"
+        href={blogHref}
         class={`transition-colors ${isBlog ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
       >
-        Blog
+        {t('nav.blog')}
       </a>
       <a
-        href="/about"
+        href={aboutHref}
         class={`transition-colors ${isAbout ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
       >
-        Sobre
+        {t('nav.about')}
       </a>
     </nav>
+
+    <!-- Seletor de Idioma Minimalista (PT | EN) -->
+    <div
+      class="flex items-center gap-1 px-1 py-0.5 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs font-semibold"
+    >
+      <a
+        href={ptHref}
+        class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'pt' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+        aria-label="Mudar para Português"
+      >
+        PT
+      </a>
+      <span class="text-[var(--border-subtle)] text-[10px]">|</span>
+      <a
+        href={enHref}
+        class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'en' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+        aria-label="Switch to English"
+      >
+        EN
+      </a>
+    </div>
 
     <!-- Botão Minimalista de Tema -->
     <button
       id="theme-toggle"
       type="button"
-      aria-label="Alternar tema"
+      aria-label={t('theme.toggle')}
       class="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
     >
       <!-- Sol (exibido no modo escuro) -->
-      <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="theme-icon-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -47,7 +86,7 @@ const isAbout = currentPath.startsWith('/about');
         ></path>
       </svg>
       <!-- Lua (exibido no modo claro) -->
-      <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="theme-icon-moon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"

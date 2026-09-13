@@ -3,6 +3,8 @@ title: Pandemia chegou! E a minha produtividade?
 author: Alan
 date: 2020-03-26
 tags: ['produtividade', 'carreira']
+lang: pt
+translationRef: pandemia-chegou-produtividade
 ---
 
 <!-- Introduction to my blog post -->
