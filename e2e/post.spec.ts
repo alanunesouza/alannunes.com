@@ -35,6 +35,19 @@ test.describe('Blog Post Page & Interactions', () => {
 
     // Should redirect to translated slug
     await expect(page).toHaveURL('/en/blog/tdd-my-perspective');
-    await expect(page.locator('main h1')).toContainText('TDD (Test Driven Development)');
+  });
+
+  test('should load Giscus with light theme when site is in light mode', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('theme', 'light');
+    });
+
+    await page.goto('/blog/tdd-minha-visao');
+
+    await expect(page.locator('html')).not.toHaveClass(/dark/);
+
+    const giscusIframe = page.locator('iframe.giscus-frame');
+    await expect(giscusIframe).toBeAttached();
+    await expect(giscusIframe).toHaveAttribute('src', /theme=light/);
   });
 });

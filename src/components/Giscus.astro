@@ -17,24 +17,86 @@ const categoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
   <div class="giscus-wrapper min-h-[160px]">
     {
       repoId && categoryId ? (
-        <script
-          is:inline
-          src="https://giscus.app/client.js"
-          data-repo={repo}
-          data-repo-id={repoId}
-          data-category="Announcements"
-          data-category-id={categoryId}
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang={lang === 'en' ? 'en' : 'pt'}
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async
-        />
+        <>
+          <div id="giscus-container" />
+          <script
+            is:inline
+            set:html={`
+            (function() {
+              const repo = "${repo}";
+              const repoId = "${repoId}";
+              const categoryId = "${categoryId}";
+              const lang = "${lang === 'en' ? 'en' : 'pt'}";
+
+              function getCurrentTheme() {
+                return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+              }
+
+              function initGiscus() {
+                const container = document.getElementById('giscus-container');
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                const script = document.createElement('script');
+                script.src = 'https://giscus.app/client.js';
+                script.setAttribute('data-repo', repo);
+                script.setAttribute('data-repo-id', repoId);
+                script.setAttribute('data-category', 'Announcements');
+                script.setAttribute('data-category-id', categoryId);
+                script.setAttribute('data-mapping', 'pathname');
+                script.setAttribute('data-strict', '0');
+                script.setAttribute('data-reactions-enabled', '1');
+                script.setAttribute('data-emit-metadata', '0');
+                script.setAttribute('data-input-position', 'top');
+                script.setAttribute('data-theme', getCurrentTheme());
+                script.setAttribute('data-lang', lang);
+                script.setAttribute('data-loading', 'lazy');
+                script.crossOrigin = 'anonymous';
+                script.async = true;
+
+                container.appendChild(script);
+              }
+
+              function syncGiscusTheme() {
+                const theme = getCurrentTheme();
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe && iframe.contentWindow) {
+                  iframe.contentWindow.postMessage(
+                    {
+                      giscus: {
+                        setConfig: {
+                          theme: theme,
+                        },
+                      },
+                    },
+                    'https://giscus.app'
+                  );
+                }
+              }
+
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initGiscus);
+              } else {
+                initGiscus();
+              }
+
+              window.addEventListener('message', function(event) {
+                if (event.origin !== 'https://giscus.app') return;
+                if (typeof event.data !== 'object' || !event.data.giscus) return;
+                syncGiscusTheme();
+              });
+
+              const themeObserver = new MutationObserver(function() {
+                syncGiscusTheme();
+              });
+              themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+              document.addEventListener('astro:page-load', initGiscus);
+            })();
+          `}
+          />
+        </>
       ) : (
         <div class="p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-center text-sm text-[var(--text-muted)] space-y-2">
           <p class="font-semibold text-[var(--text-primary)]">
@@ -50,31 +112,3 @@ const categoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
     }
   </div>
 </section>
-
-<script is:inline>
-  function syncGiscusTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    const theme = isDark ? 'dark' : 'light';
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (iframe && iframe.contentWindow) {
-      iframe.contentWindow.postMessage(
-        {
-          giscus: {
-            setConfig: {
-              theme: theme,
-            },
-          },
-        },
-        'https://giscus.app'
-      );
-    }
-  }
-
-  // Observa mudanças de classe no elemento <html> para sincronizar tema
-  const themeObserver = new MutationObserver(() => {
-    syncGiscusTheme();
-  });
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-  document.addEventListener('astro:page-load', syncGiscusTheme);
-</script>
