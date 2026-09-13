@@ -9,27 +9,31 @@
     'Helvetica Neue', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  --color-brand-primary: #6373ff;
-  --color-brand-accent: #ff8b07;
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
 }
 
 :root {
+  --brand-primary: #4f46e5;
+  --brand-accent: #c2410c;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-surface: #f1f5f9;
   --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
+  --text-secondary: #334155;
+  --text-muted: #475569;
   --border-subtle: #e2e8f0;
 }
 
 .dark {
+  --brand-primary: #818cf8;
+  --brand-accent: #fb923c;
   --bg-primary: #090d16;
   --bg-secondary: #0f172a;
   --bg-surface: #1e293b;
   --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
   --border-subtle: #1e293b;
 }
 
@@ -41,4 +45,9 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
 }

@@ -55,7 +55,7 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
       <a
         href={ptHref}
         class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'pt' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
-        aria-label="Mudar para Português"
+        aria-label="PT - Português"
       >
         PT
       </a>
@@ -63,7 +63,7 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
       <a
         href={enHref}
         class={`px-2 py-0.5 rounded transition-colors ${currentLang === 'en' ? 'bg-[var(--bg-secondary)] text-[var(--color-brand-primary)] shadow-xs' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
-        aria-label="Switch to English"
+        aria-label="EN - English"
       >
         EN
       </a>

@@ -1,0 +1,31 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const currentLang = Astro.props.lang ?? getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const policiesHref = currentLang === 'en' ? '/en/policies' : '/policies';
+---
+
+<footer
+  class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
+>
+  <div>
+    © {new Date().getFullYear()}
+    {t('footer.rights')}
+  </div>
+  <div class="flex items-center gap-4">
+    <a href={policiesHref} class="hover:text-[var(--text-primary)] transition-colors">{t('footer.privacy')}</a>
+    <span>•</span>
+    <a
+      href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hover:text-[var(--text-primary)] transition-colors">{t('footer.terms')}</a
+    >
+  </div>
+</footer>

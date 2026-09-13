@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
@@ -8,7 +9,14 @@ import Header from '../components/Header.astro';
   description="Políticas de privacidade e uso de cookies do site alannunes.com."
 >
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
-    <Header currentPath="/policies" />
+    <Header
+      currentPath="/policies"
+      lang="pt"
+      alternatePath={{
+        pt: '/policies',
+        en: '/en/policies',
+      }}
+    />
 
     <main class="py-12 sm:py-16">
       <article
@@ -75,18 +83,6 @@ import Header from '../components/Header.astro';
       </article>
     </main>
 
-    <!-- Rodapé -->
-    <footer
-      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
-    >
-      <div>
-        © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="/" class="hover:text-[var(--text-primary)] transition-colors">Início</a>
-        <span>•</span>
-        <a href="/blog" class="hover:text-[var(--text-primary)] transition-colors">Blog</a>
-      </div>
-    </footer>
+    <Footer lang="pt" />
   </div>
 </BaseLayout>

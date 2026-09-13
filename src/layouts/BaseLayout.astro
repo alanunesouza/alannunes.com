@@ -122,6 +122,12 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     </script>
   </head>
   <body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-200">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-brand-primary)] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none text-sm font-semibold"
+    >
+      {lang === 'en' ? 'Skip to content' : 'Pular para o conteúdo'}
+    </a>
     <slot />
   </body>
 </html>

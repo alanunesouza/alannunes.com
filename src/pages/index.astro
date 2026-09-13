@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
 import profileImg from '../assets/profile.png';
 import { useTranslations } from '../i18n/utils';
@@ -19,7 +20,7 @@ const recentPosts = posts.slice(0, 3);
     <Header currentPath="/" lang="pt" />
 
     <!-- Apresentação Hero -->
-    <main class="py-16">
+    <main id="main-content" class="py-16">
       <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-8">
         <div class="space-y-4">
           <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
@@ -48,46 +49,46 @@ const recentPosts = posts.slice(0, 3);
         </div>
       </div>
 
-      <!-- Links Sociais -->
-      <div class="mt-10 flex flex-wrap gap-4 text-sm font-medium">
+      <!-- Links Sociais Minimalistas -->
+      <div class="flex flex-wrap items-center gap-3 pt-8">
         <a
           href="https://github.com/alanunesouza"
           target="_blank"
           rel="noopener noreferrer"
           class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
         >
-          GitHub →
+          GitHub
         </a>
         <a
-          href="https://www.linkedin.com/in/alanunesouza"
+          href="https://linkedin.com/in/alannunesouza"
           target="_blank"
           rel="noopener noreferrer"
           class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
         >
-          LinkedIn →
+          LinkedIn
         </a>
         <a
-          href="https://twitter.com/alanhnunes"
+          href="https://instagram.com/alannunesouza"
           target="_blank"
           rel="noopener noreferrer"
           class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-accent)] transition-colors"
         >
-          Twitter / X →
+          Instagram
         </a>
       </div>
 
-      <!-- Seção Artigos Recentes -->
+      <!-- Artigos Recentes -->
       {
         recentPosts.length > 0 && (
-          <section class="mt-20 space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)]">
-              <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">{t('home.recentArticles')}</h2>
+          <section class="pt-16 sm:pt-20">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-2xl font-bold tracking-tight text-[var(--text-primary)]">{t('home.recentArticles')}</h2>
               <a href="/blog" class="text-sm font-semibold text-[var(--color-brand-primary)] hover:underline">
                 {t('home.viewAll')}
               </a>
             </div>
 
-            <div class="flex flex-col gap-5">
+            <div class="grid gap-6">
               {recentPosts.map((post) => (
                 <PostCard post={post} lang="pt" />
               ))}
@@ -97,24 +98,6 @@ const recentPosts = posts.slice(0, 3);
       }
     </main>
 
-    <!-- Rodapé Minimalista -->
-    <footer
-      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
-    >
-      <div>
-        © {new Date().getFullYear()}
-        {t('footer.rights')}
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">{t('footer.privacy')}</a>
-        <span>•</span>
-        <a
-          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-[var(--text-primary)] transition-colors">{t('footer.terms')}</a
-        >
-      </div>
-    </footer>
+    <Footer lang="pt" />
   </div>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 ---
 
 <BaseLayout
@@ -9,9 +10,16 @@ import Header from '../../components/Header.astro';
   lang="en"
 >
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
-    <Header currentPath="/en/about" lang="en" />
+    <Header
+      currentPath="/en/about"
+      lang="en"
+      alternatePath={{
+        pt: '/about',
+        en: '/en/about',
+      }}
+    />
 
-    <main class="py-12 sm:py-16">
+    <main id="main-content" class="py-12 sm:py-16">
       <div class="space-y-4 mb-12">
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">About Me</h1>
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -44,87 +52,70 @@ import Header from '../../components/Header.astro';
         <p>
           That persistence opened doors. In consulting (Opah IT), I engineered solutions for major enterprise clients such as <strong
             class="text-[var(--text-primary)]">Gerdau, SENAC, and CVC</strong
-          >. Later, I tackled the high concurrency and massive scale of Brazilian e-commerce at <strong
-            class="text-[var(--text-primary)]">B2W Digital</strong
-          > (Americanas, Submarino, and Shoptime), working across critical post-purchase systems. I further honed my senior leadership
-          at <strong class="text-[var(--text-primary)]">Luizalabs</strong>, contributing to one of the most innovative
-          technology ecosystems in Latin America.
+          >. Next, I tackled high-scale challenges in Brazilian e-commerce at <strong class="text-[var(--text-primary)]"
+            >B2W Digital</strong
+          > (Americanas, Submarino, Shoptime), focusing on critical post-purchase journeys, and solidified my senior engineering
+          practice at
+          <strong class="text-[var(--text-primary)]">Luizalabs</strong>, contributing to one of the most innovative tech
+          ecosystems in Latin America.
         </p>
 
         <p>
-          Currently, I am a <strong class="text-[var(--text-primary)]">Senior Software Engineer</strong> at{' '}
-          <a
-            href="https://www.mercadolivre.com.br"
+          Currently, I am a <strong class="text-[var(--text-primary)]">Senior Software Engineer at Mercado Libre</strong>,
+          building and scaling resilient, accessible, and high-performance front-end applications with <a
+            href="https://react.dev"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[var(--color-brand-primary)] font-semibold hover:underline"
-          >
-            Mercado Libre
-          </a>
-          . My primary specialization is in <strong class="text-[var(--text-primary)]">Front-End</strong> and modern web architecture,
-          combining technical precision, performance, and refined user experience. In continuous evolution, I am actively specializing
-          in <strong class="text-[var(--color-brand-accent)]">Artificial Intelligence</strong>, alongside solid experience
-          and practical knowledge building solutions in <strong class="text-[var(--text-primary)]">Back-End</strong> ecosystems.
+            class="text-[var(--color-brand-primary)] font-semibold hover:underline">React</a
+          >, TypeScript, and modern distributed architectures.
         </p>
 
         <p>
-          I keep my craft constantly sharpening: I hold postgraduate specializations in <strong
+          Committed to continuous growth, I completed postgraduate specializations in <strong
             class="text-[var(--text-primary)]">Software Engineering</strong
-          > and in <strong class="text-[var(--text-primary)]">Applied Artificial Intelligence</strong>. I believe great
-          engineering unites technical rigor, clarity, and human impact — building technologies that elevate the everyday
-          lives of millions.
+          > and <strong class="text-[var(--text-primary)]">Applied Artificial Intelligence</strong>, alongside holding the
+          international
+          <strong class="text-[var(--text-primary)]">AWS Certified Cloud Practitioner</strong> certification. I believe top-tier
+          engineering combines technical rigor, simplicity, and human impact — creating software that enhances everyday lives.
         </p>
       </div>
 
       <!-- Social & Connect Links -->
-      <div class="mt-14 pt-8 border-t border-[var(--border-subtle)] space-y-4">
-        <h2 class="text-xl font-bold text-[var(--text-primary)]">Connect with me</h2>
-        <div class="flex flex-wrap gap-4 text-sm font-medium">
+      <div class="pt-12 mt-12 border-t border-[var(--border-subtle)] space-y-4">
+        <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">Connect with me</h2>
+        <p class="text-[var(--text-secondary)]">
+          Feel free to reach out to discuss software engineering, front-end architecture, AI, or opportunities:
+        </p>
+
+        <div class="flex flex-wrap gap-3 pt-2">
           <a
             href="https://github.com/alanunesouza"
             target="_blank"
             rel="noopener noreferrer"
             class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
           >
-            GitHub →
+            GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/alanunesouza"
+            href="https://linkedin.com/in/alannunesouza"
             target="_blank"
             rel="noopener noreferrer"
             class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
           >
-            LinkedIn →
+            LinkedIn
           </a>
           <a
-            href="https://twitter.com/alanhnunes"
+            href="https://instagram.com/alannunesouza"
             target="_blank"
             rel="noopener noreferrer"
             class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-accent)] transition-colors"
           >
-            Twitter / X →
+            Instagram
           </a>
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer
-      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
-    >
-      <div>
-        © {new Date().getFullYear()} alannunes.com • All rights reserved.
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacy</a>
-        <span>•</span>
-        <a
-          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-[var(--text-primary)] transition-colors">Terms</a
-        >
-      </div>
-    </footer>
+    <Footer lang="en" />
   </div>
 </BaseLayout>

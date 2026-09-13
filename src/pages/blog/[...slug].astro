@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 import CopyCode from '../../components/CopyCode.astro';
 import Giscus from '../../components/Giscus.astro';
 import { useTranslations } from '../../i18n/utils';
@@ -67,7 +68,7 @@ const alternatePath = {
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
     <Header currentPath={`/blog/${cleanSlug}`} lang="pt" alternatePath={alternatePath} />
 
-    <main class="py-12 sm:py-16">
+    <main id="main-content" class="py-12 sm:py-16">
       <!-- Botão Voltar -->
       <a
         href="/blog"
@@ -97,7 +98,7 @@ const alternatePath = {
           tags && tags.length > 0 && (
             <div class="flex flex-wrap gap-2 pt-2">
               {tags.map((tag) => (
-                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] border border-[var(--border-subtle)] font-medium">
                   #{tag}
                 </span>
               ))}
@@ -106,7 +107,7 @@ const alternatePath = {
         }
       </header>
 
-      <!-- Conteúdo Formatado via Prose -->
+      <!-- Conteúdo do Artigo -->
       <article
         class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[var(--color-brand-primary)] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-[var(--border-subtle)] prose-pre:rounded-xl prose-pre:border prose-pre:border-[var(--border-subtle)]"
       >
@@ -129,24 +130,6 @@ const alternatePath = {
       <Giscus lang="pt" />
     </main>
 
-    <!-- Rodapé -->
-    <footer
-      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
-    >
-      <div>
-        © {new Date().getFullYear()}
-        {t('footer.rights')}
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">{t('footer.privacy')}</a>
-        <span>•</span>
-        <a
-          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-[var(--text-primary)] transition-colors">{t('footer.terms')}</a
-        >
-      </div>
-    </footer>
+    <Footer lang="pt" />
   </div>
 </BaseLayout>

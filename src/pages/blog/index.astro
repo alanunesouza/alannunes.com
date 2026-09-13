@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/PostCard.astro';
 import BlogFilter from '../../components/BlogFilter.astro';
 import { useTranslations } from '../../i18n/utils';
@@ -24,7 +25,7 @@ const allTags = Array.from(new Set(posts.flatMap((p) => p.data.tags || []))).sor
   <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
     <Header currentPath="/blog" lang="pt" />
 
-    <main class="py-12 sm:py-16">
+    <main id="main-content" class="py-12 sm:py-16">
       <div class="space-y-3 mb-10">
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">{t('blog.title')}</h1>
         <p class="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -47,24 +48,6 @@ const allTags = Array.from(new Set(posts.flatMap((p) => p.data.tags || []))).sor
       </div>
     </main>
 
-    <!-- Rodapé -->
-    <footer
-      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
-    >
-      <div>
-        © {new Date().getFullYear()}
-        {t('footer.rights')}
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">{t('footer.privacy')}</a>
-        <span>•</span>
-        <a
-          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-[var(--text-primary)] transition-colors">{t('footer.terms')}</a
-        >
-      </div>
-    </footer>
+    <Footer lang="pt" />
   </div>
 </BaseLayout>
