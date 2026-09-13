@@ -1,0 +1,156 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  tags: string[];
+  lang?: Lang;
+}
+
+const { tags, lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="space-y-6 mb-10">
+  <!-- Search Input -->
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[var(--text-muted)]">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
+      </svg>
+    </div>
+    <input
+      id="blog-search-input"
+      type="text"
+      placeholder={t('blog.searchPlaceholder')}
+      class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--color-brand-primary)] transition-colors"
+      aria-label={t('blog.searchPlaceholder')}
+    />
+    <button
+      id="blog-search-clear"
+      type="button"
+      class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-[var(--text-muted)] hover:text-[var(--text-primary)] cursor-pointer"
+      aria-label={t('blog.clearSearch')}
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Tag Pills -->
+  {
+    tags.length > 0 && (
+      <div class="flex flex-wrap items-center gap-2" id="blog-tags-container">
+        <button
+          type="button"
+          data-tag="all"
+          class="blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] transition-all cursor-pointer"
+        >
+          {t('blog.allTags')}
+        </button>
+        {tags.map((tag) => (
+          <button
+            type="button"
+            data-tag={tag.toLowerCase()}
+            class="blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)]/50 transition-all cursor-pointer"
+          >
+            #{tag}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  <!-- Mensagem de Nenhum Resultado -->
+  <p id="blog-no-results" class="hidden text-sm text-[var(--text-muted)] py-12 text-center">
+    {t('blog.noResults')}
+  </p>
+</div>
+
+<script is:inline>
+  function setupBlogFilter() {
+    const input = document.getElementById('blog-search-input');
+    const clearBtn = document.getElementById('blog-search-clear');
+    const tagButtons = document.querySelectorAll('.blog-tag-pill');
+    const cards = document.querySelectorAll('.post-card');
+    const noResults = document.getElementById('blog-no-results');
+
+    if (!input || !cards.length) return;
+
+    let selectedTag = 'all';
+    let searchQuery = '';
+
+    function filterPosts() {
+      let visibleCount = 0;
+      const query = searchQuery.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const title = card.getAttribute('data-title') || '';
+        const tags = card.getAttribute('data-tags') || '';
+
+        const matchesQuery = !query || title.includes(query) || tags.includes(query);
+        const matchesTag = selectedTag === 'all' || tags.split(',').includes(selectedTag);
+
+        if (matchesQuery && matchesTag) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+
+      if (clearBtn) {
+        if (searchQuery.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    input.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      filterPosts();
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        input.value = '';
+        searchQuery = '';
+        input.focus();
+        filterPosts();
+      });
+    }
+
+    tagButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        selectedTag = btn.getAttribute('data-tag') || 'all';
+
+        tagButtons.forEach((b) => {
+          if (b.getAttribute('data-tag') === selectedTag) {
+            b.className =
+              'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] transition-all cursor-pointer';
+          } else {
+            b.className =
+              'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)]/50 transition-all cursor-pointer';
+          }
+        });
+
+        filterPosts();
+      });
+    });
+  }
+
+  setupBlogFilter();
+  document.addEventListener('astro:page-load', setupBlogFilter);
+</script>

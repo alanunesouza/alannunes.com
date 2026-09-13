@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Header from '../../../components/Header.astro';
 import PostCard from '../../../components/PostCard.astro';
+import BlogFilter from '../../../components/BlogFilter.astro';
 import { useTranslations } from '../../../i18n/utils';
 
 const t = useTranslations('en');
@@ -10,6 +11,9 @@ const t = useTranslations('en');
 // Obter artigos em inglês ordenados do mais recente para o mais antigo
 const posts = await getCollection('blog', (p) => p.data.lang === 'en');
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Unique tags for filter
+const allTags = Array.from(new Set(posts.flatMap((p) => p.data.tags || []))).sort();
 ---
 
 <BaseLayout
@@ -21,15 +25,18 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     <Header currentPath="/en/blog" lang="en" />
 
     <main class="py-12 sm:py-16">
-      <div class="space-y-3 mb-12">
+      <div class="space-y-3 mb-10">
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">{t('blog.title')}</h1>
         <p class="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
           {t('blog.subtitle')}
         </p>
       </div>
 
+      <!-- Search & Tag Filter -->
+      <BlogFilter tags={allTags} lang="en" />
+
       <!-- Article List -->
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6" id="blog-posts-list">
         {
           posts.length > 0 ? (
             posts.map((post) => <PostCard post={post} lang="en" />)
