@@ -74,38 +74,46 @@ const t = useTranslations(lang);
     const input = document.getElementById('blog-search-input');
     const clearBtn = document.getElementById('blog-search-clear');
     const tagButtons = document.querySelectorAll('.blog-tag-pill');
-    const cards = document.querySelectorAll('.post-card');
     const noResults = document.getElementById('blog-no-results');
 
-    if (!input || !cards.length) return;
+    if (!input) return;
 
     let selectedTag = 'all';
     let searchQuery = '';
 
     function filterPosts() {
+      const cards = document.querySelectorAll('.post-card');
       let visibleCount = 0;
-      const query = searchQuery.trim().toLowerCase();
+      const cleanQuery = searchQuery.trim().toLowerCase().replace(/^#/, '');
 
       cards.forEach((card) => {
-        const title = card.getAttribute('data-title') || '';
-        const tags = card.getAttribute('data-tags') || '';
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const rawTags = (card.getAttribute('data-tags') || '').toLowerCase();
+        const tagsList = rawTags
+          .split(',')
+          .map((t) => t.trim())
+          .filter(Boolean);
 
-        const matchesQuery = !query || title.includes(query) || tags.includes(query);
-        const matchesTag = selectedTag === 'all' || tags.split(',').includes(selectedTag);
+        const matchesQuery = !cleanQuery || title.includes(cleanQuery) || rawTags.includes(cleanQuery);
+        const matchesTag = selectedTag === 'all' || tagsList.includes(selectedTag);
 
         if (matchesQuery && matchesTag) {
           card.classList.remove('hidden');
+          card.style.display = '';
           visibleCount++;
         } else {
           card.classList.add('hidden');
+          card.style.display = 'none';
         }
       });
 
       if (noResults) {
         if (visibleCount === 0) {
           noResults.classList.remove('hidden');
+          noResults.style.display = 'block';
         } else {
           noResults.classList.add('hidden');
+          noResults.style.display = 'none';
         }
       }
 
@@ -118,39 +126,52 @@ const t = useTranslations(lang);
       }
     }
 
-    input.addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      filterPosts();
-    });
+    // Previne múltiplos listeners duplicados
+    if (!input.dataset.filterBound) {
+      input.dataset.filterBound = 'true';
 
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        input.value = '';
-        searchQuery = '';
-        input.focus();
+      input.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
         filterPosts();
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          searchQuery = '';
+          input.focus();
+          filterPosts();
+        });
+      }
+
+      tagButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          selectedTag = btn.getAttribute('data-tag') || 'all';
+
+          tagButtons.forEach((b) => {
+            if (b.getAttribute('data-tag') === selectedTag) {
+              b.className =
+                'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] transition-all cursor-pointer';
+            } else {
+              b.className =
+                'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)]/50 transition-all cursor-pointer';
+            }
+          });
+
+          filterPosts();
+        });
       });
     }
 
-    tagButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        selectedTag = btn.getAttribute('data-tag') || 'all';
-
-        tagButtons.forEach((b) => {
-          if (b.getAttribute('data-tag') === selectedTag) {
-            b.className =
-              'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] transition-all cursor-pointer';
-          } else {
-            b.className =
-              'blog-tag-pill px-3 py-1.5 rounded-lg text-xs font-medium border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)]/50 transition-all cursor-pointer';
-          }
-        });
-
-        filterPosts();
-      });
-    });
+    // Executa uma vez no carregamento
+    filterPosts();
   }
 
-  setupBlogFilter();
+  // Garante execução após o DOM completo estar pronto
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupBlogFilter);
+  } else {
+    setupBlogFilter();
+  }
   document.addEventListener('astro:page-load', setupBlogFilter);
 </script>
