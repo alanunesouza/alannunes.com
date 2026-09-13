@@ -39,8 +39,8 @@ For each acceptance criterion in `spec.md`, the Verifier re-derives the **spec-d
 
 **Acceptance Criteria**:
 
-| Criterion (WHEN X THEN Y) | Spec-defined outcome | `file:line` + assertion expression | Result |
-| ------------------------- | -------------------- | ---------------------------------- | ------ |
+| Criterion (WHEN X THEN Y) | Spec-defined outcome            | `file:line` + assertion expression                           | Result                                   |
+| ------------------------- | ------------------------------- | ------------------------------------------------------------ | ---------------------------------------- |
 | WHEN [X] THEN [Y]         | [precise value/state from spec] | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | ✅ PASS / ❌ GAP / ⚠️ Spec-precision gap |
 ```
 
@@ -84,8 +84,8 @@ The sensor provides the empirical guarantee that the tests can actually detect r
 1. **Prepare an isolated scratch.** Never mutate the real worktree. Choose one:
    - Preferred: a temporary git worktree (`git worktree add <scratch-path> HEAD`), mutate and run tests there, then `git worktree remove --force <scratch-path>`.
    - Fallback (no git / worktree unavailable): copy only the affected file(s) to a temp directory, mutate the copies, point the test runner at those copies (or restore originals from the copies' backups), then delete the temp directory.
-   - **Forbidden:** `git stash` / `git stash pop`. A stash records state *before* the mutation; popping it does not reverse a mutation applied afterward, and on a clean tree `git stash` creates no entry at all - so the fault is left in the real worktree.
-2. **Capture a baseline.** Record `git status --porcelain` (or equivalent) of the real worktree *before* any sensor work. It must be unchanged after cleanup.
+   - **Forbidden:** `git stash` / `git stash pop`. A stash records state _before_ the mutation; popping it does not reverse a mutation applied afterward, and on a clean tree `git stash` creates no entry at all - so the fault is left in the real worktree.
+2. **Capture a baseline.** Record `git status --porcelain` (or equivalent) of the real worktree _before_ any sensor work. It must be unchanged after cleanup.
 3. **Inject a behavior-level fault** into the scratch copy of the new code introduced by this feature. Choose a mutation proportional to the code's risk:
    - Flip a boolean condition (`if (x)` → `if (!x)`, `>` → `>=`)
    - Change a return value (return a wrong status code, wrong field, zero instead of a computed value)
@@ -98,9 +98,9 @@ The sensor provides the empirical guarantee that the tests can actually detect r
 
 **Tiering (proportional, not optional):**
 
-| Context | Sensor depth |
-| ------- | ------------ |
-| Default (all features) | Lightweight fault-injection: 1-3 targeted behavior-level mutations per feature, focused on the highest-risk new code |
+| Context                                             | Sensor depth                                                                                                                                                                                                            |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default (all features)                              | Lightweight fault-injection: 1-3 targeted behavior-level mutations per feature, focused on the highest-risk new code                                                                                                    |
 | P0 / critical paths (payment, auth, data integrity) | Full mutation run: use language-appropriate mutation tooling if available (e.g., Stryker, mutmut, cargo-mutants, pitest); otherwise increase the number of manual fault-injection mutations to ≥5 covering all branches |
 
 **Stack-agnostic:** The sensor targets behavior-level semantics (what the code does), not a specific tool. Any language, any framework.
@@ -111,20 +111,20 @@ The sensor provides the empirical guarantee that the tests can actually detect r
 
 For each changed file, verify against [coding-principles.md](coding-principles.md):
 
-| Check                                | Pass? |
-| ------------------------------------ | ----- |
-| No features beyond what was asked    |       |
-| No abstractions for single-use code  |       |
-| No unnecessary "flexibility" added   |       |
-| Only touched files required for task |       |
-| Didn't "improve" unrelated code      |       |
-| Matches existing patterns/style      |       |
-| Would senior engineer approve?       |       |
-| Tests map to acceptance criteria and are non-shallow (spot-check one story) | |
-| Spec-anchored outcome check: each test's asserted value matches the spec-defined outcome (or gap flagged) | |
-| Per-layer Coverage Expectation met: domain logic has 1:1 AC mapping; routes/e2e cover happy + edge + error paths for every route in scope | |
-| Every test in scope maps to a spec AC, listed edge case, or Done-when criterion (no unclaimed tests) | |
-| Documented project quality/testing guidelines followed (cite guideline file, or "none - strong defaults applied") | |
+| Check                                                                                                                                     | Pass? |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| No features beyond what was asked                                                                                                         |       |
+| No abstractions for single-use code                                                                                                       |       |
+| No unnecessary "flexibility" added                                                                                                        |       |
+| Only touched files required for task                                                                                                      |       |
+| Didn't "improve" unrelated code                                                                                                           |       |
+| Matches existing patterns/style                                                                                                           |       |
+| Would senior engineer approve?                                                                                                            |       |
+| Tests map to acceptance criteria and are non-shallow (spot-check one story)                                                               |       |
+| Spec-anchored outcome check: each test's asserted value matches the spec-defined outcome (or gap flagged)                                 |       |
+| Per-layer Coverage Expectation met: domain logic has 1:1 AC mapping; routes/e2e cover happy + edge + error paths for every route in scope |       |
+| Every test in scope maps to a spec AC, listed edge case, or Done-when criterion (no unclaimed tests)                                      |       |
+| Documented project quality/testing guidelines followed (cite guideline file, or "none - strong defaults applied")                         |       |
 
 ❌ Any "No"? → Fix before marking complete.
 
@@ -202,6 +202,7 @@ The Verifier returns this block to the orchestrator after completing all checks:
 **Report**: `.specs/features/[feature]/validation.md`
 
 **Ranked gaps** (if FAIL):
+
 1. [Gap description] - [AC or criterion] - [file:line or "no evidence"]
 2. ...
 ```
@@ -232,11 +233,11 @@ The Verifier returns this block to the orchestrator after completing all checks:
 
 ## Spec-Anchored Acceptance Criteria
 
-| Criterion (WHEN X THEN Y) | Spec-defined outcome | `file:line` + assertion | Result |
-| ------------------------- | -------------------- | ----------------------- | ------ |
-| WHEN X THEN Y             | [precise value/state from spec] | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | ✅ PASS |
-| WHEN A THEN B             | [expected value]     | `path/to/test.ts:88` - `expect(res.status).toBe(400)` | ✅ PASS |
-| WHEN C THEN D             | not precisely defined in spec | - | ⚠️ Spec-precision gap |
+| Criterion (WHEN X THEN Y) | Spec-defined outcome            | `file:line` + assertion                                      | Result                |
+| ------------------------- | ------------------------------- | ------------------------------------------------------------ | --------------------- |
+| WHEN X THEN Y             | [precise value/state from spec] | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | ✅ PASS               |
+| WHEN A THEN B             | [expected value]                | `path/to/test.ts:88` - `expect(res.status).toBe(400)`        | ✅ PASS               |
+| WHEN C THEN D             | not precisely defined in spec   | -                                                            | ⚠️ Spec-precision gap |
 
 **Status**: ✅ All ACs covered / ❌ Gaps present / ⚠️ Spec-precision gaps flagged
 
@@ -244,11 +245,11 @@ The Verifier returns this block to the orchestrator after completing all checks:
 
 ## Discrimination Sensor
 
-| Mutation | File:line | Description | Killed? |
-| -------- | --------- | ----------- | ------- |
-| 1        | `src/service.ts:42` | Flipped condition `x > 0` → `x >= 0` | ✅ Killed |
-| 2        | `src/service.ts:88` | Changed return value `status: 'active'` → `status: 'inactive'` | ✅ Killed |
-| 3        | `src/handler.ts:15` | Removed side-effect call to `notify()` | ❌ Survived → fix task created |
+| Mutation | File:line           | Description                                                    | Killed?                        |
+| -------- | ------------------- | -------------------------------------------------------------- | ------------------------------ |
+| 1        | `src/service.ts:42` | Flipped condition `x > 0` → `x >= 0`                           | ✅ Killed                      |
+| 2        | `src/service.ts:88` | Changed return value `status: 'active'` → `status: 'inactive'` | ✅ Killed                      |
+| 3        | `src/handler.ts:15` | Removed side-effect call to `notify()`                         | ❌ Survived → fix task created |
 
 **Sensor depth**: [lightweight / P0-full]
 **Result**: [N/N killed] - [PASS ✅ | FAIL ❌]
@@ -267,16 +268,16 @@ The Verifier returns this block to the orchestrator after completing all checks:
 
 ## Code Quality
 
-| Principle        | Status |
-| ---------------- | ------ |
-| Minimum code     | ✅     |
-| Surgical changes | ✅     |
-| No scope creep   | ✅     |
-| Matches patterns | ✅     |
-| Spec-anchored outcome check (asserted values match spec) | ✅ |
-| Per-layer Coverage Expectation met (domain 1:1 ACs; routes happy+edge+error) | ✅ |
-| Every test maps to a spec requirement - no unclaimed tests | ✅ |
-| Documented guidelines followed: [file(s) or "none - strong defaults applied"] | ✅ |
+| Principle                                                                     | Status |
+| ----------------------------------------------------------------------------- | ------ |
+| Minimum code                                                                  | ✅     |
+| Surgical changes                                                              | ✅     |
+| No scope creep                                                                | ✅     |
+| Matches patterns                                                              | ✅     |
+| Spec-anchored outcome check (asserted values match spec)                      | ✅     |
+| Per-layer Coverage Expectation met (domain 1:1 ACs; routes happy+edge+error)  | ✅     |
+| Every test maps to a spec requirement - no unclaimed tests                    | ✅     |
+| Documented guidelines followed: [file(s) or "none - strong defaults applied"] | ✅     |
 
 ---
 

@@ -15,11 +15,11 @@ O site alannunes.com possui 3 artigos técnicos em Markdown na pasta `src/posts/
 
 Explicitly excluded. Documented to prevent scope creep.
 
-| Feature | Reason |
-| --- | --- |
+| Feature                       | Reason                                 |
+| ----------------------------- | -------------------------------------- |
 | Sistema de comentários Giscus | Pertence à Fase 3 de Serviços Externos |
-| Busca estática via Pagefind | Pertence à Fase 3 de Serviços Externos |
-| Páginas Sobre e Políticas | Pertence à Fase 3 de Conteúdo Estático |
+| Busca estática via Pagefind   | Pertence à Fase 3 de Serviços Externos |
+| Páginas Sobre e Políticas     | Pertence à Fase 3 de Conteúdo Estático |
 
 ---
 
@@ -27,11 +27,11 @@ Explicitly excluded. Documented to prevent scope creep.
 
 Every ambiguity is resolved or recorded here - nothing is left silently unclear.
 
-| Assumption / decision | Chosen default | Rationale | Confirmed? |
-| --- | --- | --- | --- |
-| Estrutura de URLs dos posts | `/blog/[slug]` | Preserva 100% a compatibilidade com os links indexados e compartilhados do blog legado | y |
-| Formato de data | Locale pt-BR por extenso (ex: "20 de fevereiro de 2022") | Padrão editorial brasileiro de alta qualidade | y |
-| Estilização do corpo do artigo | @tailwindcss/typography com prose-slate | Padrão moderno da comunidade Tailwind para artigos e blogs técnicos | y |
+| Assumption / decision          | Chosen default                                           | Rationale                                                                              | Confirmed? |
+| ------------------------------ | -------------------------------------------------------- | -------------------------------------------------------------------------------------- | ---------- |
+| Estrutura de URLs dos posts    | `/blog/[slug]`                                           | Preserva 100% a compatibilidade com os links indexados e compartilhados do blog legado | y          |
+| Formato de data                | Locale pt-BR por extenso (ex: "20 de fevereiro de 2022") | Padrão editorial brasileiro de alta qualidade                                          | y          |
+| Estilização do corpo do artigo | @tailwindcss/typography com prose-slate                  | Padrão moderno da comunidade Tailwind para artigos e blogs técnicos                    | y          |
 
 **Open questions:** none - all resolved or logged above.
 
@@ -85,17 +85,17 @@ Every ambiguity is resolved or recorded here - nothing is left silently unclear.
 
 Each requirement gets a unique ID for tracking across design, tasks, and validation.
 
-| Requirement ID | Story | Phase | Status |
-| --- | --- | --- | --- |
-| BLOG-01 | P1: Content Collections e Listagem do Blog | In Design | Pending |
-| BLOG-02 | P1: Content Collections e Listagem do Blog | In Design | Pending |
-| BLOG-03 | P1: Content Collections e Listagem do Blog | In Design | Pending |
-| BLOG-04 | P1: Content Collections e Listagem do Blog | In Design | Pending |
-| POST-01 | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
-| POST-02 | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
-| POST-03 | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
-| POST-04 | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
-| POST-05 | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
+| Requirement ID | Story                                             | Phase     | Status  |
+| -------------- | ------------------------------------------------- | --------- | ------- |
+| BLOG-01        | P1: Content Collections e Listagem do Blog        | In Design | Pending |
+| BLOG-02        | P1: Content Collections e Listagem do Blog        | In Design | Pending |
+| BLOG-03        | P1: Content Collections e Listagem do Blog        | In Design | Pending |
+| BLOG-04        | P1: Content Collections e Listagem do Blog        | In Design | Pending |
+| POST-01        | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
+| POST-02        | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
+| POST-03        | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
+| POST-04        | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
+| POST-05        | P1: Leitura de Artigo Individual (`/blog/[slug]`) | In Design | Pending |
 
 **Coverage:** 9 total, 9 mapped to tasks, 0 unmapped.
 

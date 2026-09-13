@@ -14,11 +14,11 @@ O projeto alannunes.com está bloqueado no Node 14/16 devido ao uso de Gatsby v2
 
 Explicitly excluded. Documented to prevent scope creep.
 
-| Feature | Reason |
-| --- | --- |
-| Migração dos artigos em Markdown | Pertence à Fase 2 (Migração de Conteúdo e Collections) |
-| Criação de páginas internas (Sobre, Políticas, Artigo) | Pertence às Fases 2 e 3 |
-| Configuração de Giscus e busca Pagefind | Pertence à Fase 3 |
+| Feature                                                | Reason                                                 |
+| ------------------------------------------------------ | ------------------------------------------------------ |
+| Migração dos artigos em Markdown                       | Pertence à Fase 2 (Migração de Conteúdo e Collections) |
+| Criação de páginas internas (Sobre, Políticas, Artigo) | Pertence às Fases 2 e 3                                |
+| Configuração de Giscus e busca Pagefind                | Pertence à Fase 3                                      |
 
 ---
 
@@ -26,11 +26,11 @@ Explicitly excluded. Documented to prevent scope creep.
 
 Every ambiguity is resolved or recorded here - nothing is left silently unclear.
 
-| Assumption / decision | Chosen default | Rationale | Confirmed? |
-| --- | --- | --- | --- |
-| Versão do Tailwind CSS | Tailwind CSS v4 via @tailwindcss/vite | Usuário confirmou explicitamente o uso da versão v4 para máxima modernidade e velocidade | y |
-| Versão de Node para deploy e desenvolvimento | Node 20 LTS | Padrão corporativo moderno e compatível com Apple Silicon | y |
-| Estratégia de styling | CSS-first com @theme e utility classes | Substitui 100% o runtime de styled-components | y |
+| Assumption / decision                        | Chosen default                         | Rationale                                                                                | Confirmed? |
+| -------------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------- | ---------- |
+| Versão do Tailwind CSS                       | Tailwind CSS v4 via @tailwindcss/vite  | Usuário confirmou explicitamente o uso da versão v4 para máxima modernidade e velocidade | y          |
+| Versão de Node para deploy e desenvolvimento | Node 20 LTS                            | Padrão corporativo moderno e compatível com Apple Silicon                                | y          |
+| Estratégia de styling                        | CSS-first com @theme e utility classes | Substitui 100% o runtime de styled-components                                            | y          |
 
 **Open questions:** none - all resolved or logged above.
 
@@ -82,15 +82,15 @@ Every ambiguity is resolved or recorded here - nothing is left silently unclear.
 
 Each requirement gets a unique ID for tracking across design, tasks, and validation.
 
-| Requirement ID | Story | Phase | Status |
-| --- | --- | --- | --- |
-| BASE-01 | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
-| BASE-02 | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
-| BASE-03 | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
-| BASE-04 | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
-| THEME-01 | P1: Sistema de Temas e Tokens Minimalistas | In Design | Pending |
-| THEME-02 | P1: Sistema de Temas e Tokens Minimalistas | In Design | Pending |
-| THEME-03 | P1: Sistema de Temas e Tokens Minimalistas | In Design | Pending |
+| Requirement ID | Story                                        | Phase     | Status  |
+| -------------- | -------------------------------------------- | --------- | ------- |
+| BASE-01        | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
+| BASE-02        | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
+| BASE-03        | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
+| BASE-04        | P1: Configuração do Core Astro + Tailwind v4 | In Design | Pending |
+| THEME-01       | P1: Sistema de Temas e Tokens Minimalistas   | In Design | Pending |
+| THEME-02       | P1: Sistema de Temas e Tokens Minimalistas   | In Design | Pending |
+| THEME-03       | P1: Sistema de Temas e Tokens Minimalistas   | In Design | Pending |
 
 **Coverage:** 7 total, 7 mapped to tasks, 0 unmapped.
 

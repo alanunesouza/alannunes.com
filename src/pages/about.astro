@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+---
+
+<BaseLayout
+  title="Sobre | Alan Nunes"
+  description="Trajetória profissional, especialização e valores de engenharia de software de Alan Nunes."
+>
+  <div class="max-w-3xl mx-auto px-6 py-12 sm:py-20">
+    <Header currentPath="/about" />
+
+    <main class="py-12 sm:py-16">
+      <div class="space-y-4 mb-12">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">Sobre mim</h1>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
+          Trajetória, foco técnico e princípios que guiam minha atuação em engenharia de software.
+        </p>
+      </div>
+
+      <!-- Conteúdo Biográfico com Tipografia Clean -->
+      <div class="space-y-6 text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+        <p>
+          Paulista, focado e observador, mas sempre aberto a uma boa troca de ideias e uma resenha descontraída. Fora do
+          terminal, sou movido por esportes e games — universos que me ensinaram na prática o valor da disciplina, da tomada
+          de decisão sob pressão, da curiosidade e do aprendizado constante, pilares que refletem diretamente em quem sou
+          como engenheiro.
+        </p>
+
+        <p>
+          Minha relação com o trabalho começou cedo, aos 16 anos, na área de Logística. Foi ali, como jovem aprendiz, que
+          vivi a dinâmica do ambiente corporativo e aprendi a ter senso de responsabilidade e maturidade antes mesmo de
+          escrever minha primeira linha de código comercial.
+        </p>
+
+        <p>
+          Em 2014, durante a graduação em <em class="text-[var(--text-primary)]">Sistemas de Informação</em>, dei meus
+          primeiros passos na área técnica atuando com suporte de TI. Foram anos fundamentais para entender dores reais de
+          usuários e sistemas, mas o meu objetivo sempre foi a engenharia de software. A virada não foi fácil — enfrentei
+          barreiras, descrença e momentos de incerteza em que precisei apostar tudo na minha própria capacidade, investindo
+          cada recurso em capacitação intensiva para construir minha oportunidade.
+        </p>
+
+        <p>
+          Essa persistência abriu portas. Na consultoria (Opah IT), desenvolvi soluções para clientes de grande porte como <strong
+            class="text-[var(--text-primary)]">Gerdau, SENAC e CVC</strong
+          >. Em seguida, encarei os desafios de altíssima escala do e-commerce brasileiro na <strong
+            class="text-[var(--text-primary)]">B2W Digital</strong
+          > (Americanas, Submarino e Shoptime), atuando na esteira crítica de pós-compra, e consolidei minha atuação sênior no
+          <strong class="text-[var(--text-primary)]">Luizalabs</strong>, contribuindo em um dos ecossistemas de tecnologia
+          mais inovadores do país.
+        </p>
+
+        <p>
+          Atualmente, sou <strong class="text-[var(--text-primary)]">Senior Software Engineer</strong> no{' '}
+          <a
+            href="https://www.mercadolivre.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[var(--color-brand-primary)] font-semibold hover:underline"
+          >
+            Mercado Livre
+          </a>
+          . Minha maior especialização é em <strong class="text-[var(--text-primary)]">Front-End</strong> e arquitetura de aplicações
+          modernas, unindo rigor técnico, performance e experiência do usuário. Em contínua evolução, tenho me dedicado e me especializado
+          profundamente em <strong class="text-[var(--color-brand-accent)]">Inteligência Artificial</strong>, além de possuir
+          sólida experiência e conhecimento na construção de soluções em ecossistemas <strong
+            class="text-[var(--text-primary)]">Back-End</strong
+          >.
+        </p>
+
+        <p>
+          Mantenho a mente em evolução contínua: especializei minha trajetória com pós-graduações em <strong
+            class="text-[var(--text-primary)]">Engenharia de Software</strong
+          > e em <strong class="text-[var(--text-primary)]">Inteligência Artificial Aplicada</strong>. Acredito que a
+          engenharia de ponta une rigor técnico, simplicidade e impacto humano — construindo tecnologias que facilitam o dia
+          a dia de milhões de pessoas.
+        </p>
+      </div>
+
+      <!-- Links de Contato e Redes -->
+      <div class="mt-14 pt-8 border-t border-[var(--border-subtle)] space-y-4">
+        <h2 class="text-xl font-bold text-[var(--text-primary)]">Conecte-se comigo</h2>
+        <div class="flex flex-wrap gap-4 text-sm font-medium">
+          <a
+            href="https://github.com/alanunesouza"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
+          >
+            GitHub →
+          </a>
+          <a
+            href="https://www.linkedin.com/in/alanunesouza"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-primary)] transition-colors"
+          >
+            LinkedIn →
+          </a>
+          <a
+            href="https://twitter.com/alanhnunes"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--color-brand-accent)] transition-colors"
+          >
+            Twitter / X →
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer
+      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
+    >
+      <div>
+        © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacidade</a>
+        <span>•</span>
+        <a
+          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-[var(--text-primary)] transition-colors">Termos</a
+        >
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

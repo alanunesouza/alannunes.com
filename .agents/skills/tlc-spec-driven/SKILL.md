@@ -122,7 +122,7 @@ A non-zero exit means STOP and fix before proceeding. Skip a script only when no
 
 **Offer-then-confirm** - never auto-spawn. The user must accept before any sub-agent is dispatched.
 
-**One worker per task-budgeted batch (~7 tasks, whole phases):** Phases stay the semantic/dependency unit; a **batch** is the execution unit - one or more *consecutive whole phases* packed to ~7 tasks. Walk phases in order, accumulate whole phases into the current batch until it reaches the budget, then start the next - **never split a phase** across workers. ~20 tasks → ~3 workers; scales linearly (40 → ~6). Each worker executes all its tasks in order (implement → gate → atomic commit), then reports a compact summary (tasks done, commit hashes, test counts, deviations). Batches run sequentially - a batch never starts until the previous one reports all tasks complete. Workers never spawn further sub-agents.
+**One worker per task-budgeted batch (~7 tasks, whole phases):** Phases stay the semantic/dependency unit; a **batch** is the execution unit - one or more _consecutive whole phases_ packed to ~7 tasks. Walk phases in order, accumulate whole phases into the current batch until it reaches the budget, then start the next - **never split a phase** across workers. ~20 tasks → ~3 workers; scales linearly (40 → ~6). Each worker executes all its tasks in order (implement → gate → atomic commit), then reports a compact summary (tasks done, commit hashes, test counts, deviations). Batches run sequentially - a batch never starts until the previous one reports all tasks complete. Workers never spawn further sub-agents.
 
 **Verifier (always-on, never prompted):** After the final task is committed, the orchestrator dispatches a fresh Verifier sub-agent automatically - regardless of phase count. Validation never requires a user prompt; it is the closing step of Execute. **Author ≠ verifier**: the Verifier re-derives coverage independently using evidence-or-zero; it does not inherit the author's mental model. The Verifier: (1) performs a **spec-anchored outcome check** - confirms each test's asserted value matches the spec-defined expected outcome, flags spec-precision gaps; (2) runs a **discrimination sensor** - injects behavior-level faults in an isolated scratch (temp worktree or file copies - never `git stash`), confirms tests kill them, discards the scratch and verifies real-tree porcelain matches the pre-sensor baseline; surviving mutants become fix tasks; (3) writes `.specs/features/[feature]/validation.md` (PASS/FAIL, per-AC evidence, sensor result, diff range); (4) returns a compact verdict + ranked gap list to the orchestrator in chat. Gaps become fix tasks; the fix→re-verify loop is bounded to 3 iterations before escalating. (5) **distills lessons** - turns each grounded failure (surviving mutant, spec-precision gap, failed AC, SPEC_DEVIATION) into a reusable project-local lesson via `<skill-dir>/scripts/lessons.py`; a clean PASS records nothing (see [lessons.md](references/lessons.md)).
 
@@ -135,22 +135,24 @@ Full mechanics (worker payload, compact summary format, failure handling, contex
 ## Commands
 
 **Feature-level (auto-sized):**
-| Trigger Pattern | Reference |
-|----------------|-----------|
-| Specify feature, define requirements | [specify.md](references/specify.md) |
-| Discuss feature, capture context, how should this work | [discuss.md](references/discuss.md) |
-| Design feature, architecture | [design.md](references/design.md) |
-| Break into tasks, create tasks | [tasks.md](references/tasks.md) |
-| Implement task, build, execute | [implement.md](references/implement.md) |
-| Validate, verify, test, UAT, walk me through it | [validate.md](references/validate.md) |
+
+| Trigger Pattern                                        | Reference                               |
+| ------------------------------------------------------ | --------------------------------------- |
+| Specify feature, define requirements                   | [specify.md](references/specify.md)     |
+| Discuss feature, capture context, how should this work | [discuss.md](references/discuss.md)     |
+| Design feature, architecture                           | [design.md](references/design.md)       |
+| Break into tasks, create tasks                         | [tasks.md](references/tasks.md)         |
+| Implement task, build, execute                         | [implement.md](references/implement.md) |
+| Validate, verify, test, UAT, walk me through it        | [validate.md](references/validate.md)   |
 
 **Memory:**
-| Trigger Pattern | Reference |
-|----------------|-----------|
-| Record decision, this is a project-level decision | [memory.md](references/memory.md) |
-| Pause work, end session, I need to stop | [memory.md](references/memory.md) |
-| Resume work, continue, pick up where we left off | [memory.md](references/memory.md) |
-| Load lessons, what have we learned, apply past lessons | [lessons.md](references/lessons.md) |
+
+| Trigger Pattern                                             | Reference                           |
+| ----------------------------------------------------------- | ----------------------------------- |
+| Record decision, this is a project-level decision           | [memory.md](references/memory.md)   |
+| Pause work, end session, I need to stop                     | [memory.md](references/memory.md)   |
+| Resume work, continue, pick up where we left off            | [memory.md](references/memory.md)   |
+| Load lessons, what have we learned, apply past lessons      | [lessons.md](references/lessons.md) |
 | Record lesson, distill lessons (auto-runs after validation) | [lessons.md](references/lessons.md) |
 
 ## Knowledge Verification Chain

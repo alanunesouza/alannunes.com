@@ -21,7 +21,6 @@ Ao solicitar a criação de um novo post para o blog:
    date: YYYY-MM-DD
    tags: ['tag1', 'tag2', 'tag3']
    ---
-
    ```
 
 3. **Estrutura do Conteúdo**:

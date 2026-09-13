@@ -4,12 +4,12 @@
 
 > Generated from codebase, project guidelines, and spec - confirm before Execute. Guidelines found: `AGENTS.md`.
 
-| Code Layer | Required Test Type | Coverage Expectation | Location Pattern | Run Command |
-| --- | --- | --- | --- | --- |
-| Environment Config | none | Configuração do Node 20 LTS e Netlify publish dir | `.nvmrc`, `netlify.toml` | Build gate only |
-| Build & Tooling | integration | Compilação do bundle estático via Astro 5 e Vite | `astro.config.mjs`, `package.json` | `npm run build` |
-| Style Tokens | integration | Processamento de diretivas Tailwind v4 | `src/styles/global.css` | `npm run build` |
-| Base Layout & UI | unit | Renderização do HTML semântico e script anti-FOUC | `src/layouts/BaseLayout.astro`, `src/pages/index.astro` | `npm run build` |
+| Code Layer         | Required Test Type | Coverage Expectation                              | Location Pattern                                        | Run Command     |
+| ------------------ | ------------------ | ------------------------------------------------- | ------------------------------------------------------- | --------------- |
+| Environment Config | none               | Configuração do Node 20 LTS e Netlify publish dir | `.nvmrc`, `netlify.toml`                                | Build gate only |
+| Build & Tooling    | integration        | Compilação do bundle estático via Astro 5 e Vite  | `astro.config.mjs`, `package.json`                      | `npm run build` |
+| Style Tokens       | integration        | Processamento de diretivas Tailwind v4            | `src/styles/global.css`                                 | `npm run build` |
+| Base Layout & UI   | unit               | Renderização do HTML semântico e script anti-FOUC | `src/layouts/BaseLayout.astro`, `src/pages/index.astro` | `npm run build` |
 
 ---
 

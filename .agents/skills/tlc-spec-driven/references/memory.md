@@ -29,6 +29,7 @@ If any one is missing, skip it: an easily-reversed choice you will just reverse;
 ## Decisions
 
 ### AD-001
+
 - **Decision**: [what was decided - one sentence]
 - **Reason**: [why this option was chosen]
 - **Trade-off**: [what was given up]
@@ -82,13 +83,13 @@ If the file does not yet exist, create it with both section headers and empty bo
 
 ## Read / Write Triggers
 
-| Trigger | Section | Operation |
-| ------- | ------- | --------- |
-| Design phase, Step 1 (Load Context) | `## Decisions` | **Read** - conform to active decisions or supersede |
-| Design phase, Tech Decisions step | `## Decisions` | **Append** - only for project-level decisions |
-| Pause work / end of session | `## Handoff` | **Replace** - overwrite Handoff section only |
-| Resume work / start of session | `## Handoff` | **Read** - load snapshot, then reconcile with git before acting |
-| Resume work / start of session | `## Decisions` | **Read** - re-confirm active constraints before designing |
+| Trigger                             | Section        | Operation                                                       |
+| ----------------------------------- | -------------- | --------------------------------------------------------------- |
+| Design phase, Step 1 (Load Context) | `## Decisions` | **Read** - conform to active decisions or supersede             |
+| Design phase, Tech Decisions step   | `## Decisions` | **Append** - only for project-level decisions                   |
+| Pause work / end of session         | `## Handoff`   | **Replace** - overwrite Handoff section only                    |
+| Resume work / start of session      | `## Handoff`   | **Read** - load snapshot, then reconcile with git before acting |
+| Resume work / start of session      | `## Decisions` | **Read** - re-confirm active constraints before designing       |
 
 ---
 
@@ -102,6 +103,7 @@ One file holds two lifecycles. Writes MUST target their section only:
 The correct technique: locate the target section header, replace only the content between it and the next `##` header (or end of file). Never overwrite the full file.
 
 Violating this rule causes one of two failures:
+
 1. A pause write clobbers the decisions log → decisions are silently lost.
 2. A design append touches the handoff snapshot → mid-task state is corrupted.
 

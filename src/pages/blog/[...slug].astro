@@ -44,7 +44,7 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
         class="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-8"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Voltar para o blog
       </a>
@@ -63,19 +63,23 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
           {title}
         </h1>
 
-        {tags && tags.length > 0 && (
-          <div class="flex flex-wrap gap-2 pt-2">
-            {tags.map((tag) => (
-              <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium">
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )}
+        {
+          tags && tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 pt-2">
+              {tags.map((tag) => (
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-surface)] text-[var(--text-secondary)] font-medium">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )
+        }
       </header>
 
       <!-- Conteúdo Formatado via Prose -->
-      <article class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[var(--color-brand-primary)] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-[var(--border-subtle)] prose-pre:rounded-xl prose-pre:border prose-pre:border-[var(--border-subtle)]">
+      <article
+        class="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-[var(--color-brand-primary)] prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:border prose-img:border-[var(--border-subtle)] prose-pre:rounded-xl prose-pre:border prose-pre:border-[var(--border-subtle)]"
+      >
         <Content />
       </article>
 
@@ -91,14 +95,21 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
     </main>
 
     <!-- Rodapé -->
-    <footer class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+    <footer
+      class="pt-12 mt-12 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]"
+    >
       <div>
         © {new Date().getFullYear()} alannunes.com • Todos os direitos reservados.
       </div>
       <div class="flex items-center gap-4">
         <a href="/policies" class="hover:text-[var(--text-primary)] transition-colors">Privacidade</a>
         <span>•</span>
-        <a href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text-primary)] transition-colors">Termos</a>
+        <a
+          href="https://github.com/alanunesouza/alannunes.com/blob/master/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-[var(--text-primary)] transition-colors">Termos</a
+        >
       </div>
     </footer>
   </div>

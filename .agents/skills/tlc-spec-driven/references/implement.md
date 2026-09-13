@@ -152,9 +152,9 @@ After the gate check passes:
 
    **Check A - Sufficient coverage (per-layer depth).** Build and output this table:
 
-   | Done-when criterion / spec AC / listed edge case | `file:line` + assertion expression | Spec-defined outcome | Covered? |
-   | ------------------------------------------------- | ---------------------------------- | -------------------- | -------- |
-   | [criterion from task or spec] | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [expected value from spec] | ✅ Yes / ❌ No / ⚠️ Spec-precision gap |
+   | Done-when criterion / spec AC / listed edge case | `file:line` + assertion expression                           | Spec-defined outcome       | Covered?                               |
+   | ------------------------------------------------ | ------------------------------------------------------------ | -------------------------- | -------------------------------------- |
+   | [criterion from task or spec]                    | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [expected value from spec] | ✅ Yes / ❌ No / ⚠️ Spec-precision gap |
 
    **Evidence-or-zero rule:** Each covered cell MUST cite the exact `file:line` where the assertion lives AND reproduce the assertion expression (not just the `describe`/`it` name). A criterion with no located `file:line` evidence counts as **NOT covered**; the task cannot be marked done. Do not declare a criterion absent without first searching the test files - show the search before concluding it is missing (mirror: evidence or zero, never a guess).
 
@@ -181,13 +181,13 @@ After the gate check passes:
 
    Apply this check to every payload-bearing criterion before marking it covered.
 
-   **Stack-agnostic litmus:** An assertion is shallow if it would still pass under a plausible *wrong* implementation. If so, strengthen it before committing.
+   **Stack-agnostic litmus:** An assertion is shallow if it would still pass under a plausible _wrong_ implementation. If so, strengthen it before committing.
 
    **Check C - Necessary (no tests beyond the spec).** Reverse-map every test back to a spec AC, a listed edge case, or a "Done when" criterion. Build this table:
 
-   | `file:line` + assertion expression | Maps to (AC / edge case / Done-when criterion) | Keep? |
-   | ---------------------------------- | ---------------------------------------------- | ----- |
-   | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [requirement ID or criterion text] | ✅ Keep / ❌ Remove |
+   | `file:line` + assertion expression                           | Maps to (AC / edge case / Done-when criterion) | Keep?               |
+   | ------------------------------------------------------------ | ---------------------------------------------- | ------------------- |
+   | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [requirement ID or criterion text]             | ✅ Keep / ❌ Remove |
 
    Any test that maps to nothing → remove it. A test with no requirement is scope creep - it proves nothing about the feature and expands scope beyond the spec. Do not write speculative "what if" tests, do not test framework or library behavior, and do not duplicate an assertion that is already covered at another layer for the same scenario.
 
@@ -197,20 +197,20 @@ After the gate check passes:
 
    **Anti-patterns - known verification cheats (treat any of these as an automatic Check failure):**
 
-   | Anti-pattern | Why it fails |
-   | ------------ | ------------ |
-   | Committing before the gate check passes | Skips the deterministic verifier - the gate is not optional |
-   | Asserting call count / spy invocation instead of the resulting state | Proves the method ran, not that it did the right thing |
-   | Marking a criterion covered without a `file:line` citation | Violates evidence-or-zero; suspicion of coverage is not coverage |
-   | Weakening an assertion (making it less specific) to force a pass | Moves the goalposts instead of fixing the code |
-   | Deleting or skipping a test to make the suite pass | Destroys coverage permanently; a failing test is a signal, not noise |
-   | "Tested elsewhere" deferral without citing where | Coverage gaps hide behind vague claims; cite the file:line or it doesn't count |
-   | Speculative "what if" tests with no spec anchor | Expands scope beyond the ceiling; remove them in Check C |
-   | Testing framework or library behavior | Tests a dependency, not the feature; remove them in Check C |
+   | Anti-pattern                                                         | Why it fails                                                                   |
+   | -------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+   | Committing before the gate check passes                              | Skips the deterministic verifier - the gate is not optional                    |
+   | Asserting call count / spy invocation instead of the resulting state | Proves the method ran, not that it did the right thing                         |
+   | Marking a criterion covered without a `file:line` citation           | Violates evidence-or-zero; suspicion of coverage is not coverage               |
+   | Weakening an assertion (making it less specific) to force a pass     | Moves the goalposts instead of fixing the code                                 |
+   | Deleting or skipping a test to make the suite pass                   | Destroys coverage permanently; a failing test is a signal, not noise           |
+   | "Tested elsewhere" deferral without citing where                     | Coverage gaps hide behind vague claims; cite the file:line or it doesn't count |
+   | Speculative "what if" tests with no spec anchor                      | Expands scope beyond the ceiling; remove them in Check C                       |
+   | Testing framework or library behavior                                | Tests a dependency, not the feature; remove them in Check C                    |
 
    **On any failure** → rewrite or remove the affected test(s), re-run the gate, then re-run this review.
 
-   *Honest caveat:* This is an inspection-based review (model judgment), complementary to - not a replacement for - the deterministic gate. The gate confirms the test suite runs; the feature-level discrimination sensor (step 9) confirms the tests can detect regressions. This review confirms the suite is meaningful and bounded.
+   _Honest caveat:_ This is an inspection-based review (model judgment), complementary to - not a replacement for - the deterministic gate. The gate confirms the test suite runs; the feature-level discrimination sensor (step 9) confirms the tests can detect regressions. This review confirms the suite is meaningful and bounded.
 
    Add the two mapping tables and a one-line adequacy verdict to the Execution Template's Post-Gate section.
 
@@ -320,11 +320,13 @@ When the task you just completed is the **last task of the feature** (or of a pr
 **Author ≠ verifier.** An author checking their own work reapplies the mental model that may have produced the gaps. The Verifier is a fresh sub-agent that re-derives coverage from the spec independently - this separation is the quality gate, not a style preference.
 
 **Layering:**
+
 - Per-task adequacy self-check (steps 5-6): cheap, always runs, author does it, confirms each task in isolation.
 - Feature-level validation (step 9): one trustworthy independent gate at completion, always-on, Verifier sub-agent does it.
 
 **How to delegate to the Verifier:**
 Dispatch a fresh sub-agent following the **Verifier** role described in [sub-agents.md](sub-agents.md). Provide it with:
+
 - `spec.md` (ACs = source of truth)
 - The git diff surface for this feature (commit range)
 - The test files in scope
@@ -381,17 +383,17 @@ If you are unsure whether more tasks remain, check `tasks.md`: if every task is 
 
 **Test Adequacy Review:**
 
-*Check A - Sufficient (coverage mapping):*
+_Check A - Sufficient (coverage mapping):_
 
-| Done-when criterion / spec AC / listed edge case | `file:line` + assertion expression | Spec-defined outcome | Covered? |
-| ------------------------------------------------- | ---------------------------------- | -------------------- | -------- |
-| [criterion] | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [spec value] | ✅ Yes / ⚠️ Gap |
+| Done-when criterion / spec AC / listed edge case | `file:line` + assertion expression                           | Spec-defined outcome | Covered?        |
+| ------------------------------------------------ | ------------------------------------------------------------ | -------------------- | --------------- |
+| [criterion]                                      | `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [spec value]         | ✅ Yes / ⚠️ Gap |
 
-*Check C - Necessary (reverse mapping):*
+_Check C - Necessary (reverse mapping):_
 
-| `file:line` + assertion expression | Maps to (AC / edge case / Done-when criterion) | Keep? |
-| ---------------------------------- | ---------------------------------------------- | ----- |
-| `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [requirement or criterion text] | ✅ Keep |
+| `file:line` + assertion expression                           | Maps to (AC / edge case / Done-when criterion) | Keep?   |
+| ------------------------------------------------------------ | ---------------------------------------------- | ------- |
+| `path/to/test.ts:42` - `expect(result.field).toBe(expected)` | [requirement or criterion text]                | ✅ Keep |
 
 - [ ] Check A: every criterion covered with `file:line` evidence; spec-defined outcomes matched or gap flagged; per-layer depth met
 - [ ] Check B: no shallow assertions; payload/conjunction rule applied to every payload-bearing criterion

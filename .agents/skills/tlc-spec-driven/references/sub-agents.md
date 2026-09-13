@@ -7,7 +7,7 @@ Full mechanics for phase-batch workers and the Verifier sub-agent used during Ex
 **Two layers - keep them distinct:**
 
 - **Phase** = the semantic / dependency unit (Foundation → Core → Integration), authored during Tasks. Indivisible.
-- **Batch** = the execution / logistics unit - one or more *consecutive whole phases* assigned to a single worker.
+- **Batch** = the execution / logistics unit - one or more _consecutive whole phases_ assigned to a single worker.
 
 Conflating the two (one worker per phase) is what fragments execution: a feature's dependency-layer count has nothing to do with the ideal per-worker workload. Batching by task budget separates the two concerns without breaking phases.
 
@@ -81,7 +81,7 @@ No raw logs, no full test output - only the above fields keep the main context c
 
 **Failure handling:** If a task in a batch fails (gate does not pass, blocker hit), the worker stops and includes the failure in its summary. The next batch does not start until the current batch's summary shows all tasks complete. The orchestrator decides: fix and re-run, or escalate to the user.
 
-**Context sizing signal:** If a batch's task list would likely push the worker's context beyond ~40k tokens, close the batch at an earlier phase boundary (fewer phases per worker). If a *single* phase alone would blow the budget, that phase is too coarse - split it during Tasks per the granularity guidance in `references/tasks.md`.
+**Context sizing signal:** If a batch's task list would likely push the worker's context beyond ~40k tokens, close the batch at an earlier phase boundary (fewer phases per worker). If a _single_ phase alone would blow the budget, that phase is too coarse - split it during Tasks per the granularity guidance in `references/tasks.md`.
 
 ---
 
@@ -92,12 +92,14 @@ No raw logs, no full test output - only the above fields keep the main context c
 **Author ≠ verifier:** The agent (or batch worker) that wrote the code and tests is the author. The Verifier is a fresh sub-agent dispatched by the orchestrator after the final commit. It does not inherit the author's context, mental model, or assumptions. This separation is what makes the gate trustworthy.
 
 **What the Verifier receives:**
+
 - `spec.md` for the feature (ACs = source of truth)
 - The git diff surface for the feature (scoped to the feature branch or commit range)
 - The test files in scope
 - `references/validate.md` as its operating checklist
 
 **What the Verifier does (full process in `validate.md`):**
+
 1. **Spec-anchored coverage check** - re-derives coverage evidence-or-zero: every AC traced to `file:line` + assertion expression. For each covered criterion, confirms the test's asserted value matches the **spec-defined expected outcome** (not just that an assertion exists). Where the spec does not define a precise outcome, flags a **spec-precision gap** rather than passing silently.
 2. **Discrimination sensor** - injects a small behavior-level fault (flip a condition, change a return value, off-by-one, remove a required side effect) in an **isolated scratch** (temporary `git worktree` or temp file copies - never `git stash`), runs the relevant tests there, confirms they FAIL (kill the mutant), discards the scratch, and verifies the real worktree's `git status --porcelain` matches the pre-sensor baseline. Tiered by risk: lightweight (1-3 mutations) for standard features; expanded (≥5 mutations or full mutation tooling) for P0/critical paths. Surviving mutants become fix tasks.
 3. Applies the **payload/conjunction rule**: checks payload fields are asserted on value/state, not just that the call occurred.
@@ -106,6 +108,7 @@ No raw logs, no full test output - only the above fields keep the main context c
 6. Does **NOT** write, modify, or fix any code or tests - the real working tree is never mutated (sensor mutations run in scratch state only).
 
 **What the Verifier reports back (compact chat format):**
+
 ```
 ## Validation: [feature name] - [PASS ✅ | FAIL ❌]
 
@@ -131,13 +134,13 @@ No raw logs, no full test output - only the above fields keep the main context c
 
 Judge the tier by the work in front of the role, not by the role's title:
 
-| Role / work | Characteristic | Suggested tier |
-| ----------- | -------------- | -------------- |
-| Design phase | High ambiguity, hard-to-reverse structural decisions | High-reasoning |
-| Batch worker - core-domain or high-ambiguity phase | Non-obvious logic, tricky edge cases, novel integration | High-reasoning |
-| Batch worker - mechanical phase | Entities, DTOs, config, wiring, straightforward CRUD against a settled pattern | Faster / cheaper |
-| Verifier | Adversarial reasoning: designs mutations, re-derives coverage, judges outcome precision | Mid-to-high |
-| Specify / Tasks authoring | Structured but judgment-heavy | Mid-to-high |
+| Role / work                                        | Characteristic                                                                          | Suggested tier   |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------- |
+| Design phase                                       | High ambiguity, hard-to-reverse structural decisions                                    | High-reasoning   |
+| Batch worker - core-domain or high-ambiguity phase | Non-obvious logic, tricky edge cases, novel integration                                 | High-reasoning   |
+| Batch worker - mechanical phase                    | Entities, DTOs, config, wiring, straightforward CRUD against a settled pattern          | Faster / cheaper |
+| Verifier                                           | Adversarial reasoning: designs mutations, re-derives coverage, judges outcome precision | Mid-to-high      |
+| Specify / Tasks authoring                          | Structured but judgment-heavy                                                           | Mid-to-high      |
 
 **Rules of thumb:**
 

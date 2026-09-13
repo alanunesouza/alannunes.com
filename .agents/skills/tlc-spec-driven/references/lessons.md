@@ -2,21 +2,21 @@
 
 **Purpose**: Turn verification failures into reusable, project-local guidance that actually changes future behavior - without the lessons file rotting into a dead log.
 
-**The split that keeps it alive**: the agent (you) supplies *judgment* - read the failure, phrase the lesson, cite its grounding. The script `scripts/lessons.py` owns everything *mechanical* - IDs, recurrence counting across distinct features, candidate→confirmed promotion, pruning, demotion, and rendering. Hand-kept bookkeeping is exactly what rots, so it is not your job; the script's job.
+**The split that keeps it alive**: the agent (you) supplies _judgment_ - read the failure, phrase the lesson, cite its grounding. The script `scripts/lessons.py` owns everything _mechanical_ - IDs, recurrence counting across distinct features, candidate→confirmed promotion, pruning, demotion, and rendering. Hand-kept bookkeeping is exactly what rots, so it is not your job; the script's job.
 
 **What feeds it**: only the execution signals already produced by the Verifier in [validate.md](validate.md) and written to `.specs/features/[feature]/validation.md`. No signal → no lesson. This is the hard gate: a lesson with no grounding in a real verification outcome is an opinion, and the script refuses it.
 
-**Scope discipline (critical)**: this layer captures *execution* lessons that are project-local and grounded in a signal. It does **NOT** capture methodology opinions about the SDD process itself ("we should always discuss earlier"). Those are maintainer decisions that ship in a version bump - never auto-written. If a candidate lesson is really about how to run the skill rather than about this codebase, do not record it.
+**Scope discipline (critical)**: this layer captures _execution_ lessons that are project-local and grounded in a signal. It does **NOT** capture methodology opinions about the SDD process itself ("we should always discuss earlier"). Those are maintainer decisions that ship in a version bump - never auto-written. If a candidate lesson is really about how to run the skill rather than about this codebase, do not record it.
 
 ---
 
 ## Files
 
-| File | Owner | Purpose |
-| ---- | ----- | ------- |
-| `.specs/lessons.json` | script | Canonical machine state. Never hand-edit. |
-| `.specs/LESSONS.md` | script (rendered) | Human/agent-readable playbook. Read it; never write it by hand. |
-| `<skill-dir>/scripts/lessons.py` | package | The only way to mutate lessons. Invoke via the skill directory - never `python3 scripts/lessons.py` from the project root. |
+| File                             | Owner             | Purpose                                                                                                                    |
+| -------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `.specs/lessons.json`            | script            | Canonical machine state. Never hand-edit.                                                                                  |
+| `.specs/LESSONS.md`              | script (rendered) | Human/agent-readable playbook. Read it; never write it by hand.                                                            |
+| `<skill-dir>/scripts/lessons.py` | package           | The only way to mutate lessons. Invoke via the skill directory - never `python3 scripts/lessons.py` from the project root. |
 
 `confirmed` lessons are the playbook the agent loads. `candidate` lessons are tracked but NOT trusted until corroborated across `promote_threshold` distinct features (default 2). `quarantined` lessons failed when applied and are ignored.
 
@@ -32,13 +32,13 @@ This is **not a new phase**. It is the final action of the Verifier step in [val
 
 Walk the just-written `validation.md`. For each **grounded** signal, record one lesson:
 
-| validation.md signal | `--signal` value |
-| -------------------- | ---------------- |
-| An acceptance criterion failed or had no evidence | `ac_gap` |
-| A discrimination-sensor mutant survived (weak test) | `surviving_mutant` |
-| A criterion flagged ⚠️ Spec-precision gap | `spec_precision_gap` |
-| A `// SPEC_DEVIATION` marker was added during implement | `spec_deviation` |
-| The build-level gate check failed | `gate_fail` |
+| validation.md signal                                    | `--signal` value     |
+| ------------------------------------------------------- | -------------------- |
+| An acceptance criterion failed or had no evidence       | `ac_gap`             |
+| A discrimination-sensor mutant survived (weak test)     | `surviving_mutant`   |
+| A criterion flagged ⚠️ Spec-precision gap               | `spec_precision_gap` |
+| A `// SPEC_DEVIATION` marker was added during implement | `spec_deviation`     |
+| The build-level gate check failed                       | `gate_fail`          |
 
 If `validation.md` is a clean PASS with no surviving mutants, no spec-precision gaps, and no deviations → **write nothing**. A clean run produces no lessons. This is correct, not a miss.
 
@@ -65,11 +65,11 @@ python3 <skill-dir>/scripts/lessons.py add \
 
 ### Self-check (do not skip)
 
-After distilling, if `validation.md` contained any FAIL, surviving mutant, spec-precision gap, or SPEC_DEVIATION but you recorded zero lessons, state plainly in chat: *"Validation had signal X but no lesson was recorded - recording now / here's why it's out of scope."* Silent skipping is how the file dies.
+After distilling, if `validation.md` contained any FAIL, surviving mutant, spec-precision gap, or SPEC_DEVIATION but you recorded zero lessons, state plainly in chat: _"Validation had signal X but no lesson was recorded - recording now / here's why it's out of scope."_ Silent skipping is how the file dies.
 
 ### Demotion
 
-If a `confirmed` lesson was loaded for this feature (see READ below) and the *same* failure recurred anyway, the guidance is not working:
+If a `confirmed` lesson was loaded for this feature (see READ below) and the _same_ failure recurred anyway, the guidance is not working:
 
 ```bash
 python3 <skill-dir>/scripts/lessons.py penalize --id L-NNN

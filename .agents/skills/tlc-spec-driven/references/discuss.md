@@ -23,13 +23,13 @@ The output - `context.md` - feeds directly into Design and Tasks:
 
 Read `.specs/features/[feature]/spec.md` and identify the domain:
 
-| Domain                         | Gray areas to explore                                         |
-| ------------------------------ | ------------------------------------------------------------- |
-| Something users **SEE**        | Layout, density, interactions, empty states, visual hierarchy |
-| Something users **CALL** (API) | Response format, errors, auth, versioning, rate limiting      |
-| Something users **RUN** (CLI)  | Output format, flags, modes, error handling, verbosity        |
-| Something users **READ**       | Structure, tone, depth, flow, navigation                      |
-| Something being **ORGANIZED**  | Grouping criteria, naming, duplicates, exceptions             |
+| Domain                                        | Gray areas to explore                                                                                                                                                                                                     |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Something users **SEE**                       | Layout, density, interactions, empty states, visual hierarchy                                                                                                                                                             |
+| Something users **CALL** (API)                | Response format, errors, auth, versioning, rate limiting                                                                                                                                                                  |
+| Something users **RUN** (CLI)                 | Output format, flags, modes, error handling, verbosity                                                                                                                                                                    |
+| Something users **READ**                      | Structure, tone, depth, flow, navigation                                                                                                                                                                                  |
+| Something being **ORGANIZED**                 | Grouping criteria, naming, duplicates, exceptions                                                                                                                                                                         |
 | Something with **backend / state / contract** | Failure & partial-failure states, idempotency/retry/dedup, auth boundaries & rate limits, data lifecycle/expiry, concurrency/ordering - see [implicit-requirement dimensions](specify.md#implicit-requirement-dimensions) |
 
 Generate 3-4 **feature-specific** gray areas. Not generic categories, but concrete decisions for THIS feature.
@@ -44,11 +44,11 @@ Any gray area the user **declines** to discuss, or that goes undiscussed, is wri
 
 Before deep-diving, ask **one** pace question. Recommend **Guided** as the default. If the user skips, says "whatever", or "you choose", use Guided.
 
-| Pace         | When it fits                                      | Cadence                                                                 |
-| ------------ | ------------------------------------------------- | ----------------------------------------------------------------------- |
-| **Quick**    | User wants speed; trusts defaults                 | Propose defaults per area (rationale included); user accepts / overrides |
-| **Guided**   | Default - balances depth and turn count           | Adaptive elicitation (see below)                                        |
-| **Detailed** | High ambiguity; user wants Socratic control       | Exactly one decision per turn, dependency order                         |
+| Pace         | When it fits                                | Cadence                                                                  |
+| ------------ | ------------------------------------------- | ------------------------------------------------------------------------ |
+| **Quick**    | User wants speed; trusts defaults           | Propose defaults per area (rationale included); user accepts / overrides |
+| **Guided**   | Default - balances depth and turn count     | Adaptive elicitation (see below)                                         |
+| **Detailed** | High ambiguity; user wants Socratic control | Exactly one decision per turn, dependency order                          |
 
 Honor mid-discussion switches immediately ("go faster", "slow down", "just decide") - change pace without restarting or re-asking settled decisions.
 

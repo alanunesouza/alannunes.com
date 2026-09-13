@@ -4,17 +4,42 @@
   </a>
 </p>
 <h1 align="center">
-  Alan Nunes - Personal Website
+  Alan Nunes - Personal Website & Blog
 </h1>
 
-_You can visit my website by clicking here: [alannunes.com](https://alannunes.com)._
+<p align="center">
+  <em>Personal website and technical blog of Alan Nunes, Senior Software Engineer at Mercado Livre, specialized in Front-End and Artificial Intelligence.</em>
+</p>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/58e5d3df-8974-4f22-acd1-6939f569dc0c/deploy-status)](https://app.netlify.com/sites/alannunes/deploys)
+<p align="center">
+  <a href="https://alannunes.com">alannunes.com</a>
+</p>
 
-## 🛠 Tools
+---
 
-- [React](https://reactjs.org/)
-- [GraphQL](https://graphql.org/)
-- [Gatsby](https://www.gatsbyjs.org/)
-- [Styled Components](https://www.styled-components.com/)
-- [Netlify](https://www.netlify.com/)
+## 🛠 Tech Stack
+
+- **Framework**: [Astro 5](https://astro.build/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Typography**: [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Content**: Astro Content Collections & Markdown
+- **Deploy**: [Netlify](https://www.netlify.com/)
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Type check
+npm run check
+
+# Build for production
+npm run build
+```

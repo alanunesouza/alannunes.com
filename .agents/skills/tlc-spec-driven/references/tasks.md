@@ -75,50 +75,50 @@ Before sampling tests or inferring anything, scan the project for documented qua
 
 > Generated from codebase, project guidelines, and spec - confirm before Execute. Guidelines found: [list files, e.g. `AGENTS.md`, `jest.config.ts` - or "none - strong defaults applied"].
 
-| Code Layer | Required Test Type | Coverage Expectation | Location Pattern | Run Command |
-| ---------- | ------------------ | -------------------- | ---------------- | ----------- |
-| [layer] | [unit/integration/e2e/none] | [depth target for this layer] | [glob or path pattern] | [command] |
+| Code Layer | Required Test Type          | Coverage Expectation          | Location Pattern       | Run Command |
+| ---------- | --------------------------- | ----------------------------- | ---------------------- | ----------- |
+| [layer]    | [unit/integration/e2e/none] | [depth target for this layer] | [glob or path pattern] | [command]   |
 
 **Coverage Expectation values** - set from guidelines first; use strong defaults when no guideline applies:
 
-| Layer type | Strong default (no guideline) |
-| ---------- | ----------------------------- |
-| Domain / business-logic (service, use-case, domain model) | All branches; 1:1 to spec ACs; every listed edge case has a test |
-| Route / controller / e2e / integration | All routes in scope: happy path + every listed edge case + error/failure paths |
-| Repository / data-access | Key query paths + error handling; infer from existing repo tests |
-| Entity / config / schema | none - build gate only |
+| Layer type                                                | Strong default (no guideline)                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Domain / business-logic (service, use-case, domain model) | All branches; 1:1 to spec ACs; every listed edge case has a test               |
+| Route / controller / e2e / integration                    | All routes in scope: happy path + every listed edge case + error/failure paths |
+| Repository / data-access                                  | Key query paths + error handling; infer from existing repo tests               |
+| Entity / config / schema                                  | none - build gate only                                                         |
 
 These defaults may exceed the current repo's depth. That is intentional - they are a **target**, not a reflection of what already exists.
 
-*Example (filled in):*
+_Example (filled in):_
 
-| Code Layer | Required Test Type | Coverage Expectation | Location Pattern | Run Command |
-| ---------- | ------------------ | -------------------- | ---------------- | ----------- |
-| Service | unit | All branches; 1:1 to spec ACs; all listed edge cases | `src/**/__test__/*.spec.ts` | `yarn test:unit` |
-| Repository | integration | Key query paths + error paths | `src/**/__test__/*.e2e-spec.ts` | `yarn test:e2e` |
-| Controller/Resolver | e2e | All routes: happy + edge + error | `src/**/__test__/*.e2e-spec.ts` | `yarn test:e2e` |
-| Entity / Config | none | - (build gate only) | - | build gate only |
+| Code Layer          | Required Test Type | Coverage Expectation                                 | Location Pattern                | Run Command      |
+| ------------------- | ------------------ | ---------------------------------------------------- | ------------------------------- | ---------------- |
+| Service             | unit               | All branches; 1:1 to spec ACs; all listed edge cases | `src/**/__test__/*.spec.ts`     | `yarn test:unit` |
+| Repository          | integration        | Key query paths + error paths                        | `src/**/__test__/*.e2e-spec.ts` | `yarn test:e2e`  |
+| Controller/Resolver | e2e                | All routes: happy + edge + error                     | `src/**/__test__/*.e2e-spec.ts` | `yarn test:e2e`  |
+| Entity / Config     | none               | - (build gate only)                                  | -                               | build gate only  |
 
 ## Gate Check Commands
 
 > Generated from codebase - confirm before Execute.
 
-| Gate Level | When to Use | Command |
-| ---------- | ----------- | ------- |
-| Quick | After tasks with unit tests only | [unit test command] |
-| Full | After tasks with e2e/integration tests | [unit + e2e commands] |
-| Build | After phase completion or config/entity-only tasks | [build + lint + all tests] |
+| Gate Level | When to Use                                        | Command                    |
+| ---------- | -------------------------------------------------- | -------------------------- |
+| Quick      | After tasks with unit tests only                   | [unit test command]        |
+| Full       | After tasks with e2e/integration tests             | [unit + e2e commands]      |
+| Build      | After phase completion or config/entity-only tasks | [build + lint + all tests] |
 
 ---
 
 **Co-located tests:** Every task that creates or modifies a code layer with a required test type MUST include writing/updating those tests in the same task. Tests are NOT separate tasks. The tests must satisfy the layer's **Coverage Expectation** from the matrix - not merely exist.
 
-| Task creates...                           | Done When must include...                                                                                          |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Task creates...                           | Done When must include...                                                                                                                                 |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Code layer with "unit" requirement        | Unit tests written satisfying the layer's Coverage Expectation (e.g., 1:1 AC mapping for domain logic; all listed edge cases covered) + quick gate passes |
-| Code layer with "e2e" requirement         | E2E tests written satisfying the layer's Coverage Expectation (e.g., every route the task adds: happy path + edge + error paths) + full gate passes |
-| Code layer with "integration" requirement | Integration tests written satisfying the layer's Coverage Expectation + full gate passes                           |
-| Code layer with "none" requirement        | Gate check at appropriate level                                                                                    |
+| Code layer with "e2e" requirement         | E2E tests written satisfying the layer's Coverage Expectation (e.g., every route the task adds: happy path + edge + error paths) + full gate passes       |
+| Code layer with "integration" requirement | Integration tests written satisfying the layer's Coverage Expectation + full gate passes                                                                  |
+| Code layer with "none" requirement        | Gate check at appropriate level                                                                                                                           |
 
 ### 2. Break Into Atomic Tasks
 
@@ -206,9 +206,10 @@ Phases are ordered and run sequentially - each phase completes before the next b
 ### Phase 1: Foundation
 
 Tasks that must be done first, in order.
-
 ```
+
 T1 → T2 → T3
+
 ```
 
 ### Phase 2: Core Implementation
@@ -216,7 +217,9 @@ T1 → T2 → T3
 Builds on the foundation.
 
 ```
+
 T4 → T5 → T6 → T7
+
 ```
 
 ### Phase 3: Integration
@@ -224,7 +227,9 @@ T4 → T5 → T6 → T7
 Bringing it all together.
 
 ```
+
 T8 → T9
+
 ```
 
 ---
@@ -334,11 +339,13 @@ T8 → T9
 Visual representation of task ordering. Phases run in sequence, and tasks within a phase run in order:
 
 ```
+
 Phase 1 → Phase 2 → Phase 3
 
-Phase 1:  T1 ------→ T2 ------→ T3
-Phase 2:  T4 ------→ T5 ------→ T6 ------→ T7
-Phase 3:  T8 ------→ T9
+Phase 1: T1 ------→ T2 ------→ T3
+Phase 2: T4 ------→ T5 ------→ T6 ------→ T7
+Phase 3: T8 ------→ T9
+
 ```
 
 Execution is strictly sequential - there is no intra-phase parallelism. A single agent (or batch worker) works one task at a time, in order.
@@ -449,3 +456,4 @@ Pick whichever option keeps tasks atomic and cohesive. The goal: no task produce
 ## Task Verification Standards
 
 Every task MUST follow the `Done when` + `Tests` + `Gate` fields defined in the **Task Breakdown** template above. Each `Done when` entry must be specific, testable (binary pass/fail), and reference the gate check command from the `Gate Check Commands` section. Include the expected test count to prevent silent deletions.
+```

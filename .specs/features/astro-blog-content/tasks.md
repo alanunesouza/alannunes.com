@@ -4,12 +4,12 @@
 
 > Generated from codebase, project guidelines, and spec - confirm before Execute. Guidelines found: `AGENTS.md`.
 
-| Code Layer | Required Test Type | Coverage Expectation | Location Pattern | Run Command |
-| --- | --- | --- | --- | --- |
-| Styling Tools | integration | Instalação e diretivas do plugin de tipografia | `package.json`, `src/styles/global.css` | `npm run build` |
-| Content Collections | unit | Validação do schema Zod e tipos de coleção | `src/content.config.ts` | `npx astro check` |
-| UI Components | unit | Componentes de cabeçalho e card de artigo | `src/components/Header.astro`, `src/components/PostCard.astro` | `npx astro check` |
-| Blog Pages | integration | Geração estática das rotas /blog e /blog/[slug] | `src/pages/blog/index.astro`, `src/pages/blog/[...slug].astro` | `npm run build` |
+| Code Layer          | Required Test Type | Coverage Expectation                            | Location Pattern                                               | Run Command       |
+| ------------------- | ------------------ | ----------------------------------------------- | -------------------------------------------------------------- | ----------------- |
+| Styling Tools       | integration        | Instalação e diretivas do plugin de tipografia  | `package.json`, `src/styles/global.css`                        | `npm run build`   |
+| Content Collections | unit               | Validação do schema Zod e tipos de coleção      | `src/content.config.ts`                                        | `npx astro check` |
+| UI Components       | unit               | Componentes de cabeçalho e card de artigo       | `src/components/Header.astro`, `src/components/PostCard.astro` | `npx astro check` |
+| Blog Pages          | integration        | Geração estática das rotas /blog e /blog/[slug] | `src/pages/blog/index.astro`, `src/pages/blog/[...slug].astro` | `npm run build`   |
 
 ---
 

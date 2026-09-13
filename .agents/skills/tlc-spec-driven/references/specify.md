@@ -8,17 +8,17 @@ If the feature has ambiguous gray areas (multiple valid approaches for user-faci
 
 The canonical rubric for requirements that are easy to miss. Referenced by [discuss.md](discuss.md) - defined here, not duplicated.
 
-| Dimension | What to cover |
-| --------- | ------------- |
-| Input validation & bounds | Limits, formats, sanitization |
-| Failure / partial-failure states | Timeouts, partial saves, rollbacks |
-| Idempotency / retry / duplicate handling | Safe retries, dedup keys |
-| Auth boundaries & rate limits | Who can call what, throttle rules |
-| Concurrency / ordering | Race conditions, ordering guarantees |
-| Data lifecycle / expiry | TTL, archival, deletion |
-| Observability | Logging, metrics, tracing hooks |
-| External-dependency failure | Circuit breakers, fallbacks |
-| State-transition integrity | Valid transitions, guards |
+| Dimension                                | What to cover                        |
+| ---------------------------------------- | ------------------------------------ |
+| Input validation & bounds                | Limits, formats, sanitization        |
+| Failure / partial-failure states         | Timeouts, partial saves, rollbacks   |
+| Idempotency / retry / duplicate handling | Safe retries, dedup keys             |
+| Auth boundaries & rate limits            | Who can call what, throttle rules    |
+| Concurrency / ordering                   | Race conditions, ordering guarantees |
+| Data lifecycle / expiry                  | TTL, archival, deletion              |
+| Observability                            | Logging, metrics, tracing hooks      |
+| External-dependency failure              | Circuit breakers, fallbacks          |
+| State-transition integrity               | Valid transitions, guards            |
 
 ---
 
@@ -65,14 +65,14 @@ Each story MUST be **independently testable** - you can implement and demo just 
 
 Write every acceptance criterion in **EARS** (Easy Approach to Requirements Syntax). Each criterion resolves to exactly one pattern, which keeps it unambiguous and directly testable. Choose the pattern that fits the requirement instead of forcing everything into a single shape:
 
-| Pattern | Keyword | Template | Use for |
-| ------- | ------- | -------- | ------- |
-| Ubiquitous | (none) | The [system] SHALL [response] | Always-on invariants and constraints |
-| Event-driven | WHEN | WHEN [trigger] THEN the [system] SHALL [response] | A response to a discrete trigger |
-| State-driven | WHILE | WHILE [state] the [system] SHALL [response] | Behavior that holds during a state |
-| Optional-feature | WHERE | WHERE [feature is present] the [system] SHALL [response] | Behavior gated behind an optional capability or flag |
-| Unwanted-behavior | IF / THEN | IF [undesired condition] THEN the [system] SHALL [response] | Errors, failures, invalid input, timeouts |
-| Complex | combination | WHILE [state], WHEN [trigger] the [system] SHALL [response] | Richer behavior combining the above |
+| Pattern           | Keyword     | Template                                                    | Use for                                              |
+| ----------------- | ----------- | ----------------------------------------------------------- | ---------------------------------------------------- |
+| Ubiquitous        | (none)      | The [system] SHALL [response]                               | Always-on invariants and constraints                 |
+| Event-driven      | WHEN        | WHEN [trigger] THEN the [system] SHALL [response]           | A response to a discrete trigger                     |
+| State-driven      | WHILE       | WHILE [state] the [system] SHALL [response]                 | Behavior that holds during a state                   |
+| Optional-feature  | WHERE       | WHERE [feature is present] the [system] SHALL [response]    | Behavior gated behind an optional capability or flag |
+| Unwanted-behavior | IF / THEN   | IF [undesired condition] THEN the [system] SHALL [response] | Errors, failures, invalid input, timeouts            |
+| Complex           | combination | WHILE [state], WHEN [trigger] the [system] SHALL [response] | Richer behavior combining the above                  |
 
 **Why patterns beat one shape:** failure states, state transitions, and optional behavior become first-class criteria instead of footnotes squeezed into WHEN/THEN. The patterns map onto the implicit-requirement dimensions above: state-transition integrity to State-driven; failure and external-dependency failure to Unwanted-behavior; feature flags to Optional-feature.
 
@@ -143,10 +143,10 @@ Every ambiguity is resolved or recorded here - nothing is left silently unclear.
 
 **Acceptance Criteria** (each line is one EARS pattern):
 
-1. WHEN [user action/event] THEN system SHALL [expected behavior]  <!-- event-driven -->
-2. IF [invalid input / failure] THEN system SHALL [graceful handling]  <!-- unwanted-behavior -->
-3. WHILE [state holds] system SHALL [behavior during that state]  <!-- state-driven -->
-4. The system SHALL [always-on invariant]  <!-- ubiquitous -->
+1. WHEN [user action/event] THEN system SHALL [expected behavior] <!-- event-driven -->
+2. IF [invalid input / failure] THEN system SHALL [graceful handling] <!-- unwanted-behavior -->
+3. WHILE [state holds] system SHALL [behavior during that state] <!-- state-driven -->
+4. The system SHALL [always-on invariant] <!-- ubiquitous -->
 
 **Independent Test**: [How to verify this story works alone - e.g., "Can demo by doing X and seeing Y"]
 

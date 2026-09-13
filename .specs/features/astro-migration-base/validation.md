@@ -2,21 +2,21 @@
 
 **Feature**: astro-migration-base  
 **Date**: 2026-09-12  
-**Result**: PASS  
+**Result**: PASS
 
 ---
 
 ## Acceptance Criteria Coverage
 
-| Requirement ID | Acceptance Criterion | Evidence (file:line) | Verdict |
-| --- | --- | --- | --- |
-| BASE-01 | Compilação com Node 20 LTS | `.nvmrc:1` e `netlify.toml:6` | PASS |
-| BASE-02 | Geração de arquivos estáticos em dist/ | `astro.config.mjs:7` e `dist/index.html:1` | PASS |
-| BASE-03 | Configuração de dev server Astro | `package.json:9` (`"dev": "astro dev --port 7777"`) | PASS |
-| BASE-04 | Interrupção em caso de configuração inválida | `astro.config.mjs:1` | PASS |
-| THEME-01 | Aplicação de tema escuro via classe dark | `src/styles/global.css:3` e `src/styles/global.css:23` | PASS |
-| THEME-02 | Prevenção de FOUC via script inline síncrono no head | `src/layouts/BaseLayout.astro:22` | PASS |
-| THEME-03 | Contraste e estrutura semântica acessível | `src/pages/index.astro:8` | PASS |
+| Requirement ID | Acceptance Criterion                                 | Evidence (file:line)                                   | Verdict |
+| -------------- | ---------------------------------------------------- | ------------------------------------------------------ | ------- |
+| BASE-01        | Compilação com Node 20 LTS                           | `.nvmrc:1` e `netlify.toml:6`                          | PASS    |
+| BASE-02        | Geração de arquivos estáticos em dist/               | `astro.config.mjs:7` e `dist/index.html:1`             | PASS    |
+| BASE-03        | Configuração de dev server Astro                     | `package.json:9` (`"dev": "astro dev --port 7777"`)    | PASS    |
+| BASE-04        | Interrupção em caso de configuração inválida         | `astro.config.mjs:1`                                   | PASS    |
+| THEME-01       | Aplicação de tema escuro via classe dark             | `src/styles/global.css:3` e `src/styles/global.css:23` | PASS    |
+| THEME-02       | Prevenção de FOUC via script inline síncrono no head | `src/layouts/BaseLayout.astro:22`                      | PASS    |
+| THEME-03       | Contraste e estrutura semântica acessível            | `src/pages/index.astro:8`                              | PASS    |
 
 ---
 

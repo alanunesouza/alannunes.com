@@ -138,10 +138,10 @@ graph TD
 
 ```typescript
 interface ModelName {
-  id: string
-  field1: string
-  field2: number
-  createdAt: Date
+  id: string;
+  field1: string;
+  field2: number;
+  createdAt: Date;
 }
 ```
 
@@ -151,7 +151,7 @@ interface ModelName {
 
 ```typescript
 interface AnotherModel {
-  id: string
+  id: string;
   // ...
 }
 ```
@@ -169,8 +169,8 @@ interface AnotherModel {
 
 ## Risks & Concerns
 
-| Concern | Location (file:line) | Impact | Mitigation |
-| ------- | -------------------- | ------ | ---------- |
+| Concern                                                 | Location (file:line)  | Impact                    | Mitigation                                        |
+| ------------------------------------------------------- | --------------------- | ------------------------- | ------------------------------------------------- |
 | [Fragile code / tech debt / security / perf / test gap] | `src/path/file.ts:42` | [What breaks or degrades] | [How the design or a follow-up task addresses it] |
 
 > None found - is a valid entry.
