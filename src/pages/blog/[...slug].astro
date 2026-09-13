@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import CopyCode from '../../components/CopyCode.astro';
+import Giscus from '../../components/Giscus.astro';
 import { useTranslations } from '../../i18n/utils';
 
 export async function getStaticPaths() {
@@ -123,6 +124,9 @@ const alternatePath = {
           {t('blog.seeOther')}
         </a>
       </div>
+
+      <!-- Seção de Comentários Comunitários via Giscus -->
+      <Giscus lang="pt" />
     </main>
 
     <!-- Rodapé -->
