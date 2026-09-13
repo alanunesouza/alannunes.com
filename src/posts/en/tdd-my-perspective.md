@@ -26,4 +26,17 @@ TDD follows a well-defined cycle known as **Red, Green, Refactor**:
 - **Better API Design**: Writing tests first forces you to consume your API as a client before implementing it.
 - **Living Documentation**: Clear unit tests act as executable documentation that never gets out of date.
 
+```typescript
+// Practical TDD unit test example with Vitest / Jest:
+import { describe, it, expect } from 'vitest';
+import { validateUserCredentials } from './auth';
+
+describe('validateUserCredentials', () => {
+  it('should successfully validate correct user credentials', () => {
+    const result = validateUserCredentials('dev@alannunes.com', 'SuperPassword!2026');
+    expect(result.isValid).toBe(true);
+  });
+});
+```
+
 In modern frontend and full-stack development, combining automated tests with clear architectural boundaries delivers long-term sustainability and speed.

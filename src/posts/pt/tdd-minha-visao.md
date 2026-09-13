@@ -33,6 +33,19 @@ Neste passo, devemos refatorar nosso código produzido no passo anterior, aplica
 
 Após o passo 3, verifique se o teste está passando. Se sim, você volta ao passo 1, agora partindo do próximo Use Case e assim sucessivamente. Caso contrário, verifique sua refatoração, porque você acabou de gerar um bug rs.
 
+```typescript
+// Exemplo prático de ciclo TDD com Vitest / Jest:
+import { describe, it, expect } from 'vitest';
+import { validateUserCredentials } from './auth';
+
+describe('validateUserCredentials', () => {
+  it('deve validar com sucesso credenciais corretas', () => {
+    const result = validateUserCredentials('dev@alannunes.com', 'SuperSenha!2026');
+    expect(result.isValid).toBe(true);
+  });
+});
+```
+
 ### Minha experiência com TDD
 
 #### Conhecendo os testes unitários e a sua importância
