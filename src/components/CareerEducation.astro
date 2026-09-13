@@ -1,0 +1,175 @@
+---
+import type { Lang } from '../i18n/utils';
+import { educationList, certificationsList, languagesList, coreCompetencies } from '../data/career';
+import { GraduationCap, Award, Languages, Cpu, CircleCheck } from '@lucide/astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<div class="space-y-12 sm:space-y-16">
+  <!-- Competências Principais -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2.5">
+      <div class="p-2 rounded-lg bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]">
+        <Cpu class="w-5 h-5" />
+      </div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          {lang === 'pt' ? 'Competências & Domínios Técnicos' : 'Core Technical Competencies'}
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-secondary)]">
+          {
+            lang === 'pt'
+              ? 'Pilares técnicos consolidados em projetos de alta escala'
+              : 'Core pillars proven in high-scale projects'
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {
+        coreCompetencies.map((group) => (
+          <div class="p-5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/50 hover:bg-[var(--bg-surface)] hover:border-[var(--color-brand-primary)]/30 transition-all duration-200 space-y-3">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-[var(--color-brand-primary)]">
+              {group.category[lang]}
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Formação Acadêmica & Pós-Graduações -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2.5">
+      <div class="p-2 rounded-lg bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]">
+        <GraduationCap class="w-5 h-5" />
+      </div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          {lang === 'pt' ? 'Formação Acadêmica' : 'Academic Background'}
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-secondary)]">
+          {
+            lang === 'pt'
+              ? 'Graduação e especializações lato sensu contínuas'
+              : 'Undergraduate degree and postgraduate specializations'
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {
+        educationList.map((edu) => (
+          <div class="p-5 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/50 hover:bg-[var(--bg-surface)] hover:border-[var(--color-brand-primary)]/30 transition-all duration-200 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold px-2 py-0.5 rounded bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]">
+                  {edu.degree[lang]}
+                </span>
+                <span class="text-xs font-medium text-[var(--text-muted)]">{edu.period}</span>
+              </div>
+              <h3 class="text-base font-bold text-[var(--text-primary)] leading-snug">{edu.field[lang]}</h3>
+              <p class="text-xs sm:text-sm text-[var(--text-secondary)]">{edu.institution}</p>
+            </div>
+            <div class="pt-3 mt-3 border-t border-[var(--border-subtle)]/60 flex items-center justify-between text-xs">
+              <span class="text-[var(--text-muted)]">{lang === 'pt' ? 'Status' : 'Status'}</span>
+              <span class="font-medium text-[var(--text-primary)] flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)]" />
+                {edu.status[lang]}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Certificações & Especializações Técnicas -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2.5">
+      <div class="p-2 rounded-lg bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]">
+        <Award class="w-5 h-5" />
+      </div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          {lang === 'pt' ? 'Certificações & Especializações' : 'Certifications & Specializations'}
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-secondary)]">
+          {
+            lang === 'pt'
+              ? 'Arquitetura de software moderna, sistemas distribuídos e cloud'
+              : 'Modern software architecture, distributed systems, and cloud'
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+      {
+        certificationsList.map((cert) => (
+          <div
+            class={`p-4 rounded-xl border transition-all duration-200 flex items-start gap-3 ${
+              cert.highlight
+                ? 'border-[var(--color-brand-primary)]/50 bg-[var(--color-brand-primary)]/5'
+                : 'border-[var(--border-subtle)] bg-[var(--bg-surface)]/40 hover:bg-[var(--bg-surface)]'
+            }`}
+          >
+            <CircleCheck
+              class={`w-4 h-4 mt-0.5 shrink-0 ${cert.highlight ? 'text-[var(--color-brand-primary)]' : 'text-[var(--color-brand-accent)]'}`}
+            />
+            <div class="space-y-0.5">
+              <h4 class="text-sm font-semibold text-[var(--text-primary)] leading-snug">{cert.title}</h4>
+              {cert.issuer && <p class="text-xs text-[var(--text-muted)]">{cert.issuer}</p>}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Idiomas -->
+  <section class="space-y-6">
+    <div class="flex items-center gap-2.5">
+      <div class="p-2 rounded-lg bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]">
+        <Languages class="w-5 h-5" />
+      </div>
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+          {lang === 'pt' ? 'Idiomas' : 'Languages'}
+        </h2>
+        <p class="text-xs sm:text-sm text-[var(--text-secondary)]">
+          {
+            lang === 'pt'
+              ? 'Comunicação e colaboração técnica internacional'
+              : 'International technical collaboration and communication'
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+      {
+        languagesList.map((item) => (
+          <div class="p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]/50 flex flex-col justify-between">
+            <span class="text-sm font-bold text-[var(--text-primary)]">{item.language[lang]}</span>
+            <span class="text-xs text-[var(--text-secondary)] mt-1">{item.proficiency[lang]}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</div>

@@ -1,0 +1,182 @@
+---
+import type { CareerExperience } from '../data/career';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  experiences: CareerExperience[];
+  lang: Lang;
+}
+
+const { experiences, lang } = Astro.props;
+---
+
+<div
+  class="relative pl-6 sm:pl-10 space-y-8 sm:space-y-12 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-[var(--color-brand-primary)] before:via-[var(--border-subtle)] before:to-transparent"
+>
+  {
+    experiences.map((exp, index) => {
+      const isCurrent = exp.current;
+      const roleTitle = exp.role[lang];
+      const period = exp.period[lang];
+      const duration = exp.duration ? exp.duration[lang] : undefined;
+      const description = exp.description[lang];
+
+      return (
+        <div class="timeline-item relative group" style={`--item-index: ${index};`}>
+          {/* Marcador na Timeline */}
+          <div class="absolute -left-6 sm:-left-10 top-1.5 flex items-center justify-center">
+            {isCurrent ? (
+              <div class="relative flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center">
+                <span class="pulse-indicator absolute inline-flex h-full w-full rounded-full bg-[var(--color-brand-primary)] opacity-60" />
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-[var(--color-brand-primary)] ring-4 ring-[var(--bg-primary)] shadow-sm" />
+              </div>
+            ) : (
+              <div class="h-6 w-6 sm:h-8 sm:w-8 rounded-full border-2 border-[var(--border-subtle)] bg-[var(--bg-secondary)] flex items-center justify-center ring-4 ring-[var(--bg-primary)] group-hover:border-[var(--color-brand-primary)] group-hover:scale-110 transition-all duration-300">
+                <span class="w-2 h-2 rounded-full bg-[var(--text-muted)] group-hover:bg-[var(--color-brand-primary)] transition-colors" />
+              </div>
+            )}
+          </div>
+
+          {/* Card de Experiência */}
+          <div
+            class={`rounded-2xl p-5 sm:p-7 border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 backdrop-blur-xs ${
+              isCurrent
+                ? 'border-[var(--color-brand-primary)]/50 bg-[var(--bg-surface)]/90 shadow-xs ring-1 ring-[var(--color-brand-primary)]/20'
+                : 'border-[var(--border-subtle)] bg-[var(--bg-surface)]/60 hover:bg-[var(--bg-surface)] hover:border-[var(--color-brand-primary)]/30'
+            }`}
+          >
+            {/* Cabeçalho do Card: Empresa e Período */}
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1.5 sm:gap-4 mb-2">
+              <div class="flex items-center flex-wrap gap-2">
+                <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">{exp.company}</h3>
+                {isCurrent && (
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] border border-[var(--color-brand-primary)]/30 animate-pulse">
+                    {lang === 'pt' ? 'Posição Atual' : 'Current Role'}
+                  </span>
+                )}
+              </div>
+
+              <div class="text-xs sm:text-sm font-medium text-[var(--text-muted)] flex items-center gap-1.5 shrink-0">
+                <span>{period}</span>
+                {duration && (
+                  <span class="text-[11px] px-2 py-0.5 rounded bg-[var(--bg-secondary)] border border-[var(--border-subtle)]">
+                    {duration}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Cargo e Local */}
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-[var(--color-brand-primary)] mb-4">
+              <span>{roleTitle}</span>
+              <span class="text-[var(--border-subtle)] hidden sm:inline">•</span>
+              <span class="text-xs font-normal text-[var(--text-muted)] flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                {exp.location}
+              </span>
+            </div>
+
+            {/* Descrição Geral */}
+            <p class="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-4">{description}</p>
+
+            {/* Sub-posições / Evolução Interna de Carreira */}
+            {exp.subRoles && exp.subRoles.length > 0 && (
+              <div class="my-5 pl-4 border-l-2 border-[var(--border-subtle)] space-y-4">
+                <div class="text-xs uppercase tracking-wider font-semibold text-[var(--text-muted)]">
+                  {lang === 'pt' ? 'Evolução na empresa' : 'Internal Progression'}
+                </div>
+                {exp.subRoles.map((subRole) => (
+                  <div class="space-y-1 text-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                      <h4 class="font-semibold text-[var(--text-primary)]">{subRole.title[lang]}</h4>
+                      <span class="text-xs text-[var(--text-muted)]">{subRole.period[lang]}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {subRole.description[lang]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Tags de Tecnologias e Habilidades */}
+            {exp.skills && exp.skills.length > 0 && (
+              <div class="pt-4 mt-4 border-t border-[var(--border-subtle)]/70 flex flex-wrap gap-1.5 sm:gap-2">
+                {exp.skills.map((skill) => (
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)] hover:border-[var(--color-brand-primary)]/40 hover:text-[var(--text-primary)] transition-colors">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  /* Animação Staggered CSS para Timeline */
+  @keyframes timelineCardFadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes radarPulse {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  .timeline-item {
+    opacity: 0;
+    animation: timelineCardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--item-index, 0) * 110ms);
+  }
+
+  .pulse-indicator {
+    animation: radarPulse 2.4s ease-out infinite;
+  }
+
+  /* Suporte a preferência de movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-item {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .pulse-indicator {
+      animation: none;
+      opacity: 0.4;
+    }
+  }
+</style>

@@ -18,9 +18,15 @@ const t = useTranslations(currentLang);
 
 const homeHref = currentLang === 'en' ? '/en' : '/';
 const blogHref = currentLang === 'en' ? '/en/blog' : '/blog';
+const careerHref = currentLang === 'en' ? '/en/career' : '/career';
 const aboutHref = currentLang === 'en' ? '/en/about' : '/about';
 
 const isBlog = currentPath.startsWith('/blog') || currentPath.startsWith('/en/blog');
+const isCareer =
+  currentPath === '/career' ||
+  currentPath === '/en/career' ||
+  currentPath.startsWith('/career/') ||
+  currentPath.startsWith('/en/career/');
 const isAbout = currentPath.startsWith('/about') || currentPath.startsWith('/en/about');
 
 const ptHref = alternatePath?.pt ?? getLocalizedPath(currentPath, 'pt');
@@ -52,6 +58,12 @@ const enHref = alternatePath?.en ?? getLocalizedPath(currentPath, 'en');
         class={`transition-colors ${isBlog ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
       >
         {t('nav.blog')}
+      </a>
+      <a
+        href={careerHref}
+        class={`transition-colors ${isCareer ? 'text-[var(--color-brand-primary)] font-semibold' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+      >
+        {t('nav.career')}
       </a>
       <a
         href={aboutHref}

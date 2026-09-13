@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
+import CareerEducation from '../components/CareerEducation.astro';
+import { careerSummary, careerExperiences } from '../data/career';
+import { Briefcase } from '@lucide/astro';
+
+const lang = 'pt';
+const summary = careerSummary[lang];
+---
+
+<BaseLayout
+  title="Carreira & Experiência Profissional | Alan Nunes"
+  description="Histórico profissional completo de Alan Nunes: Senior Software Engineer no Mercado Livre, passagens por Luizalabs, B2W Digital e Opah IT, especializações em IA e arquitetura de software."
+  lang={lang}
+>
+  <div class="max-w-3xl sm:max-w-4xl mx-auto px-6 py-12 sm:py-20">
+    <Header
+      currentPath="/career"
+      lang={lang}
+      alternatePath={{
+        pt: '/career',
+        en: '/en/career',
+      }}
+    />
+
+    <main id="main-content" class="py-12 sm:py-16 space-y-16">
+      <!-- Topo da Página / Hero de Carreira -->
+      <section class="space-y-4">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)] border border-[var(--color-brand-primary)]/20"
+        >
+          <Briefcase class="w-3.5 h-3.5" />
+          <span>Trajetória & Engenharia</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
+          {summary.title}
+        </h1>
+
+        <p class="text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+          {summary.subtitle}
+        </p>
+      </section>
+
+      <!-- Linha do Tempo Profissional Animada -->
+      <section class="space-y-6">
+        <div class="border-b border-[var(--border-subtle)] pb-4">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Experiência Profissional</h2>
+          <p class="text-sm text-[var(--text-secondary)] mt-1">
+            Empresas, cargos, períodos e tecnologias de cada fase da minha carreira.
+          </p>
+        </div>
+
+        <CareerTimeline experiences={careerExperiences} lang={lang} />
+      </section>
+
+      <!-- Formação, Certificações & Habilidades -->
+      <section class="pt-6 border-t border-[var(--border-subtle)]">
+        <CareerEducation lang={lang} />
+      </section>
+
+      <!-- Seção de Contato & Redes -->
+      <section class="pt-8 border-t border-[var(--border-subtle)] space-y-4">
+        <h2 class="text-xl font-bold tracking-tight text-[var(--text-primary)]">Vamos nos conectar?</h2>
+        <p class="text-sm sm:text-base text-[var(--text-secondary)]">
+          Fique à vontade para acompanhar meus artigos, conectar no LinkedIn ou trocar ideias sobre projetos e tecnologia:
+        </p>
+
+        <SocialLinks class="pt-2" />
+      </section>
+    </main>
+
+    <Footer lang={lang} />
+  </div>
+</BaseLayout>
