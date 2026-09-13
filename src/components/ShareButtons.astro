@@ -1,0 +1,185 @@
+---
+interface Props {
+  title: string;
+  url?: string;
+  lang?: 'pt' | 'en';
+}
+
+const { title, url, lang = 'pt' } = Astro.props;
+
+const isEn = lang === 'en';
+const label = isEn ? 'Share this article:' : 'Compartilhe este artigo:';
+const copiedText = isEn ? 'Link copied!' : 'Link copiado!';
+const copyLabel = isEn ? 'Copy link' : 'Copiar link';
+---
+
+<div
+  class="share-buttons-container my-8 p-4 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+>
+  <div class="flex items-center gap-2">
+    <span class="text-xs font-semibold uppercase tracking-wider text-[var(--text-secondary)]">
+      {label}
+    </span>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-2" data-share-title={title} data-share-url={url}>
+    <!-- LinkedIn -->
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-linkedin inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[#0a66c2] hover:border-[#0a66c2]/40 hover:bg-[#0a66c2]/10 transition-all focus-visible:outline-none"
+      aria-label={isEn ? 'Share on LinkedIn' : 'Compartilhar no LinkedIn'}
+      title="LinkedIn"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 0 0-1.66 1.66 1.66 1.66 0 0 0 1.66 1.66 1.66 1.66 0 0 0 1.66-1.66c0-.92-.74-1.66-1.66-1.66Z"
+        ></path>
+      </svg>
+    </a>
+
+    <!-- X (Twitter) -->
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-twitter inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-primary)]/40 hover:bg-[var(--bg-surface)] transition-all focus-visible:outline-none"
+      aria-label={isEn ? 'Share on X (Twitter)' : 'Compartilhar no X (Twitter)'}
+      title="X (Twitter)"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+        ></path>
+      </svg>
+    </a>
+
+    <!-- WhatsApp -->
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-whatsapp inline-flex items-center justify-center w-10 h-10 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[#25D366] hover:border-[#25D366]/40 hover:bg-[#25D366]/10 transition-all focus-visible:outline-none"
+      aria-label={isEn ? 'Share via WhatsApp' : 'Compartilhar via WhatsApp'}
+      title="WhatsApp"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.34C9.36 7.34 9.09 7.4 8.87 7.65C8.65 7.89 8.02 8.48 8.02 9.7C8.02 10.92 8.91 12.1 9.03 12.26C9.15 12.42 10.74 14.88 13.18 15.93C15.22 16.8 15.63 16.63 16.08 16.59C16.53 16.55 17.53 16 17.73 15.42C17.94 14.85 17.94 14.36 17.88 14.25C17.81 14.15 17.65 14.09 17.41 13.97C17.17 13.85 15.99 13.26 15.77 13.18C15.55 13.1 15.38 13.06 15.22 13.3C15.06 13.55 14.6 14.09 14.45 14.25C14.31 14.42 14.17 14.44 13.93 14.32C13.68 14.2 12.65 13.86 11.43 12.77C10.48 11.92 9.83 10.87 9.69 10.63C9.55 10.38 9.68 10.25 9.8 10.13C9.91 10.03 10.05 9.85 10.17 9.71C10.29 9.57 10.33 9.47 10.41 9.31C10.49 9.14 10.45 9 10.39 8.88C10.33 8.76 9.86 7.61 9.67 7.15C9.48 6.7 9.3 6.76 9.15 6.75C9.03 6.75 8.87 6.74 8.71 6.74L9.53 7.34Z"
+        ></path>
+      </svg>
+    </a>
+
+    <!-- Copiar Link -->
+    <button
+      type="button"
+      class="share-btn share-copy inline-flex items-center gap-1.5 px-3 h-10 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-all cursor-pointer focus-visible:outline-none"
+      aria-label={copyLabel}
+      data-copied-text={copiedText}
+      data-default-text={copyLabel}
+    >
+      <svg class="w-4 h-4 shrink-0 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+        ></path>
+      </svg>
+      <span class="copy-label">{copyLabel}</span>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  function setupShareButtons() {
+    const containers = document.querySelectorAll('.share-buttons-container');
+    containers.forEach((container) => {
+      const shareGroup = container.querySelector('[data-share-title]');
+      if (!shareGroup) return;
+
+      const title = shareGroup.getAttribute('data-share-title') || document.title;
+      const explicitUrl = shareGroup.getAttribute('data-share-url');
+      const postUrl = explicitUrl ? new URL(explicitUrl, window.location.origin).href : window.location.href;
+
+      const encodedUrl = encodeURIComponent(postUrl);
+      const encodedTitle = encodeURIComponent(title);
+
+      // LinkedIn
+      const linkedinBtn = shareGroup.querySelector('.share-linkedin');
+      if (linkedinBtn) {
+        linkedinBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+      }
+
+      // X / Twitter
+      const twitterBtn = shareGroup.querySelector('.share-twitter');
+      if (twitterBtn) {
+        twitterBtn.href = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+      }
+
+      // WhatsApp
+      const whatsappBtn = shareGroup.querySelector('.share-whatsapp');
+      if (whatsappBtn) {
+        whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`;
+      }
+
+      async function copyTextToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (e) {
+            // fallback below
+          }
+        }
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          textArea.remove();
+          return true;
+        } catch (err) {
+          textArea.remove();
+          return false;
+        }
+      }
+
+      // Copy Link Button
+      const copyBtn = shareGroup.querySelector('.share-copy');
+      if (copyBtn && !copyBtn.dataset.bound) {
+        copyBtn.dataset.bound = 'true';
+        copyBtn.addEventListener('click', async () => {
+          const success = await copyTextToClipboard(postUrl);
+          if (success) {
+            const labelEl = copyBtn.querySelector('.copy-label');
+            const originalText = copyBtn.getAttribute('data-default-text') || 'Copiar link';
+            const copiedText = copyBtn.getAttribute('data-copied-text') || 'Link copiado!';
+
+            if (labelEl) labelEl.textContent = copiedText;
+            copyBtn.classList.add('text-emerald-500', 'border-emerald-500/40');
+
+            setTimeout(() => {
+              if (labelEl) labelEl.textContent = originalText;
+              copyBtn.classList.remove('text-emerald-500', 'border-emerald-500/40');
+            }, 2000);
+          }
+        });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupShareButtons);
+  } else {
+    setupShareButtons();
+  }
+
+  document.addEventListener('astro:page-load', setupShareButtons);
+</script>

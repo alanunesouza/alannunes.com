@@ -50,4 +50,50 @@ test.describe('Blog Post Page & Interactions', () => {
     await expect(giscusIframe).toBeAttached();
     await expect(giscusIframe).toHaveAttribute('src', /theme=light/);
   });
+
+  test('should have proper Open Graph and Twitter Card tags for LinkedIn and social sharing', async ({ page }) => {
+    await page.goto('/blog/tdd-minha-visao');
+
+    // OG Tags
+    const ogTitle = page.locator('meta[property="og:title"]');
+    await expect(ogTitle).toHaveAttribute('content', /TDD/);
+
+    const ogImage = page.locator('meta[property="og:image"]');
+    await expect(ogImage).toHaveAttribute('content', /og-image\.png/);
+
+    const ogImageWidth = page.locator('meta[property="og:image:width"]');
+    await expect(ogImageWidth).toHaveAttribute('content', '1200');
+
+    const twitterCard = page.locator('meta[name="twitter:card"]');
+    await expect(twitterCard).toHaveAttribute('content', 'summary_large_image');
+  });
+
+  test('should render social share buttons and handle copy link action', async ({ page }) => {
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.goto('/blog/tdd-minha-visao');
+
+    const shareContainer = page.locator('.share-buttons-container');
+    await expect(shareContainer).toBeVisible();
+
+    // LinkedIn button
+    const linkedinBtn = page.locator('a.share-linkedin');
+    await expect(linkedinBtn).toBeVisible();
+    await expect(linkedinBtn).toHaveAttribute('href', /linkedin\.com\/sharing\/share-offsite/);
+
+    // X / Twitter button
+    const twitterBtn = page.locator('a.share-twitter');
+    await expect(twitterBtn).toBeVisible();
+    await expect(twitterBtn).toHaveAttribute('href', /twitter\.com\/intent\/tweet/);
+
+    // WhatsApp button
+    const whatsappBtn = page.locator('a.share-whatsapp');
+    await expect(whatsappBtn).toBeVisible();
+    await expect(whatsappBtn).toHaveAttribute('href', /api\.whatsapp\.com\/send/);
+
+    // Copy button
+    const copyLinkBtn = page.locator('button.share-copy');
+    await expect(copyLinkBtn).toBeVisible();
+    await copyLinkBtn.click();
+    await expect(copyLinkBtn).toContainText('Link copiado!');
+  });
 });

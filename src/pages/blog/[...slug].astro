@@ -6,6 +6,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CopyCode from '../../components/CopyCode.astro';
 import Giscus from '../../components/Giscus.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
 import { useTranslations } from '../../i18n/utils';
 
 export async function getStaticPaths() {
@@ -62,6 +63,8 @@ const alternatePath = {
 <BaseLayout
   title={`${title} | Alan Nunes`}
   description={description ?? `${title} - Artigo por ${author}`}
+  image={post.data.image}
+  publishDate={date.toISOString()}
   type="article"
   lang="pt"
 >
@@ -116,8 +119,11 @@ const alternatePath = {
 
       <CopyCode lang="pt" />
 
+      <!-- Compartilhamento Social -->
+      <ShareButtons title={title} url={`/blog/${cleanSlug}`} lang="pt" />
+
       <!-- Rodapé do Artigo -->
-      <div class="mt-16 pt-8 border-t border-[var(--border-subtle)] flex items-center justify-between">
+      <div class="mt-12 pt-8 border-t border-[var(--border-subtle)] flex items-center justify-between">
         <a
           href="/blog"
           class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-brand-primary)] hover:underline"

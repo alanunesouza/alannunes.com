@@ -8,14 +8,16 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   lang?: Lang;
+  publishDate?: string;
 }
 
 const {
   title = 'Alan Nunes | Senior Software Engineer',
   description = 'Site pessoal e blog de Alan Nunes, Senior Software Engineer especialista em Front-End e em especialização em Inteligência Artificial.',
-  image = '/favicon.png',
+  image = '/og-image.png',
   type = 'website',
   lang = 'pt',
+  publishDate,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL('https://alannunes.com');
@@ -52,10 +54,14 @@ const gaId = import.meta.env.PUBLIC_GA_ID;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={ogLocale} />
+    {type === 'article' && <meta property="article:author" content="Alan Nunes" />}
+    {type === 'article' && publishDate && <meta property="article:published_time" content={publishDate} />}
 
     <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageURL} />
